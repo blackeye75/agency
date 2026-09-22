@@ -1,17 +1,18 @@
 # Agency website: requirements from the Crency reference
 
-Source: five screen recordings of https://crency.agency in `reference/`
+Source: six screen recordings of https://crency.agency in `reference/`
 (`…02-15-25.mp4` = part 1, `…02-31-29.mp4` = part 2, `…02-42-20.mp4` = part 3,
-`…02-53-55.mp4` = part 4, `…03-02-22.mp4` = part 5),
+`…02-53-55.mp4` = part 4, `…03-02-22.mp4` = part 5, `…03-14-12.mp4` = part 6,
+interactions),
 analysed frame by frame. Colors are sampled from the video. Fonts and libraries
 are inferred from how the site looks and moves; the recordings do not show
 Crency's source code.
 
-The whole homepage, top to bottom, is now recorded.
+The whole homepage, top to bottom, is now recorded, plus the menu overlay, the
+cursor states, button hovers and one page transition (home → about us).
 
-**Not yet recorded (all interactions, not scrolling):** how the cases gallery
-moves to the next case, what happens when a mood sticker is clicked, hover
-states, the menu overlay, page transitions and the case-study and blog pages.
+**Not yet recorded:** the case-study and blog pages, the rest of the about-us
+page, and what the cases gallery does when dragged (see S6).
 
 ---
 
@@ -49,13 +50,16 @@ states, the menu overlay, page transitions and the case-study and blog pages.
 | # | Feature | Behavior | How to build it |
 |---|---|---|---|
 | G1 | Smooth scroll | Eased scrolling with momentum | Lenis; expose its scroll speed for G5 |
-| G2 | "You" cursor | A lime arrow with a "You" pill trails the mouse (Figma multiplayer style) | `quickTo` on x/y. Hide on touch devices and when the user asks for reduced motion |
+| G2 | Context cursor | A cursor with a label pill that trails the mouse (Figma multiplayer style) and **changes with what it's over**. **Full spec in section 5D** | `quickTo` on x/y. Hide on touch devices and when the user asks for reduced motion |
 | G3 | Top nav | Pill-shaped: logo, about us, cases, services, blog, "let's talk". Fades in during the intro; hides on scroll down, returns on scroll up | Scroll-direction ScrollTrigger |
 | G4 | Bottom dock | Fixed frosted-glass pill: `Open: Menu` · `get my website` · `View: Cases`. Appears at the end of the intro | `backdrop-filter: blur()` on a translucent background |
 | G5 | Wavy section edges | Dark/light sections meet on a curved edge that changes shape as the edge moves up the screen (hill, then slope, then dip) | Tied to scroll position, not speed. **Full spec in section 5A** |
 | G6 | Replay on re-entry | Text reveals replay when scrolling back into a section | ScrollTrigger `toggleActions` / `onEnterBack` |
 | G7 | Reduced motion | Everything readable and static when `prefers-reduced-motion` is set | `gsap.matchMedia()` |
 | G8 | Mobile | Simpler versions of the pinned sequences, no custom cursor | `gsap.matchMedia()` breakpoints |
+| G9 | CTA button hover | Every "get my …" pill button: on hover, the round lime arrow button **slides from the right side of the pill to the left**, and its arrow turns from ↗ to →. Reverses on mouse out. Spec in 5E | Flex `order` swap animated with GSAP Flip, or `translateX` on both parts; arrow `rotate: 45deg` |
+| G10 | Menu overlay | "Open: Menu" in the dock opens a full-screen overlay of three big circles. **Full spec in section 5F** | GSAP timeline |
+| G11 | Page transitions | Clicking a page link dims the page, shows a screen of colored ticker bands, then wipes to the new page. **Full spec in section 5G** | Next.js route change plus a transition layer |
 
 ## 4. Sections (in page order)
 
@@ -116,7 +120,8 @@ states, the menu overlay, page transitions and the case-study and blog pages.
 - **The starburst moves with scroll:** its spikes shift and turn as the section passes (a slow rotate plus scale tied to scroll position), so the background never sits still.
 - The section **isn't pinned**; it scrolls through normally.
 - **The featured case changes between visits.** Parts 3 and 4 showed "01 / 04" (Imperium Companions, 4.9, "We were happy with the final product…"); part 5, a separate visit, showed "04 / 04" (Morsec, 5.0, "Everything went great. The Crency team has a lot of experience and helped with structuring the request."). So either one of the 4 featured cases is picked at random on each page load, or the gallery rotates on a timer. Neither recording shows a click or drag.
-- **Our version:** pick the starting case at random on load, and also let visitors switch cases (arrow buttons plus drag or swipe, and keyboard arrows), since we can't tell how Crency does it.
+- **Drag (part 6, ~44–50s):** over the gallery the cursor changes to a blue **"Drag"** hand, so the gallery is meant to be dragged. In the recording, dragging didn't visibly change the case (still 04 / 04), so we can't see what a drag does.
+- **Our version:** pick the starting case at random on load, and let visitors switch cases by dragging or swiping the fan (with inertia, snapping to the nearest card), plus arrow buttons and keyboard arrows.
 - **How:** cards absolutely positioned with `transform: translateX() translateZ() rotateY()` calculated from each card's distance to the active one; entry via ScrollTrigger (`y`, spread factor 0 → 1). Put real `<a>` links on each card.
 
 ### S7: Signpost links, "VIEW ALL CASES" / "VIEW ALL BLOGS" (part 4, ~53–56s; dark)
@@ -159,7 +164,8 @@ states, the menu overlay, page transitions and the case-study and blog pages.
 - Under each sticker is a small **rounded checkbox**. The middle one is **checked** by default (dark square with a yellow star); the others are empty lilac squares. So it works as a 3-option radio group.
 - Below: a white "get my website" pill with a lime ↗ button. The button text probably changes with the selected option (not confirmed).
 - **Motion:** the stickers rise in with a stagger; the ring text probably rotates slowly (hard to tell from the recording).
-- **How:** a real `<fieldset>` of 3 radio buttons styled as stickers (keyboard and screen-reader friendly); ring text on an SVG `<textPath>` along a circle, rotated with a slow CSS animation; the CTA's label and link come from the selected option.
+- **Clicking (part 6, ~24–36s):** clicking the empty checkboxes **didn't change the selection** in the recording; the middle one stayed checked. The CTA shows the G9 hover. So on Crency the picker looks decorative or unfinished.
+- **How (ours should actually work):** a real `<fieldset>` of 3 radio buttons styled as stickers (keyboard and screen-reader friendly); ring text on an SVG `<textPath>` along a circle, rotated with a slow CSS animation; the CTA's label and link come from the selected option. The selected sticker gets a small bounce and a checked box with the star.
 - **Our version:** use it to sort leads, for example "Just looking", "I need a product built" and "I want a free code or performance audit", each linking to the right form.
 
 ### S10: Name marquee and footer (part 5, ~24–28s; light)
@@ -169,6 +175,7 @@ states, the menu overlay, page transitions and the case-study and blog pages.
   - Left: "Want one that sells?" (large, bold), then **Explore** links: Home, About us, Services, Cases, Contact us.
   - Right: **hello@crency.agency** as a big underlined `mailto:` link, then round Instagram and LinkedIn icon buttons, and at the bottom "Privacy Policy" and "© 2017–2026 Crency. All rights reserved."
 - The bottom dock (G4) stays visible over the footer.
+- **Interactions (part 6, 0–24s):** hovering the Explore links, the email and the social icons switches the cursor to the pink **"Click"** state (5D). Clicking the Explore links didn't visibly navigate in the recording, so they probably scroll to sections or the clicks weren't registered. Ours should link to real pages or sections.
 
 ## 5. Priority effects: detailed specs
 
@@ -254,6 +261,50 @@ The whole sequence stays pinned and is **tied to scroll position**. Scrolling up
 - [ ] Each icon lands exactly inside its slot (within 1px) at the end of the sequence.
 - [ ] It runs at 60fps in the Chrome Performance panel on a mid-range laptop.
 
+### 5D: Context cursor (part 6)
+The system cursor is replaced by a custom arrow with a label pill that trails the mouse. It has three states:
+
+| State | When | Look |
+|---|---|---|
+| **You** (default) | anywhere else | lime arrow + lime pill "You" (dark text) |
+| **Click** | over any link or button | pink pointing-hand + pink pill "Click" (white text) |
+| **Drag** | over the cases gallery | blue grabbing-hand + blue pill "Drag" (white text) |
+
+- The switch between states is quick (about 0.2s): the icon and pill swap with a small scale bounce.
+- **How:** one fixed-position element moved with `gsap.quickTo(x/y, { duration: 0.35, ease: "power3" })`; the state is set from `data-cursor="click|drag"` on the element under the mouse (use `pointerover` delegation, not one listener per element). Keep the real cursor visible (or `cursor: none` only on desktop with a fine pointer) and never hide focus outlines for keyboard users.
+
+### 5E: CTA button hover (part 6, ~26–36s)
+- Rest: `[ get my website ] (↗)`: a white pill with the lime circle on its **right**, arrow pointing up-right.
+- Hover: the lime circle moves to the **left** of the pill and the arrow turns to point right, `(→) [ get my website ]`. It takes about 0.3s with a slight overshoot.
+- Same on "get my free audit", "get my website" (mood picker) and the dock button's close pill in the menu (`close ⊗` ↔ `⊗ close`).
+- **How:** the button is a flex row; on hover, animate the circle `x` to the left edge and the pill `x` right by the circle's width (both with `power3.out`), and rotate the arrow 45°.
+
+### 5F: Menu overlay (part 6, ~60–72s)
+**Opening** (about 1.2s):
+1. Clicking **"Open: Menu"** in the dock blurs and slightly zooms the page behind (`filter: blur()` on a page wrapper, or a `backdrop-filter` layer).
+2. **Three huge circles** (each about 90vh across, with a thick white ring and overlapping each other) **slide in from the right**, one after another: blue first, then lime, then pink. They settle as **pink (left, partly off-screen) · lime (centre) · blue (right, partly off-screen)**. The pink circle is filled with a blurred pink photo or texture rather than a flat color.
+3. The contents fade and rise in with a stagger:
+   - **Lime circle (centre):** white pill links stacked vertically: **main page**, **about us**, **services**, **contact us**, then a dark **close ⊗** pill.
+   - **Pink circle (left):** a dark round button with a pink ↖ arrow and curved text "View Blogs".
+   - **Blue circle (right):** a white round button with a violet ↘ arrow and curved text "View Cases".
+
+**Closing** (about 0.8s): clicking **close** fades the contents, the circles **slide out to the left** (the lime and blue last), and the page behind un-blurs.
+
+**How:** a fixed overlay (`role="dialog"`, `aria-modal`, focus trapped inside, Esc closes); circles are absolutely positioned `border-radius: 50%` divs with `outline`/`box-shadow` for the white ring; one GSAP timeline played forward to open and reversed (or a mirrored one) to close. Lock Lenis scrolling while it's open.
+
+### 5G: Page transition, home → about us (part 6, ~73–86s)
+Clicking **"about us"** in the top nav:
+1. The current page **fades to about 20% brightness** (a dark overlay fades in, ~0.4s). In the recording this dim state lasted about 2.5s, which is probably page loading, so ours should be as short as the load allows.
+2. A **transition screen** appears: three wide **ticker bands**, each slightly tilted and overlapping, filling the screen:
+   - lime band: "IDENTITY ◉" (dark text, orange target icon)
+   - pink band: "SPEED 👁" (light pink text, eye icon)
+   - violet band: "SALES ⁘" (lilac text, dotted ring)
+   The bands' text scrolls sideways, alternating direction band by band. The URL is already `/about-us` at this point.
+3. **Wipe-out:** dark panels slide across the bands (from the top-left), uncovering the new page.
+4. The new page's hero plays its intro: "LET'S START / WITH CLARITY" on a pink highlighter bar, with the starburst mascot (thumbs up, walking pose) on the right. The top nav and the dock are the same as on the homepage.
+
+**How:** a persistent `<TransitionLayer>` in the root layout; intercept internal link clicks, play the cover animation (dim → bands), `router.push()`, wait for the new page to mount (and fonts/images to be ready), then play the wipe-out. Reuse the marquee component from S10 for the bands. Keep the whole thing under ~1.5s when the page is already cached; respect reduced motion (plain crossfade).
+
 ## 6. Assets to produce (design work, not code)
 - [ ] Brand concept: Crency's is "the site is a design-tool canvas". Pick our own for a software development agency (for example a code editor, terminal or IDE canvas).
 - [ ] Display font license (or Anton) and a body font.
@@ -269,6 +320,10 @@ The whole sequence stays pinned and is **tied to scroll position**. Scrolling up
 - [ ] Audit section: 5 score chips and their values.
 - [ ] Mood picker: 3 round badge stickers with character faces and ring text; the 3 options and where each leads.
 - [ ] Footer: contact email, social links, privacy policy page.
+- [ ] Cursor: 3 cursor icons (arrow, pointing hand, grabbing hand).
+- [ ] Menu: a photo or texture for the pink circle; curved-text round buttons.
+- [ ] Transition: 3 words and icons for the ticker bands (ours could be e.g. "CODE", "SPEED", "SCALE").
+- [ ] About-us page content (hero copy, mascot pose).
 - [ ] Copy: headline, stats (reviews, projects, years, response time), service descriptions, case studies.
 
 ## 7. Build order
@@ -279,5 +334,6 @@ The whole sequence stays pinned and is **tied to scroll position**. Scrolling up
 5. S4 mascot CTA, S5 services card flip.
 6. S6 cases gallery, S7 signposts, S8 audit with score counters.
 7. S9 mood picker, S10 marquee and footer.
-8. Menu overlay, page transitions, case-study and blog pages (need their own recordings).
-9. Mobile, reduced-motion and performance pass (target Lighthouse 90+).
+8. 5D context cursor, 5E button hovers, 5F menu overlay, 5G page transitions.
+9. Inner pages: about us, services, cases list and case-study template, blog (the case-study and blog pages still need recordings or our own design).
+10. Mobile, reduced-motion and performance pass (target Lighthouse 90+).
