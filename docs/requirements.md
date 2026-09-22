@@ -1,12 +1,14 @@
 # Agency website: requirements from the Crency reference
 
-Source: two screen recordings of https://crency.agency in `reference/`
-(`…02-15-25.mp4` = part 1, `…02-31-29.mp4` = part 2), analysed frame by frame.
-Colors are sampled from the video. Fonts and libraries are inferred from how the
-site looks and moves; the recordings do not show Crency's source code.
+Source: three screen recordings of https://crency.agency in `reference/`
+(`…02-15-25.mp4` = part 1, `…02-31-29.mp4` = part 2, `…02-42-20.mp4` = part 3),
+analysed frame by frame. Colors are sampled from the video. Fonts and libraries
+are inferred from how the site looks and moves; the recordings do not show
+Crency's source code.
 
-**Not yet recorded:** the page transitions, the menu overlay, the remaining
-service cards, the case studies, the footer and the contact flow.
+**Not yet recorded:** how the cases gallery moves to the next case, anything
+below the cases gallery (testimonials, footer, contact), the menu overlay, page
+transitions and the case-study pages.
 
 ---
 
@@ -72,18 +74,46 @@ service cards, the case studies, the footer and the contact flow.
 - Fully tied to scroll position and reversible. **Full spec in section 5B.**
 
 ### S4: Trust CTA, "Trust comes from design, not explanation."
-- A **mascot** (a lime starburst with a face, gloved hands giving a thumbs up, and sneakers) pops in from small with an elastic bounce.
-- The text lines reveal one by one; a **lime highlighter bar** sweeps behind "from design," from left to right (`scaleX` 0→1, `transform-origin: left`).
+- A **mascot** (a lime starburst with a face, gloved hands giving a thumbs up, and sneakers) **grows with scroll**: small as the section enters, full size when the section is centred (about 3× larger), with a slight tilt. It shrinks again as you scroll on.
+- The text lines reveal one by one ("Trust comes" first); a **lime highlighter bar** sweeps behind "from design," from left to right (`scaleX` 0→1, `transform-origin: left`).
 - CTA: a lime pill "design trust" plus a dark round ↗ button.
 
-### S5: Services, "WHAT ARE WE BUILDING FOR YOU?"
+### S5: Services, "WHAT ARE WE BUILDING FOR YOU?" (part 3, 17.5–21.5s)
 - The headline lines reveal one by one (the last line "YOU?" lands last).
-- **Service cards** rise from a dark wavy edge below with a **3D tilt** (perspective, `rotateX`/`rotateY`/`rotateZ`) that straightens as you scroll.
-- The first card is pink, "Web Development": "Speed you can feel: fast loading, high-end animation, SEO built in. Your website just works, and quietly earns trust." It has a hand illustration.
-- The other cards weren't recorded; probably one card per service, stacking or swapping on scroll.
+- A dark wavy edge (5A) rises underneath; the cards come up out of it.
+- **Card flip sequence** (tied to scroll, pinned):
 
-### Not yet specified (needs part 3)
-Cases/work, the rest of the services, testimonials, footer and contact, the menu overlay, **page transitions**, case-study pages.
+| Step | What happens |
+|---|---|
+| 1 | The pink **Web Development** card rises alone in the middle, tilted in 3D (leaning back, turned slightly). |
+| 2 | It turns on its vertical axis until it's **edge-on** (a thin sliver, `rotateY` ≈ 90°). |
+| 3 | While it's edge-on, the **lime (left)** and **violet (right)** cards rise from below. |
+| 4 | The middle card turns back to face the front (`rotateY` 90° → 0°) and all three settle level in a row. |
+
+- **Card content** (3 equal cards, ~40px rounded corners, ~30vw wide):
+
+| Card | Color | Title | Text | Button |
+|---|---|---|---|---|
+| Left | lime | UI/UX Design | "Design that converts. Clear, intentional interfaces that make the next step obvious. Less hesitation. More forward movement." | dark pill "design my product" |
+| Middle | pink | Web Development | "Speed you can feel: fast loading, high-end animation, SEO built in. Your website just works, and quietly earns trust." | light pink pill "build my website" |
+| Right | violet `#4B00F0` | Custom project? | "When things don't fit templates (web or mobile app, platform or marketplace) we turn complexity into clarity." | lilac pill "discuss my project" |
+
+- Each card has a large **12-petal flower** shape in a darker or lighter shade of its own color (it may spin slowly; not confirmed).
+- **How:** a pinned ScrollTrigger timeline; the parent has `perspective: 1200px`, and the middle card animates `rotateX`/`rotateY` with `backface-visibility: hidden`. The side cards animate `yPercent` 100 → 0.
+
+### S6: Cases gallery (part 3, 22–25s; dark)
+- **Background:** a large **electric-blue starburst** (a few long spikes) grows up from behind the cards as the section enters.
+- **Card fan:** a row of about 11 project cards arranged in a shallow 3D arc (a coverflow). Each card has a lilac frame.
+  - The **side cards** show only their spine, with the project name set vertically: ZERO, YPS, 14B, UMBRELLA, TRDELNIK · UTAH LEATHER REPAIR, FLIX AUTO TRANSPORT, MY HAIR PL, PAWSPOT, BON VOYAGE.
+  - The **middle card** is open and double-width:
+    - Left half: the project cover (logo, "BRANDING · DESIGN · DEVELOPMENT · SEO", and a screenshot of the site).
+    - Right half: a counter "01 / 04", the client quote in the display font ("WE WERE HAPPY WITH THE FINAL PRODUCT. WE HIGHLY RECOMMEND CRENCY TO TAKE ON YOUR UNIQUE WEBSITE DESIGN CHALLENGES."), and a lime "VIEW CASE" button.
+- **Entry:** the fan rises from the bottom while spreading outward from the centre (the cards start bunched, then fan out); the starburst spikes scale up at the same time.
+- **Not seen yet:** how the next case opens (scroll, drag or click; the counter suggests 4 featured cases).
+- **How:** cards absolutely positioned with `transform: translateX() translateZ() rotateY()` calculated from each card's distance to the active one; entry via ScrollTrigger (`y`, spread factor 0 → 1). Put real `<a>` links on each card.
+
+### Not yet specified (needs part 4)
+How the cases gallery moves to the next case, everything below it (testimonials, footer and contact), the menu overlay, **page transitions**, case-study pages.
 
 ## 5. Priority effects: detailed specs
 
@@ -175,7 +205,9 @@ The whole sequence stays pinned and is **tied to scroll position**. Scrolling up
 - [ ] 6–10 custom SVG letterforms.
 - [ ] 5 sticker icons, 6 hero badges.
 - [ ] Mascot illustration (SVG, with separate limbs if they should animate).
-- [ ] Service card illustrations.
+- [ ] Service card flower shapes (one SVG, recolored per card).
+- [ ] Cases: a cover image, a screenshot, a client quote and a short name for each project (at least 4 featured projects; about 10 names for the spines).
+- [ ] Blue starburst background shape (SVG).
 - [ ] Copy: headline, stats (reviews, projects, years, response time), service descriptions, case studies.
 
 ## 7. Build order
@@ -183,6 +215,7 @@ The whole sequence stays pinned and is **tied to scroll position**. Scrolling up
 2. **Priority prototypes: 5A wavy edge and 5B icon sequence** (the effects we most want to match; they also prove out the Lenis and ScrollTrigger setup for everything else).
 3. S1 hero intro: letter reveal, pen line and stickers.
 4. G2 cursor, S2 About.
-5. S4 mascot CTA, S5 services cards.
-6. Remaining sections and page transitions once part 3 is recorded.
-7. Mobile, reduced-motion and performance pass (target Lighthouse 90+).
+5. S4 mascot CTA, S5 services card flip.
+6. S6 cases gallery.
+7. Remaining sections and page transitions once part 4 is recorded.
+8. Mobile, reduced-motion and performance pass (target Lighthouse 90+).
