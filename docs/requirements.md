@@ -1,14 +1,17 @@
 # Agency website: requirements from the Crency reference
 
-Source: three screen recordings of https://crency.agency in `reference/`
-(`…02-15-25.mp4` = part 1, `…02-31-29.mp4` = part 2, `…02-42-20.mp4` = part 3),
+Source: five screen recordings of https://crency.agency in `reference/`
+(`…02-15-25.mp4` = part 1, `…02-31-29.mp4` = part 2, `…02-42-20.mp4` = part 3,
+`…02-53-55.mp4` = part 4, `…03-02-22.mp4` = part 5),
 analysed frame by frame. Colors are sampled from the video. Fonts and libraries
 are inferred from how the site looks and moves; the recordings do not show
 Crency's source code.
 
-**Not yet recorded:** how the cases gallery moves to the next case, anything
-below the cases gallery (testimonials, footer, contact), the menu overlay, page
-transitions and the case-study pages.
+The whole homepage, top to bottom, is now recorded.
+
+**Not yet recorded (all interactions, not scrolling):** how the cases gallery
+moves to the next case, what happens when a mood sticker is clicked, hover
+states, the menu overlay, page transitions and the case-study and blog pages.
 
 ---
 
@@ -109,11 +112,63 @@ transitions and the case-study pages.
     - Left half: the project cover (logo, "BRANDING · DESIGN · DEVELOPMENT · SEO", and a screenshot of the site).
     - Right half: a counter "01 / 04", the client quote in the display font ("WE WERE HAPPY WITH THE FINAL PRODUCT. WE HIGHLY RECOMMEND CRENCY TO TAKE ON YOUR UNIQUE WEBSITE DESIGN CHALLENGES."), and a lime "VIEW CASE" button.
 - **Entry:** the fan rises from the bottom while spreading outward from the centre (the cards start bunched, then fan out); the starburst spikes scale up at the same time.
-- **Not seen yet:** how the next case opens (scroll, drag or click; the counter suggests 4 featured cases).
+- **More detail on the middle card** (part 4, ~49–52s): under the cover there's a row of 5 small colored app-style icons for the project's deliverables; on the right, below the quote, there's a round **"4.9" rating badge** with the client name ("IMPERIUM COMPANIONS") and a small grey tag with the service ("WEBFLOW DEVELOPMENT").
+- **The starburst moves with scroll:** its spikes shift and turn as the section passes (a slow rotate plus scale tied to scroll position), so the background never sits still.
+- The section **isn't pinned**; it scrolls through normally.
+- **The featured case changes between visits.** Parts 3 and 4 showed "01 / 04" (Imperium Companions, 4.9, "We were happy with the final product…"); part 5, a separate visit, showed "04 / 04" (Morsec, 5.0, "Everything went great. The Crency team has a lot of experience and helped with structuring the request."). So either one of the 4 featured cases is picked at random on each page load, or the gallery rotates on a timer. Neither recording shows a click or drag.
+- **Our version:** pick the starting case at random on load, and also let visitors switch cases (arrow buttons plus drag or swipe, and keyboard arrows), since we can't tell how Crency does it.
 - **How:** cards absolutely positioned with `transform: translateX() translateZ() rotateY()` calculated from each card's distance to the active one; entry via ScrollTrigger (`y`, spread factor 0 → 1). Put real `<a>` links on each card.
 
-### Not yet specified (needs part 4)
-How the cases gallery moves to the next case, everything below it (testimonials, footer and contact), the menu overlay, **page transitions**, case-study pages.
+### S7: Signpost links, "VIEW ALL CASES" / "VIEW ALL BLOGS" (part 4, ~53–56s; dark)
+- Two big **3D arrow signs**, like a street signpost seen at an angle. Each is an arrow-shaped front panel with a narrower, darker **side face**, so it looks like a folded box:
+  - **VIEW ALL CASES**: a pink arrow pointing **right**, with a light pink side face on its left; white display text (with the custom `S`); a small **yellow 8-point star** sticker on its top-left corner.
+  - **VIEW ALL BLOGS**: a pale lilac arrow pointing **left**, with a blue side face on its right; blue display text.
+- The two signs overlap, the blog sign lower and to the left, meeting at a central "post".
+- **Motion:** they **slide in from opposite sides** as the section enters (cases from the right, blogs from the left), then keep drifting apart slightly as you scroll (horizontal movement tied to scroll).
+- A subtly lighter dark rectangle sits behind the right half of the section, giving the "post" a background plane.
+- **How:** each sign is a flex row of two panels; the arrow tip is a CSS `clip-path: polygon(...)`, and the side face is a darker panel narrowed with `transform: skewY()` or a `clip-path` trapezoid. Both are real `<a>` links; on hover, nudge the arrow in its direction.
+
+### S8: Free audit, "GET A FREE AUDIT OF YOUR WEBSITE" (parts 4–5; dark)
+- A **giant lilac display headline** over three lines, with a custom wide `G` at the start and a custom wide `e` at the end of "WEBSITe". It rises out of a line mask one line at a time.
+- **Five floating score chips** pop in one after another around the headline, like Lighthouse scores, overlapping the letters:
+
+| Chip | Color | Position | Count |
+|---|---|---|---|
+| Speed | blue `#3D5BFF` | above line 1, centred | 0 → 99% |
+| SEO | pink | right of line 1 | 0 → 100% |
+| Animation | yellow | over the middle of line 2 | 0 → 89% |
+| Conversion | violet | left of line 3 | 0 → 82% |
+| Design | lime | right of line 3 | 0 → 76% |
+
+- Each chip is a small rounded rectangle with a dot, a label, a **percentage that counts up**, and a thin **progress bar** that fills in step with the number. The counts take about 1.5s and are staggered.
+- **How:** chips fade and scale in (`back.out`); the number animates as `{ val: 0 } → { val: target }` with `onUpdate` writing `Math.round(val) + "%"`, and the bar is `scaleX` on the same timeline. Start it with ScrollTrigger (`start: "top 70%"`, `once: true`).
+- **CTA** under the headline: a white pill "get my free audit" joined to a round lime ↗ button. There's no form on the page, so the button presumably opens a form or contact page.
+- The section ends in a dark → lilac wavy edge (5A).
+
+### S9: Mood picker, "SO… HOW DO WE MAKE YOU FEEL?" (part 5, ~21–24s; light)
+- A huge two-line display headline with a custom slanted `D` in "DO". The lines rise in one after the other.
+- Small text under it: "Choose your vibe, we're listening."
+- **Three round badge stickers**, each with a character face in a white starburst and text running around the edge (like a rubber stamp):
+
+| Sticker | Color | Face | Ring text |
+|---|---|---|---|
+| Left | red | grumpy | "I WANT BUT NOT NOW" |
+| Middle | lime | wide-eyed | "I WANT A WEBSITE" |
+| Right | yellow | happy | "I WANT A FREE AUDIT" |
+
+- Under each sticker is a small **rounded checkbox**. The middle one is **checked** by default (dark square with a yellow star); the others are empty lilac squares. So it works as a 3-option radio group.
+- Below: a white "get my website" pill with a lime ↗ button. The button text probably changes with the selected option (not confirmed).
+- **Motion:** the stickers rise in with a stagger; the ring text probably rotates slowly (hard to tell from the recording).
+- **How:** a real `<fieldset>` of 3 radio buttons styled as stickers (keyboard and screen-reader friendly); ring text on an SVG `<textPath>` along a circle, rotated with a slow CSS animation; the CTA's label and link come from the selected option.
+- **Our version:** use it to sort leads, for example "Just looking", "I need a product built" and "I want a free code or performance audit", each linking to the right form.
+
+### S10: Name marquee and footer (part 5, ~24–28s; light)
+- **Marquee band:** a full-width purple (~`#A66BFF`) strip with huge dark-violet display text "CRENCY" repeated, separated by a dotted ring of 8 dots. It scrolls sideways continuously, like a ticker.
+  - **How:** two copies of the content in a row, moved with `xPercent: -50` on an infinite linear GSAP tween (or a CSS `@keyframes` translate); optionally speed it up briefly with Lenis's scroll speed.
+- **Footer** (lilac):
+  - Left: "Want one that sells?" (large, bold), then **Explore** links: Home, About us, Services, Cases, Contact us.
+  - Right: **hello@crency.agency** as a big underlined `mailto:` link, then round Instagram and LinkedIn icon buttons, and at the bottom "Privacy Policy" and "© 2017–2026 Crency. All rights reserved."
+- The bottom dock (G4) stays visible over the footer.
 
 ## 5. Priority effects: detailed specs
 
@@ -208,6 +263,12 @@ The whole sequence stays pinned and is **tied to scroll position**. Scrolling up
 - [ ] Service card flower shapes (one SVG, recolored per card).
 - [ ] Cases: a cover image, a screenshot, a client quote and a short name for each project (at least 4 featured projects; about 10 names for the spines).
 - [ ] Blue starburst background shape (SVG).
+- [ ] Signpost signs: 2 arrow panels plus a yellow star sticker (SVG or CSS).
+- [ ] Audit section: headline copy and the three score values you want to show (or real Lighthouse scores).
+- [ ] Per case: a row of 5 small deliverable icons, the client rating and a service tag.
+- [ ] Audit section: 5 score chips and their values.
+- [ ] Mood picker: 3 round badge stickers with character faces and ring text; the 3 options and where each leads.
+- [ ] Footer: contact email, social links, privacy policy page.
 - [ ] Copy: headline, stats (reviews, projects, years, response time), service descriptions, case studies.
 
 ## 7. Build order
@@ -216,6 +277,7 @@ The whole sequence stays pinned and is **tied to scroll position**. Scrolling up
 3. S1 hero intro: letter reveal, pen line and stickers.
 4. G2 cursor, S2 About.
 5. S4 mascot CTA, S5 services card flip.
-6. S6 cases gallery.
-7. Remaining sections and page transitions once part 4 is recorded.
-8. Mobile, reduced-motion and performance pass (target Lighthouse 90+).
+6. S6 cases gallery, S7 signposts, S8 audit with score counters.
+7. S9 mood picker, S10 marquee and footer.
+8. Menu overlay, page transitions, case-study and blog pages (need their own recordings).
+9. Mobile, reduced-motion and performance pass (target Lighthouse 90+).
