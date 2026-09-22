@@ -1,14 +1,15 @@
 # Agency website: requirements from the Crency reference
 
-Source: three screen recordings of https://crency.agency in `reference/`
-(`…02-15-25.mp4` = part 1, `…02-31-29.mp4` = part 2, `…02-42-20.mp4` = part 3),
+Source: four screen recordings of https://crency.agency in `reference/`
+(`…02-15-25.mp4` = part 1, `…02-31-29.mp4` = part 2, `…02-42-20.mp4` = part 3,
+`…02-53-55.mp4` = part 4),
 analysed frame by frame. Colors are sampled from the video. Fonts and libraries
 are inferred from how the site looks and moves; the recordings do not show
 Crency's source code.
 
-**Not yet recorded:** how the cases gallery moves to the next case, anything
-below the cases gallery (testimonials, footer, contact), the menu overlay, page
-transitions and the case-study pages.
+**Not yet recorded:** how the cases gallery moves to the next case, the rest of
+the audit section and everything below it (form, footer, contact), the menu
+overlay, page transitions and the case-study and blog pages.
 
 ---
 
@@ -109,11 +110,37 @@ transitions and the case-study pages.
     - Left half: the project cover (logo, "BRANDING · DESIGN · DEVELOPMENT · SEO", and a screenshot of the site).
     - Right half: a counter "01 / 04", the client quote in the display font ("WE WERE HAPPY WITH THE FINAL PRODUCT. WE HIGHLY RECOMMEND CRENCY TO TAKE ON YOUR UNIQUE WEBSITE DESIGN CHALLENGES."), and a lime "VIEW CASE" button.
 - **Entry:** the fan rises from the bottom while spreading outward from the centre (the cards start bunched, then fan out); the starburst spikes scale up at the same time.
-- **Not seen yet:** how the next case opens (scroll, drag or click; the counter suggests 4 featured cases).
+- **More detail on the middle card** (part 4, ~49–52s): under the cover there's a row of 5 small colored app-style icons for the project's deliverables; on the right, below the quote, there's a round **"4.9" rating badge** with the client name ("IMPERIUM COMPANIONS") and a small grey tag with the service ("WEBFLOW DEVELOPMENT").
+- **The starburst moves with scroll:** its spikes shift and turn as the section passes (a slow rotate plus scale tied to scroll position), so the background never sits still.
+- The section **isn't pinned**; it scrolls through normally.
+- **Not seen yet:** how the next case opens. The counter reads "01 / 04" in both recordings, so it's probably by click or drag, or arrows not shown.
 - **How:** cards absolutely positioned with `transform: translateX() translateZ() rotateY()` calculated from each card's distance to the active one; entry via ScrollTrigger (`y`, spread factor 0 → 1). Put real `<a>` links on each card.
 
-### Not yet specified (needs part 4)
-How the cases gallery moves to the next case, everything below it (testimonials, footer and contact), the menu overlay, **page transitions**, case-study pages.
+### S7: Signpost links, "VIEW ALL CASES" / "VIEW ALL BLOGS" (part 4, ~53–56s; dark)
+- Two big **3D arrow signs**, like a street signpost seen at an angle. Each is an arrow-shaped front panel with a narrower, darker **side face**, so it looks like a folded box:
+  - **VIEW ALL CASES**: a pink arrow pointing **right**, with a light pink side face on its left; white display text (with the custom `S`); a small **yellow 8-point star** sticker on its top-left corner.
+  - **VIEW ALL BLOGS**: a pale lilac arrow pointing **left**, with a blue side face on its right; blue display text.
+- The two signs overlap, the blog sign lower and to the left, meeting at a central "post".
+- **Motion:** they **slide in from opposite sides** as the section enters (cases from the right, blogs from the left), then keep drifting apart slightly as you scroll (horizontal movement tied to scroll).
+- A subtly lighter dark rectangle sits behind the right half of the section, giving the "post" a background plane.
+- **How:** each sign is a flex row of two panels; the arrow tip is a CSS `clip-path: polygon(...)`, and the side face is a darker panel narrowed with `transform: skewY()` or a `clip-path` trapezoid. Both are real `<a>` links; on hover, nudge the arrow in its direction.
+
+### S8: Free audit, "GET A FREE AUDIT OF YOUR …" (part 4, ~56–58s; dark)
+- A **giant lilac display headline** (custom wide `G`), which rises out of a line mask one line at a time. The last word(s) weren't visible in the recording.
+- **Floating score chips** pop in one after another around the headline, like Lighthouse scores:
+
+| Chip | Color | Position | Count |
+|---|---|---|---|
+| Speed | blue `#3D5BFF` | above the headline, centred | 0 → 99% |
+| SEO | pink | right, beside line 1 | 0 → 93% |
+| Animation | yellow | lower left, over line 2 | 0 → 71%+ |
+
+- Each chip is a small rounded rectangle with a dot, a label, a **percentage that counts up**, and a thin **progress bar** that fills in step with the number. The counts take about 1.5s and are staggered.
+- **How:** chips fade and scale in (`back.out`); the number animates as `{ val: 0 } → { val: target }` with `onUpdate` writing `Math.round(val) + "%"`, and the bar is `scaleX` on the same timeline. Start it with ScrollTrigger (`start: "top 70%"`, `once: true`).
+- This is the lead-generation section; the form or CTA below the headline wasn't recorded.
+
+### Not yet specified (needs part 5)
+How the cases gallery moves to the next case, the **rest of the audit section** (form or CTA) and everything below it (footer, contact), the **menu overlay**, **page transitions**, case-study and blog pages.
 
 ## 5. Priority effects: detailed specs
 
@@ -208,6 +235,9 @@ The whole sequence stays pinned and is **tied to scroll position**. Scrolling up
 - [ ] Service card flower shapes (one SVG, recolored per card).
 - [ ] Cases: a cover image, a screenshot, a client quote and a short name for each project (at least 4 featured projects; about 10 names for the spines).
 - [ ] Blue starburst background shape (SVG).
+- [ ] Signpost signs: 2 arrow panels plus a yellow star sticker (SVG or CSS).
+- [ ] Audit section: headline copy and the three score values you want to show (or real Lighthouse scores).
+- [ ] Per case: a row of 5 small deliverable icons, the client rating and a service tag.
 - [ ] Copy: headline, stats (reviews, projects, years, response time), service descriptions, case studies.
 
 ## 7. Build order
@@ -216,6 +246,6 @@ The whole sequence stays pinned and is **tied to scroll position**. Scrolling up
 3. S1 hero intro: letter reveal, pen line and stickers.
 4. G2 cursor, S2 About.
 5. S4 mascot CTA, S5 services card flip.
-6. S6 cases gallery.
-7. Remaining sections and page transitions once part 4 is recorded.
+6. S6 cases gallery, S7 signposts, S8 audit with score counters.
+7. Remaining sections and page transitions once part 5 is recorded.
 8. Mobile, reduced-motion and performance pass (target Lighthouse 90+).
