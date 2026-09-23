@@ -2,14 +2,13 @@
 
 A clickable preview modelled on the Copula reference recordings.
 Section numbers in the code (P1…P6, C-S3…, CG1…) match `docs/requirements-copula.md`.
-It reuses GSAP and Lenis from `../preview/vendor/`.
+GSAP and Lenis are bundled in `vendor/`, so the folder works on its own.
 
 ## Open it
 
-Serve the **repo root** (the page loads `../preview/vendor`):
-
 ```bash
-python3 -m http.server 8000   # from the repo root, then open http://localhost:8000/preview-copula/
+cd preview-copula
+python3 -m http.server 8000   # then open http://localhost:8000
 ```
 
 ## What to try

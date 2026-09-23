@@ -1,8 +1,6 @@
 /* Copula-style homepage preview: plain JS + GSAP + Lenis.
    Section numbers (P1…P6, C-S3…) match docs/requirements-copula.md. */
 (() => {
-  gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin);
-
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -49,6 +47,14 @@
     }
     $('[data-coil] path').setAttribute('d', d + ' L400 96');
   })();
+
+  // Shapes above are drawn without GSAP; everything below needs it.
+  if (!window.gsap || !window.ScrollTrigger || !window.Lenis) {
+    console.error('Animation libraries failed to load: check that preview-copula/vendor/ is present.');
+    document.documentElement.classList.add('no-motion');
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin);
 
   /* ---------- CG1 smooth scroll ---------- */
   const lenis = new Lenis({ lerp: REDUCE ? 1 : 0.1, smoothWheel: !REDUCE });
