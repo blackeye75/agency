@@ -185,6 +185,11 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .footer__legal { flex-wrap: wrap; gap: 16px; }
 }
 
+/* Fallback if the scripts fail: show every section in its finished state */
+.no-motion .manifesto__para, .no-motion .about__para .w { opacity: 1; }
+.no-motion .hl--rotor::after { content: "ALL-IN-ONE"; }
+.no-motion .bond__orange { -webkit-mask-image: none; mask-image: none; }
+
 @media (prefers-reduced-motion: reduce) {
   .badge svg, .rating__ring { animation: none; }
   .manifesto__para { opacity: 1; }
