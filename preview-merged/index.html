@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nova Studio · Software people trust</title>
+  <meta name="description" content="Merged homepage preview: the best of the Crency and Copula references.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-50 -50 100 100'%3E%3Cg fill='%23eb4304'%3E%3Crect x='-9' y='-48' width='18' height='96' rx='3'/%3E%3Crect x='-9' y='-48' width='18' height='96' rx='3' transform='rotate(60)'/%3E%3Crect x='-9' y='-48' width='18' height='96' rx='3' transform='rotate(120)'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Unbounded:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/lenis.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ shared SVG symbols ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="scallop-oval" clipPathUnits="objectBoundingBox"><path data-scallop-oval/></clipPath>
+    <symbol id="ic-cursor" viewBox="0 0 100 100">
+      <rect x="4" y="4" width="92" height="92" rx="24" fill="var(--pink)" stroke="var(--ink)" stroke-width="4"/>
+      <path d="M34 26 L70 52 L54 55 L63 73 L55 77 L46 59 L34 70 Z" fill="var(--ink)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-heart" viewBox="0 0 100 100">
+      <rect x="4" y="4" width="92" height="92" rx="24" fill="var(--lime)" stroke="var(--ink)" stroke-width="4"/>
+      <path d="M50 74 C28 60 22 48 26 38 C30 28 44 27 50 38 C56 27 70 28 74 38 C78 48 72 60 50 74 Z" fill="var(--ink)"/>
+    </symbol>
+    <symbol id="ic-chart" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="var(--sky)" stroke="var(--ink)" stroke-width="4"/>
+      <rect x="30" y="52" width="10" height="20" rx="3" fill="var(--ink)"/><rect x="45" y="38" width="10" height="34" rx="3" fill="var(--ink)"/><rect x="60" y="28" width="10" height="44" rx="3" fill="var(--ink)"/>
+    </symbol>
+    <symbol id="ic-crown" viewBox="0 0 100 100">
+      <path d="M8 18 H70 L94 50 L70 82 H8 Z" fill="var(--orange)" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M20 64 L24 36 L36 50 L46 32 L56 50 L68 36 L72 64 Z" fill="var(--ink)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-bolt" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="var(--red)" stroke="var(--ink)" stroke-width="4"/>
+      <path d="M56 18 L30 56 H48 L42 82 L70 42 H52 Z" fill="var(--ink)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="flower12" viewBox="-50 -50 100 100">
+      <g class="petals">
+        <ellipse rx="7" ry="17" cy="-28"/><ellipse rx="7" ry="17" cy="-28" transform="rotate(30)"/><ellipse rx="7" ry="17" cy="-28" transform="rotate(60)"/>
+        <ellipse rx="7" ry="17" cy="-28" transform="rotate(90)"/><ellipse rx="7" ry="17" cy="-28" transform="rotate(120)"/><ellipse rx="7" ry="17" cy="-28" transform="rotate(150)"/>
+        <ellipse rx="7" ry="17" cy="-28" transform="rotate(180)"/><ellipse rx="7" ry="17" cy="-28" transform="rotate(210)"/><ellipse rx="7" ry="17" cy="-28" transform="rotate(240)"/>
+        <ellipse rx="7" ry="17" cy="-28" transform="rotate(270)"/><ellipse rx="7" ry="17" cy="-28" transform="rotate(300)"/><ellipse rx="7" ry="17" cy="-28" transform="rotate(330)"/>
+      </g>
+    </symbol>
+    <symbol id="flower8" viewBox="-50 -50 100 100">
+      <g fill="currentColor">
+        <ellipse rx="9" ry="22" cy="-24"/><ellipse rx="9" ry="22" cy="-24" transform="rotate(45)"/><ellipse rx="9" ry="22" cy="-24" transform="rotate(90)"/><ellipse rx="9" ry="22" cy="-24" transform="rotate(135)"/>
+        <ellipse rx="9" ry="22" cy="-24" transform="rotate(180)"/><ellipse rx="9" ry="22" cy="-24" transform="rotate(225)"/><ellipse rx="9" ry="22" cy="-24" transform="rotate(270)"/><ellipse rx="9" ry="22" cy="-24" transform="rotate(315)"/>
+      </g>
+    </symbol>
+    <symbol id="asterisk" viewBox="-50 -50 100 100">
+      <g fill="currentColor"><rect x="-8" y="-48" width="16" height="96" rx="2"/><rect x="-8" y="-48" width="16" height="96" rx="2" transform="rotate(60)"/><rect x="-8" y="-48" width="16" height="96" rx="2" transform="rotate(120)"/></g>
+    </symbol>
+    <symbol id="arrow-ne" viewBox="0 0 24 24"><path d="M7 17 L17 7 M9 7 H17 V15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ LOADER (new) ============ -->
+<div class="loader" data-loader aria-hidden="true">
+  <div class="loader__bands">
+    <div class="lb lb--orange"></div><div class="lb lb--blue"></div><div class="lb lb--lime"></div>
+  </div>
+  <p class="loader__count"><span data-count>0</span><i>%</i></p>
+  <p class="loader__word">loading good vibes<span class="blink">_</span></p>
+</div>
+
+<!-- ============ CURSOR ============ -->
+<div class="cursor" aria-hidden="true">
+  <div class="cursor__icon">
+    <svg class="ci ci--you" viewBox="0 0 24 24"><path d="M3 2 L20 10 L12 12 L9 20 Z" fill="var(--lime)" stroke="var(--ink)" stroke-width="1.2" stroke-linejoin="round"/></svg>
+    <svg class="ci ci--click" viewBox="0 0 24 24"><path d="M9 11 V4.5 a1.6 1.6 0 0 1 3.2 0 V10 l.2-1 a1.6 1.6 0 0 1 3.1.4 V11 a1.6 1.6 0 0 1 3 .6 V16 c0 3.2-2.4 5.5-5.6 5.5 h-1.2 c-2 0-3.3-.8-4.4-2.4 L4.4 14.4 a1.6 1.6 0 0 1 2.5-2 Z" fill="var(--orange)" stroke="var(--ink)" stroke-width="1.1" stroke-linejoin="round"/></svg>
+    <svg class="ci ci--drag" viewBox="0 0 24 24"><path d="M7 10 V8 a1.5 1.5 0 0 1 3 0 V7 a1.5 1.5 0 0 1 3 0 V8 a1.5 1.5 0 0 1 3 0 v1 a1.5 1.5 0 0 1 3 0 V15 c0 3.5-2.5 6-6 6 h-1.5 c-2.2 0-3.6-1-4.6-2.6 L4.6 14 A1.5 1.5 0 0 1 7 12.3 Z" fill="var(--sky)" stroke="var(--ink)" stroke-width="1.1" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="cursor__label"><span class="cl cl--you">You</span><span class="cl cl--click">Click</span><span class="cl cl--drag">Drag</span></div>
+</div>
+
+<!-- ============ NAV + DOCK ============ -->
+<header class="nav" data-nav>
+  <a href="#top" class="nav__logo" data-transition data-cursor="click" aria-label="Nova Studio home">nova<svg><use href="#asterisk"/></svg></a>
+  <nav class="nav__links" aria-label="Main">
+    <a href="#about" data-transition data-cursor="click">about us</a>
+    <a href="#cases" data-transition data-cursor="click">cases</a>
+    <a href="#services" data-transition data-cursor="click">services</a>
+    <a href="#mood" data-transition data-cursor="click">contact</a>
+  </nav>
+  <a href="#footer" class="nav__cta" data-transition data-cursor="click">let's build</a>
+</header>
+
+<div class="dock" data-dock>
+  <button class="dock__item" data-menu-open data-cursor="click"><i></i>Open: <b>Menu</b></button>
+  <a class="dock__cta" href="#mood" data-transition data-cursor="click">get my product</a>
+  <a class="dock__item" href="#cases" data-transition data-cursor="click"><i></i>View: <b>Cases</b></a>
+</div>
+
+<main id="top">
+
+  <!-- 1 HERO: Crency pen + badges, Copula rotating word -->
+  <section class="hero" data-hero>
+    <svg class="hero__pen" data-pen aria-hidden="true">
+      <path class="pen-path" data-pen-path/>
+      <g data-pen-dots></g>
+      <g data-pen-nib><path d="M0 -14 L7 0 L3 14 H-3 L-7 0 Z" fill="var(--ink)" stroke="var(--lime)" stroke-width="2" stroke-linejoin="round"/><circle r="2.4" cy="2" fill="var(--lime)"/></g>
+    </svg>
+    <p class="hero__tag">New name, same<br>engineering DNA</p>
+    <h1 class="hero__title">
+      <span class="sr">Your software, product, all-in-one agency</span>
+      <span class="hl hl--1" aria-hidden="true" data-split>Y<span class="alt alt--wide">O</span>UR</span>
+      <span class="hl hl--rotor" aria-hidden="true" data-rotor="SOFTWARE,PRODUCT,ALL-IN-ONE">&nbsp;</span>
+      <span class="hl hl--3" aria-hidden="true"><span data-split>AGEN<span class="alt">c</span>Y</span><svg class="ast"><use href="#asterisk"/></svg><a href="#footer" class="scbadge scbadge--orange" data-transition data-cursor="click"><svg data-scallop="8"><path/></svg><span>LET'S<br>BUILD</span></a></span>
+    </h1>
+    <div class="badges" aria-hidden="true">
+      <div class="badge badge--star" data-badge data-x="0.72" data-y="0.14"><svg viewBox="-60 -60 120 120"><path data-star="14,58,44" fill="var(--pink)"/></svg><span><b>4.9/5</b><small>120 reviews</small></span></div>
+      <div class="badge badge--pill" data-badge data-x="0.5" data-y="0.34">24h response time</div>
+      <div class="badge badge--seal" data-badge data-x="0.9" data-y="0.42"><svg viewBox="-60 -60 120 120"><path data-star="16,58,50" fill="var(--red)"/></svg><span>Free<br>code<br>audit</span></div>
+      <div class="badge badge--tag" data-badge data-x="0.62" data-y="0.62">Post-launch<br>support</div>
+      <div class="badge badge--star badge--white" data-badge data-x="0.86" data-y="0.82"><svg viewBox="-60 -60 120 120"><path data-star="12,58,40" fill="#fff"/></svg><span><b>80+</b><small>products shipped</small></span></div>
+      <div class="badge badge--flag" data-badge data-x="0.5" data-y="0.9">7 years<br><small>of experience</small></div>
+    </div>
+    <svg class="wave" data-wave preserveAspectRatio="none" viewBox="0 0 1000 100" aria-hidden="true"><path fill="var(--blue)"/></svg>
+  </section>
+
+  <!-- 2 MANIFESTO: Copula curved line -->
+  <section class="manifesto" data-manifesto>
+    <p class="label"><svg><use href="#flower8"/></svg>OUR MANIFESTO</p>
+    <svg class="manifesto__curve" data-curve aria-hidden="true">
+      <path id="wave-path" data-wave-path fill="none"/>
+      <text><textPath href="#wave-path" data-textpath>THE CODE BEHIND BRAND SUCCESS ✺</textPath></text>
+    </svg>
+    <p class="sr">The code behind brand success.</p>
+    <p class="manifesto__para" data-manifesto-para>We bring strategy, engineering, and an agile approach together to help brands connect with people, and turn that connection into real results.</p>
+  </section>
+
+  <!-- 3 ICON STORY: Crency -->
+  <section class="story" id="about" data-story>
+    <div class="story__copy" data-story-copy>
+      <h2 class="story__title" data-lines>WE ENGINEER PRODUCTS AND PLATFORMS THAT SCALE</h2>
+      <p class="story__text">Clean in code. Sharp in function. Across our client projects: load times down 63%, release cycles 4× faster, 99.98% uptime after launch.</p>
+    </div>
+    <div class="story__row" aria-hidden="true"><span data-row-slot></span><span data-row-slot></span><span data-row-slot></span><span data-row-slot></span><span data-row-slot></span></div>
+    <p class="statement">
+      <span class="sl"><span class="sl__in">We <span class="alt alt--script">b</span>uild products <span class="slot" data-slot="crown"><svg><use href="#ic-crown"/></svg></span> people love</span></span>
+      <span class="sl"><span class="sl__in">and software <span class="slot" data-slot="heart"><svg><use href="#ic-heart"/></svg></span> that wins clients.</span></span>
+      <span class="sl"><span class="sl__in">Cl<span class="alt">e</span>an in code. <span class="slot" data-slot="bolt"><svg><use href="#ic-bolt"/></svg></span></span></span>
+      <span class="sl"><span class="sl__in">Sharp in <span class="slot" data-slot="cursor"><svg><use href="#ic-cursor"/></svg></span><span class="slot" data-slot="chart"><svg><use href="#ic-chart"/></svg></span> function.</span></span>
+    </p>
+    <div class="icon-layer" aria-hidden="true">
+      <svg class="flyer" data-icon="cursor"><use href="#ic-cursor"/></svg><svg class="flyer" data-icon="heart"><use href="#ic-heart"/></svg><svg class="flyer" data-icon="chart"><use href="#ic-chart"/></svg><svg class="flyer" data-icon="crown"><use href="#ic-crown"/></svg><svg class="flyer" data-icon="bolt"><use href="#ic-bolt"/></svg>
+    </div>
+  </section>
+
+  <!-- 4 CONNECTION: Copula coil + rating + logos -->
+  <section class="clients">
+    <p class="label label--ink"><svg><use href="#flower8"/></svg>OUR CLIENTS</p>
+    <h2 class="conn">
+      <span class="sr">When the connection is real, it shows</span>
+      <span aria-hidden="true">WHEN THE</span>
+      <span aria-hidden="true">C<svg class="coil" data-coil viewBox="0 0 400 100" preserveAspectRatio="none"><path/></svg>NNECTION</span>
+      <span aria-hidden="true">IS REAL, IT SHOWS</span>
+      <span class="rating" data-rating aria-hidden="true">
+        <svg viewBox="-100 -100 200 200">
+          <path data-scallop-abs="9,96,8" fill="var(--blue)"/>
+          <defs><path id="ring" d="M0,-66 a66,66 0 1,1 -0.01,0"/></defs>
+          <g class="rating__ring"><text><textPath href="#ring">OVERALL CLIENT RATING SCORE · OVERALL CLIENT RATING SCORE ·</textPath></text></g>
+          <text class="rating__num" y="20" text-anchor="middle">9.6</text>
+        </svg>
+      </span>
+    </h2>
+    <div class="logos" aria-label="Clients">
+      <div class="logos__track" data-logos>
+        <span class="lg lg--1">zenith</span><span class="lg lg--2">KITE</span><span class="lg lg--3">OrbitPay</span><span class="lg lg--4">UMBRA</span><span class="lg lg--5">pulse+</span><span class="lg lg--6">Northwind</span><span class="lg lg--7">BLOOM</span><span class="lg lg--8">volt</span>
+        <span class="lg lg--1" aria-hidden="true">zenith</span><span class="lg lg--2" aria-hidden="true">KITE</span><span class="lg lg--3" aria-hidden="true">OrbitPay</span><span class="lg lg--4" aria-hidden="true">UMBRA</span><span class="lg lg--5" aria-hidden="true">pulse+</span><span class="lg lg--6" aria-hidden="true">Northwind</span><span class="lg lg--7" aria-hidden="true">BLOOM</span><span class="lg lg--8" aria-hidden="true">volt</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 SERVICES: Crency heading + 3D card flip -->
+  <section class="services-head" id="services">
+    <h2 class="mega mega--ink" data-lines>WHAT ARE WE<br>BUILDING FOR<br>YOU?</h2>
+    <svg class="wave" data-wave preserveAspectRatio="none" viewBox="0 0 1000 100" aria-hidden="true"><path fill="var(--ink)"/></svg>
+  </section>
+  <section class="services" data-services>
+    <div class="services__stage">
+      <article class="scard scard--lime" data-card="left">
+        <h3>PRODUCT<br>DESIGN</h3>
+        <p>Interfaces that convert. Clear flows that make the next step obvious. Less hesitation. More forward movement.</p>
+        <svg class="scard__flower"><use href="#flower12"/></svg>
+        <a href="#mood" class="scard__btn" data-transition data-cursor="click">design my product</a>
+      </article>
+      <article class="scard scard--orange" data-card="mid">
+        <h3>WEB &amp; APP<br>ENGINEERING</h3>
+        <p>Speed you can feel: fast loading, rock-solid APIs, tests built in. Your product just works, and quietly earns trust.</p>
+        <svg class="scard__flower"><use href="#flower12"/></svg>
+        <a href="#mood" class="scard__btn" data-transition data-cursor="click">build my product</a>
+      </article>
+      <article class="scard scard--blue" data-card="right">
+        <h3>CUSTOM<br>SOFTWARE?</h3>
+        <p>When things don't fit templates (SaaS, platform, marketplace or internal tools) we turn complexity into clarity.</p>
+        <svg class="scard__flower"><use href="#flower12"/></svg>
+        <a href="#mood" class="scard__btn" data-transition data-cursor="click">discuss my project</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- 6 CASES: Crency coverflow -->
+  <section class="cases" id="cases" data-cases>
+    <svg class="cases__burst" data-burst viewBox="-500 -500 1000 1000" aria-hidden="true"><path data-star="9,500,90" fill="var(--blue)"/></svg>
+    <div class="cases__stage" data-stage data-cursor="drag" tabindex="0" aria-roledescription="carousel" aria-label="Case studies. Drag or use arrow keys."></div>
+    <div class="cases__nav">
+      <button data-case-prev data-cursor="click" aria-label="Previous case">←</button>
+      <button data-case-next data-cursor="click" aria-label="Next case">→</button>
+    </div>
+  </section>
+
+  <!-- 7 SIGNPOSTS: Crency -->
+  <section class="signs">
+    <div class="signs__plane"></div>
+    <a href="#cases" class="sign sign--cases" data-sign="right" data-transition data-cursor="click">
+      <span class="sign__side"></span><span class="sign__face">VIEW ALL CA<span class="alt">S</span>ES</span>
+      <svg class="sign__star" viewBox="-50 -50 100 100"><path data-star="8,48,16" fill="var(--lime)"/></svg>
+    </a>
+    <a href="#footer" class="sign sign--blogs" data-sign="left" data-transition data-cursor="click">
+      <span class="sign__face">VIEW ALL BLOGS</span><span class="sign__side"></span>
+    </a>
+  </section>
+
+  <!-- 8 BOND: Copula two-circle reveal -->
+  <section class="bond" data-bond>
+    <div class="bond__orange" data-bond-layer><h2 class="bond__title">NICE TO<br>BUILD<br>WITH YOU</h2></div>
+  </section>
+
+  <!-- 9 ABOUT: Copula word fill + faces -->
+  <section class="about">
+    <p class="label"><svg><use href="#flower8"/></svg>ABOUT US</p>
+    <p class="about__para" data-fill>We're thinkers, makers, and coders, coffee lovers (mostly all), bug hunters, curious by nature, pragmatic by choice. We explore, question, and ship until the answer fits. Every project is a journey, and we're here for the ride.</p>
+    <a href="#footer" class="ulink" data-transition data-cursor="click">BUILD MORE WITH US</a>
+    <div class="faces" data-faces aria-hidden="true"></div>
+    <svg class="wave" data-wave preserveAspectRatio="none" viewBox="0 0 1000 100" aria-hidden="true"><path fill="var(--ink)"/></svg>
+  </section>
+
+  <!-- 10 AUDIT: Crency chips -->
+  <section class="audit" data-audit>
+    <div class="audit__wrap">
+      <h2 class="mega mega--lilac audit__title" data-lines><span class="alt alt--g">G</span>ET A FREE<br>AUDIT OF YOUR<br>PRODUC<span class="alt alt--slant">T</span></h2>
+      <div class="chip chip--sky"    data-chip="99"  style="--x:50%;--y:-8%"><i></i>Speed<b>0%</b><u><s></s></u></div>
+      <div class="chip chip--orange" data-chip="100" style="--x:90%;--y:20%"><i></i>SEO<b>0%</b><u><s></s></u></div>
+      <div class="chip chip--yellow" data-chip="94"  style="--x:40%;--y:50%"><i></i>Security<b>0%</b><u><s></s></u></div>
+      <div class="chip chip--violet" data-chip="82"  style="--x:10%;--y:74%"><i></i>Code quality<b>0%</b><u><s></s></u></div>
+      <div class="chip chip--lime"   data-chip="89"  style="--x:80%;--y:76%"><i></i>Accessibility<b>0%</b><u><s></s></u></div>
+    </div>
+    <a href="#mood" class="cta cta--white" data-transition data-cursor="click"><span class="cta__pill">get my free audit</span><span class="cta__arrow"><svg><use href="#arrow-ne"/></svg></span></a>
+    <svg class="wave" data-wave preserveAspectRatio="none" viewBox="0 0 1000 100" aria-hidden="true"><path fill="var(--lilac)"/></svg>
+  </section>
+
+  <!-- 11 MOOD: Crency stickers -->
+  <section class="mood" id="mood">
+    <h2 class="mega mega--ink" data-lines>SO… HOW <span class="alt alt--slant">D</span>O<br>WE MAKE YOU FEEL?</h2>
+    <p class="mood__sub">Choose your vibe, we're listening.</p>
+    <fieldset class="mood__options">
+      <legend class="sr">What brings you here?</legend>
+      <label class="sticker sticker--red" data-cursor="click">
+        <input type="radio" name="mood" value="later" data-cta="keep me posted">
+        <svg viewBox="-100 -100 200 200" aria-hidden="true">
+          <defs><path id="ring1" d="M0,-74 a74,74 0 1,1 -0.01,0"/></defs>
+          <circle r="96" fill="var(--red)" stroke="var(--ink)" stroke-width="4"/>
+          <g class="ring"><text><textPath href="#ring1">JUST LOOKING · NOT RIGHT NOW · JUST LOOKING · NOT RIGHT NOW ·</textPath></text></g>
+          <path data-star="14,58,44" fill="#fff" stroke="var(--ink)" stroke-width="3"/>
+          <path d="M-24 -18 l16 8 M24 -18 l-16 8" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="-14" cy="-2" r="6" fill="var(--red)"/><circle cx="14" cy="-2" r="6" fill="var(--red)"/>
+          <path d="M-16 24 q16 -12 32 0" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <span class="box" aria-hidden="true"></span><span class="sr">Just looking</span>
+      </label>
+      <label class="sticker sticker--lime" data-cursor="click">
+        <input type="radio" name="mood" value="build" data-cta="get my product" checked>
+        <svg viewBox="-100 -100 200 200" aria-hidden="true">
+          <defs><path id="ring2" d="M0,-74 a74,74 0 1,1 -0.01,0"/></defs>
+          <circle r="96" fill="var(--lime)" stroke="var(--ink)" stroke-width="4"/>
+          <g class="ring"><text><textPath href="#ring2">I WANT A PRODUCT · I WANT A PRODUCT · I WANT A PRODUCT ·</textPath></text></g>
+          <path data-star="14,58,44" fill="#fff" stroke="var(--ink)" stroke-width="3"/>
+          <ellipse cx="-13" cy="-4" rx="9" ry="14" fill="#fff" stroke="var(--ink)" stroke-width="4"/><ellipse cx="13" cy="-4" rx="9" ry="14" fill="#fff" stroke="var(--ink)" stroke-width="4"/>
+          <circle cx="-11" cy="0" r="5" fill="var(--ink)"/><circle cx="15" cy="0" r="5" fill="var(--ink)"/>
+          <ellipse cx="0" cy="26" rx="7" ry="5" fill="var(--ink)"/>
+        </svg>
+        <span class="box" aria-hidden="true"></span><span class="sr">I want a product</span>
+      </label>
+      <label class="sticker sticker--orange" data-cursor="click">
+        <input type="radio" name="mood" value="audit" data-cta="get my free audit">
+        <svg viewBox="-100 -100 200 200" aria-hidden="true">
+          <defs><path id="ring3" d="M0,-74 a74,74 0 1,1 -0.01,0"/></defs>
+          <circle r="96" fill="var(--orange)" stroke="var(--ink)" stroke-width="4"/>
+          <g class="ring"><text><textPath href="#ring3">I WANT A FREE AUDIT · I WANT A FREE AUDIT · I WANT A FREE AUDIT ·</textPath></text></g>
+          <path data-star="14,58,44" fill="#fff" stroke="var(--ink)" stroke-width="3"/>
+          <ellipse cx="-13" cy="-6" rx="9" ry="12" fill="#fff" stroke="var(--ink)" stroke-width="4"/><ellipse cx="13" cy="-6" rx="9" ry="12" fill="#fff" stroke="var(--ink)" stroke-width="4"/>
+          <circle cx="-12" cy="-4" r="5" fill="var(--ink)"/><circle cx="14" cy="-4" r="5" fill="var(--ink)"/>
+          <path d="M-18 16 q18 20 36 0" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <span class="box" aria-hidden="true"></span><span class="sr">I want a free audit</span>
+      </label>
+    </fieldset>
+    <a href="#footer" class="cta cta--ink" data-mood-cta data-transition data-cursor="click"><span class="cta__pill">get my product</span><span class="cta__arrow"><svg><use href="#arrow-ne"/></svg></span></a>
+  </section>
+
+  <!-- 12 MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track" data-marquee>
+      <span>NOVA</span><svg class="mq-ast"><use href="#asterisk"/></svg><span>NOVA</span><svg class="mq-ast"><use href="#asterisk"/></svg><span>NOVA</span><svg class="mq-ast"><use href="#asterisk"/></svg><span>NOVA</span><svg class="mq-ast"><use href="#asterisk"/></svg>
+      <span>NOVA</span><svg class="mq-ast"><use href="#asterisk"/></svg><span>NOVA</span><svg class="mq-ast"><use href="#asterisk"/></svg><span>NOVA</span><svg class="mq-ast"><use href="#asterisk"/></svg><span>NOVA</span><svg class="mq-ast"><use href="#asterisk"/></svg>
+    </div>
+  </div>
+</main>
+
+<!-- 13 FOOTER: Copula dictionary footer -->
+<footer class="footer" id="footer">
+  <div class="footer__left">
+    <p class="footer__mark">nova</p>
+    <p class="footer__def"><b>[noh-vuh] noun • latin</b><br>The word <em>nova</em> derives from the Latin word <em>novus</em> meaning "new": a star that suddenly shines brighter than ever before.</p>
+    <a class="footer__mail" href="mailto:hello@example.com" data-cursor="click">hello@example.com</a>
+  </div>
+  <nav class="footer__nav" aria-label="Footer">
+    <a href="#about" data-transition data-cursor="click"><span>ABOUT</span></a>
+    <a href="#services" data-transition data-cursor="click"><span>SERVICES</span></a>
+    <a href="#cases" data-transition data-cursor="click"><span>WORK</span></a>
+    <a href="#mood" data-transition data-cursor="click"><span>CONTACT</span></a>
+  </nav>
+  <a href="mailto:hello@example.com" class="scbadge scbadge--orange scbadge--lg" data-cursor="click"><svg data-scallop="8"><path/></svg><span>LET'S<br>BUILD</span></a>
+  <div class="footer__bottom">
+    <p>Developed and designed by Nova Studio, 2026. All rights reserved.</p>
+    <div class="footer__social"><a href="#" aria-label="LinkedIn" data-cursor="click">in</a><a href="#" aria-label="GitHub" data-cursor="click">gh</a><a href="#" aria-label="Instagram" data-cursor="click">ig</a><a href="#" aria-label="X" data-cursor="click">x</a></div>
+    <p class="footer__legal"><a href="#" data-cursor="click">Terms</a><a href="#" data-cursor="click">Privacy Policy</a><a href="#" data-cursor="click">Cookie policy</a></p>
+  </div>
+</footer>
+
+<!-- MENU OVERLAY -->
+<div class="menu" data-menu role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="menu__circle menu__circle--orange" data-circle>
+    <a href="#footer" class="round round--dark" data-transition data-cursor="click">
+      <svg class="round__arrow" style="transform:rotate(-90deg)"><use href="#arrow-ne"/></svg>
+      <svg class="round__text" viewBox="-50 -50 100 100"><defs><path id="rt1" d="M-36,0 a36,36 0 1,0 72,0"/></defs><text><textPath href="#rt1" startOffset="50%" text-anchor="middle">View Blogs</textPath></text></svg>
+    </a>
+  </div>
+  <div class="menu__circle menu__circle--lime" data-circle>
+    <nav class="menu__links" aria-label="Menu">
+      <a href="#top" data-transition data-cursor="click">main page</a>
+      <a href="#about" data-transition data-cursor="click">about us</a>
+      <a href="#services" data-transition data-cursor="click">services</a>
+      <a href="#mood" data-transition data-cursor="click">contact us</a>
+      <button class="menu__close" data-menu-close data-cursor="click"><span>close</span><i>✕</i></button>
+    </nav>
+  </div>
+  <div class="menu__circle menu__circle--blue" data-circle>
+    <a href="#cases" class="round round--light" data-transition data-cursor="click">
+      <svg class="round__arrow" style="transform:rotate(90deg)"><use href="#arrow-ne"/></svg>
+      <svg class="round__text" viewBox="-50 -50 100 100"><defs><path id="rt2" d="M-36,0 a36,36 0 1,0 72,0"/></defs><text><textPath href="#rt2" startOffset="50%" text-anchor="middle">View Cases</textPath></text></svg>
+    </a>
+  </div>
+</div>
+
+<!-- PAGE TRANSITION -->
+<div class="transition" data-transition-layer aria-hidden="true">
+  <div class="transition__dim"></div>
+  <div class="transition__bands">
+    <div class="band band--lime"><div class="band__track"><span>CODE</span><i class="ico-target"></i><span>CODE</span><i class="ico-target"></i><span>CODE</span><i class="ico-target"></i><span>CODE</span><i class="ico-target"></i><span>CODE</span><i class="ico-target"></i><span>CODE</span><i class="ico-target"></i></div></div>
+    <div class="band band--orange"><div class="band__track"><span>SPEED</span><i class="ico-eye"></i><span>SPEED</span><i class="ico-eye"></i><span>SPEED</span><i class="ico-eye"></i><span>SPEED</span><i class="ico-eye"></i><span>SPEED</span><i class="ico-eye"></i><span>SPEED</span><i class="ico-eye"></i></div></div>
+    <div class="band band--blue"><div class="band__track"><span>SCALE</span><svg class="mq-ast"><use href="#asterisk"/></svg><span>SCALE</span><svg class="mq-ast"><use href="#asterisk"/></svg><span>SCALE</span><svg class="mq-ast"><use href="#asterisk"/></svg><span>SCALE</span><svg class="mq-ast"><use href="#asterisk"/></svg><span>SCALE</span><svg class="mq-ast"><use href="#asterisk"/></svg><span>SCALE</span><svg class="mq-ast"><use href="#asterisk"/></svg></div></div>
+  </div>
+  <div class="transition__wipe"></div>
+</div>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/SplitText.min.js"></script>
+<script src="vendor/DrawSVGPlugin.min.js"></script>
+<script src="vendor/MotionPathPlugin.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
