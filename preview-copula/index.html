@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nova Studio · Your all-in-one agency</title>
+  <meta name="description" content="Homepage preview modelled on the Copula reference.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../preview/vendor/lenis.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- filled in by main.js: scalloped circle + scalloped oval (objectBoundingBox) -->
+    <clipPath id="scallop-oval" clipPathUnits="objectBoundingBox"><path data-scallop-oval/></clipPath>
+    <symbol id="asterisk" viewBox="-50 -50 100 100">
+      <g fill="currentColor">
+        <rect x="-8" y="-48" width="16" height="96" rx="2"/>
+        <rect x="-8" y="-48" width="16" height="96" rx="2" transform="rotate(60)"/>
+        <rect x="-8" y="-48" width="16" height="96" rx="2" transform="rotate(120)"/>
+      </g>
+    </symbol>
+    <symbol id="flower" viewBox="-50 -50 100 100">
+      <g fill="currentColor">
+        <ellipse rx="9" ry="22" cy="-24"/><ellipse rx="9" ry="22" cy="-24" transform="rotate(45)"/>
+        <ellipse rx="9" ry="22" cy="-24" transform="rotate(90)"/><ellipse rx="9" ry="22" cy="-24" transform="rotate(135)"/>
+        <ellipse rx="9" ry="22" cy="-24" transform="rotate(180)"/><ellipse rx="9" ry="22" cy="-24" transform="rotate(225)"/>
+        <ellipse rx="9" ry="22" cy="-24" transform="rotate(270)"/><ellipse rx="9" ry="22" cy="-24" transform="rotate(315)"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="dot" aria-hidden="true"></div>
+
+<!-- CG3 header: transparent over the hero, cream sticky bar afterwards -->
+<header class="bar" data-bar>
+  <a href="#top" class="wordmark" data-jump>nova</a>
+  <button class="plus" aria-label="Open menu" data-menu-open>+</button>
+</header>
+
+<main id="top">
+
+  <!-- P1 HERO -->
+  <section class="hero">
+    <div class="hero__top">
+      <a href="#top" class="wordmark" data-jump>nova</a>
+      <button class="plus plus--light" aria-label="Open menu" data-menu-open>+</button>
+    </div>
+    <p class="hero__tag">New name, same<br>engineering DNA</p>
+    <h1 class="hero__title">
+      <span class="sr">Your all-in-one, product, software agency</span>
+      <span class="hl" aria-hidden="true">YOUR</span>
+      <span class="hl hl--rotor" aria-hidden="true" data-rotor="ALL-IN-ONE,PRODUCT,SOFTWARE">&nbsp;</span>
+      <span class="hl hl--last" aria-hidden="true">AGENCY<svg class="ast"><use href="#asterisk"/></svg><a href="#footer" class="badge badge--blue" data-jump><svg data-scallop="8"><path/></svg><span>LET'S BOND</span></a></span>
+    </h1>
+  </section>
+
+  <!-- P2 MANIFESTO -->
+  <section class="manifesto" data-manifesto>
+    <p class="label"><svg><use href="#flower"/></svg>OUR MANIFESTO</p>
+    <svg class="manifesto__curve" data-curve aria-hidden="true">
+      <path id="wave" data-wave fill="none"/>
+      <text><textPath href="#wave" data-textpath>THE CODE BEHIND BRAND SUCCESS</textPath></text>
+    </svg>
+    <p class="sr">The code behind brand success.</p>
+    <p class="manifesto__para" data-manifesto-para>We bring strategy, engineering, and an agile approach together to help brands connect with people, and turn that connection into real results.</p>
+  </section>
+
+  <!-- C-S3 SERVICES -->
+  <section class="services" id="services">
+    <p class="label label--ink"><svg><use href="#flower"/></svg>SERVICES</p>
+    <div class="services__grid">
+      <div class="acc" data-acc>
+        <div class="acc__item is-open">
+          <button class="acc__head" aria-expanded="true">PRODUCT &amp; GROWTH</button>
+          <div class="acc__body"><div class="acc__in">
+            <p>We design, measure and iterate so your product keeps getting better after launch.</p>
+            <ul class="tags"><li>Product strategy</li><li>Analytics &amp; reporting</li><li>A/B testing</li><li>Conversion optimization</li><li>SEO</li><li>Growth experiments</li></ul>
+          </div></div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__head" aria-expanded="false">WEB &amp; APP ENGINEERING</button>
+          <div class="acc__body"><div class="acc__in">
+            <p>Fast, tested, scalable software, from the first prototype to millions of users.</p>
+            <ul class="tags"><li>Web apps</li><li>Mobile apps</li><li>APIs &amp; integrations</li><li>Cloud &amp; DevOps</li><li>Performance</li><li>Security audits</li></ul>
+          </div></div>
+        </div>
+        <div class="acc__item">
+          <button class="acc__head" aria-expanded="false">DIGITAL PRESENCE</button>
+          <div class="acc__body"><div class="acc__in">
+            <p>Brand, website and content that make the first impression count.</p>
+            <ul class="tags"><li>Brand identity</li><li>Website design</li><li>Content systems</li><li>Motion &amp; interaction</li></ul>
+          </div></div>
+        </div>
+      </div>
+      <div class="circles" data-circles aria-hidden="true"><i></i><i class="ring"></i><i class="ring"></i><i></i></div>
+    </div>
+    <a href="#footer" class="pill" data-jump>
+      <span>READY WHEN YOU ARE. REACH OUT AND SEE WHAT HAPPENS WHEN THE RIGHT MINDS CONNECT</span>
+      <span class="badge badge--blue badge--sm"><svg data-scallop="8"><path/></svg><span>LET'S BOND</span></span>
+    </a>
+  </section>
+
+  <!-- C-S4 FEATURED WORK -->
+  <section class="work" id="work">
+    <p class="label label--ink"><svg><use href="#flower"/></svg>FEATURED WORK</p>
+    <ul class="work__list">
+      <li><a href="#work"><i>↓</i>ORBITPAY<i>↓</i></a></li>
+      <li><a href="#work"><i>↓</i>PULSE HEALTH<i>↓</i></a></li>
+      <li><a href="#work"><i>↓</i>NORTHWIND LOGISTICS<i>↓</i></a></li>
+    </ul>
+  </section>
+
+  <!-- P3 CLIENTS -->
+  <section class="clients">
+    <p class="label label--ink"><svg><use href="#flower"/></svg>OUR CLIENTS</p>
+    <h2 class="conn">
+      <span class="sr">When the connection is real, it shows</span>
+      <span aria-hidden="true">WHEN THE</span>
+      <span aria-hidden="true">C<svg class="coil" data-coil viewBox="0 0 400 100" preserveAspectRatio="none"><path/></svg>NNECTION</span>
+      <span aria-hidden="true">IS REAL, IT SHOWS</span>
+      <span class="rating" data-rating aria-hidden="true">
+        <svg viewBox="-100 -100 200 200">
+          <path data-scallop-abs="9,96,8" fill="var(--blue)"/>
+          <defs><path id="ring" d="M0,-66 a66,66 0 1,1 -0.01,0"/></defs>
+          <g class="rating__ring"><text><textPath href="#ring">OVERALL CLIENT RATING SCORE · OVERALL CLIENT RATING SCORE ·</textPath></text></g>
+          <text class="rating__num" y="20" text-anchor="middle">9.6</text>
+        </svg>
+      </span>
+    </h2>
+    <div class="logos" aria-label="Clients">
+      <div class="logos__track" data-logos>
+        <span class="lg lg--1">zenith</span><span class="lg lg--2">KITE</span><span class="lg lg--3">OrbitPay</span><span class="lg lg--4">UMBRA</span><span class="lg lg--5">pulse+</span><span class="lg lg--6">Northwind</span><span class="lg lg--7">BLOOM</span><span class="lg lg--8">volt</span>
+        <span class="lg lg--1" aria-hidden="true">zenith</span><span class="lg lg--2" aria-hidden="true">KITE</span><span class="lg lg--3" aria-hidden="true">OrbitPay</span><span class="lg lg--4" aria-hidden="true">UMBRA</span><span class="lg lg--5" aria-hidden="true">pulse+</span><span class="lg lg--6" aria-hidden="true">Northwind</span><span class="lg lg--7" aria-hidden="true">BLOOM</span><span class="lg lg--8" aria-hidden="true">volt</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- P4 NICE TO BOND: two circles close in -->
+  <section class="bond" data-bond>
+    <div class="bond__orange" data-bond-layer>
+      <h2 class="bond__title">NICE TO<br>BUILD<br>WITH YOU</h2>
+    </div>
+  </section>
+
+  <!-- P5 ABOUT -->
+  <section class="about" id="about">
+    <p class="label"><svg><use href="#flower"/></svg>ABOUT US</p>
+    <p class="about__para" data-fill>We're thinkers, makers, and coders, coffee lovers (mostly all), bug hunters, curious by nature, pragmatic by choice. We explore, question, and ship until the answer fits. Every project is a journey, and we're here for the ride.</p>
+    <a href="#footer" class="ulink" data-jump>BUILD MORE WITH US</a>
+    <div class="faces" data-faces aria-hidden="true"></div>
+  </section>
+
+  <!-- C-S8 NEWS -->
+  <section class="news" id="blog">
+    <p class="label label--center"><svg><use href="#flower"/></svg>LATEST NEWS</p>
+    <h2 class="news__title">WE BUILD, BUT WE ALSO REFLECT.<br>EXPLORE WHAT WE'VE BEEN<br>THINKING ABOUT LATELY.</h2>
+    <div class="cards">
+      <a class="card" href="#blog"><div class="card__img" style="--a:#6ec6ff;--b:#ff8a3d"></div><small>Blog • Engineering, AI</small><b>Shipping AI features without breaking user trust</b></a>
+      <a class="card" href="#blog"><div class="card__img" style="--a:#ffb347;--b:#2b3cff"></div><small>Blog • Culture</small><b>From intern to tech lead: a 7-year path</b></a>
+      <a class="card" href="#blog"><div class="card__img" style="--a:#ff6a2a;--b:#6ec6ff"></div><small>Blog • Performance</small><b>Server components vs. client components: stop choosing sides</b></a>
+    </div>
+    <a href="#blog" class="ulink">SEE MORE</a>
+  </section>
+</main>
+
+<!-- P6 FOOTER -->
+<footer class="footer" id="footer">
+  <div class="footer__left">
+    <p class="footer__mark">nova</p>
+    <p class="footer__def"><b>[noh-vuh] noun • latin</b><br>The word <em>nova</em> derives from the Latin word <em>novus</em> meaning "new": a star that suddenly shines brighter than ever before.</p>
+  </div>
+  <nav class="footer__nav" aria-label="Footer">
+    <a href="#about" data-jump><span>ABOUT</span></a>
+    <a href="#blog" data-jump><span>BLOG</span></a>
+    <a href="#work" data-jump><span>WORK</span></a>
+    <a href="#footer" data-jump><span>CONTACT</span></a>
+  </nav>
+  <a href="mailto:hello@example.com" class="badge badge--orange badge--lg"><svg data-scallop="8"><path/></svg><span>LET'S BUILD</span></a>
+  <div class="footer__bottom">
+    <p>Developed and designed by Nova Studio, 2026. All rights reserved.</p>
+    <div class="footer__social">
+      <a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="GitHub">gh</a><a href="#" aria-label="Instagram">ig</a><a href="#" aria-label="X">x</a>
+    </div>
+    <p class="footer__legal"><a href="#">Terms and Conditions</a><a href="#">Privacy Policy</a><a href="#">Cookie policy</a></p>
+  </div>
+</footer>
+
+<script src="../preview/vendor/gsap.min.js"></script>
+<script src="../preview/vendor/ScrollTrigger.min.js"></script>
+<script src="../preview/vendor/SplitText.min.js"></script>
+<script src="../preview/vendor/DrawSVGPlugin.min.js"></script>
+<script src="../preview/vendor/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
