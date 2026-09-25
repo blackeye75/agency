@@ -17,3 +17,15 @@ export function finishIntro() {
   document.documentElement.classList.remove('intro-pending')
   waiting.splice(0).forEach((cb) => cb())
 }
+
+// While a page transition covers the screen, entrance animations wait for it.
+let covered = false
+const revealWaiters: (() => void)[] = []
+export function setCovered(on: boolean) {
+  covered = on
+  if (!on) revealWaiters.splice(0).forEach((cb) => cb())
+}
+export function whenRevealed(cb: () => void) {
+  if (covered) revealWaiters.push(cb)
+  else cb()
+}
