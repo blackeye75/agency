@@ -33,3 +33,7 @@ Crency's deep purple and lilac as the base, Copula's orange and electric blue as
 Everywhere: wavy section edges, the You / Click / Drag cursor, the arrow-swap button hover, the three-circle menu ("Open: Menu") and the colored-bands page transition on every link (all Crency).
 
 Phones get a simpler layout (no pinned sections, no custom cursor); "reduce motion" shows everything static. Brand, clients, cases, stats and portraits are placeholders.
+
+## Single-file version
+
+`nova-preview.html` is the same page with the CSS, JS and libraries inlined, so it opens with a double-click (no server) and can be sent to anyone as one file. It is generated: edit `index.html`, `styles.css` or `main.js`, then run `python3 build-single.py` to rebuild it. Fonts still load from Google Fonts, so it needs internet for the exact typefaces.
