@@ -44,6 +44,7 @@
 .step h3 { margin: 0; font: 400 clamp(32px, 2.8vw, 54px)/.9 var(--display); text-transform: uppercase; }
 .step p { margin: 0; font-size: 15px; line-height: 1.5; font-weight: 600; }
 .is-static .process__line i { transform: none; }
+@media (prefers-reduced-motion: reduce) { .process__line i { transform: none !important; } }
 
 /* Call to action band */
 .ctaband { position: relative; background: var(--orange); color: var(--cream); padding: 18vh var(--gutter) 20vh; text-align: center; overflow: hidden; }
@@ -186,6 +187,13 @@
 .form__status--ok { background: var(--lime); color: var(--ink); padding: 16px 20px; border-radius: 16px; }
 .form__status--err { color: #ff8c8c; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.enquiry__direct { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 0; font-weight: 800; font-size: clamp(17px, 1.4vw, 22px); }
+.enquiry__direct a { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
+.enquiry__direct a:hover { color: var(--orange); }
+.field select { width: 100%; background: transparent; color: inherit; border: 0; border-bottom: 2px solid rgba(206,188,242,.35); padding: 10px 0 12px; font: 600 clamp(17px, 1.3vw, 21px) var(--body); border-radius: 0; appearance: none; background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%); background-position: calc(100% - 14px) 55%, calc(100% - 8px) 55%; background-size: 6px 6px; background-repeat: no-repeat; }
+.field select:focus { outline: none; border-bottom-color: var(--orange); }
+.field select option { color: var(--ink); }
+:root[data-theme="light"] .field select { border-bottom-color: rgba(18,0,48,.2); }
 .quote-wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: 6vw; align-items: start; }
 
 @media (max-width: 1000px) {
@@ -218,3 +226,4 @@
   .form { border-radius: 24px; }
   .next-link strong { font-size: 16vw; }
 }
+.form .cta--orange .cta__arrow { background: var(--lime); color: var(--ink); }

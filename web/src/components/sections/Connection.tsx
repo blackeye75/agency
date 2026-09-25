@@ -19,7 +19,7 @@ export function Connection({ data }: { data: ConnectionData }) {
     gsap.fromTo('.coil path', { drawSVG: '0%' }, { drawSVG: '100%', duration: 1.8, ease: 'power2.inOut', scrollTrigger: st('top 70%') })
     gsap.from('.rating', { scale: 0, rotation: -40, duration: 0.9, ease: 'back.out(1.8)', scrollTrigger: st('top 55%') })
     gsap.from('.conn > span[aria-hidden]', { yPercent: 40, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.12, scrollTrigger: st('top 80%') })
-    gsap.to('.logos__track', { xPercent: -50, duration: 28, ease: 'none', repeat: -1 })
+    if (data.logos.length) gsap.to('.logos__track', { xPercent: -50, duration: 28, ease: 'none', repeat: -1 })
   }, { scope: ref, dependencies: [JSON.stringify(data)], revertOnUpdate: true })
 
   const logo = (l: ConnectionData['logos'][number], i: number, hidden?: boolean) => (
@@ -46,12 +46,14 @@ export function Connection({ data }: { data: ConnectionData }) {
           </span>
         )}
       </h2>
-      <div className="logos" aria-label="Clients">
-        <div className="logos__track">
-          {data.logos.map((l, i) => logo(l, i))}
-          {data.logos.map((l, i) => logo(l, i, true))}
+      {data.logos.length > 0 && (
+        <div className="logos" aria-label="Clients">
+          <div className="logos__track">
+            {data.logos.map((l, i) => logo(l, i))}
+            {data.logos.map((l, i) => logo(l, i, true))}
+          </div>
         </div>
-      </div>
+      )}
     </section>
   )
 }

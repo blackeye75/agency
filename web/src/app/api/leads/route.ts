@@ -1,9 +1,11 @@
 import { z } from 'zod'
 import { publicClient } from '@/lib/supabase/public'
 import { fail, json } from '@/lib/admin/api'
+import { mailConfigured, sendLeadMail } from '@/lib/mail'
+import { getSettings } from '@/lib/cms/queries'
 
 const Lead = z.object({
-  kind: z.enum(['contact', 'quote']),
+  kind: z.enum(['contact', 'quote', 'enquiry']),
   name: z.string().trim().min(1, 'Please add your name.').max(200),
   email: z.string().trim().email('Please add a valid email.').max(320),
   phone: z.string().trim().max(40).optional().default(''),
@@ -30,17 +32,30 @@ export async function POST(req: Request) {
   if (!parsed.success) return fail(parsed.error.issues[0]?.message ?? 'Please check the form.', 422)
   const lead = parsed.data
   if (lead.website) return json({ ok: true }) // bots fill the hidden field
-  if (lead.kind === 'contact' && !lead.message) return fail('Please add a short message.', 422)
+  if (lead.kind !== 'quote' && !lead.message) return fail('Please add a short message.', 422)
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'local'
   if (limited(ip)) return fail('Too many messages. Please try again in a few minutes.', 429)
 
+  // Save to the CMS inbox and email it through Gmail. Either one is enough
+  // for the visitor; both failing is an error.
   const db = publicClient()
-  if (!db) return fail('The form is not connected yet. Please email us instead.', 503)
-  const { error } = await db.from('leads').insert({
+  if (!db && !mailConfigured) return fail('The form is not connected yet. Please email us instead.', 503)
+  const row = {
     kind: lead.kind, name: lead.name, email: lead.email, phone: lead.phone || null, company: lead.company || null,
     message: lead.message, services: lead.services, budget: lead.budget || null, timeline: lead.timeline || null,
     source_page: lead.source_page || null,
-  })
-  if (error) return fail('Could not send your message. Please email us instead.', 500)
+  }
+  const [saved, mailed] = await Promise.all([
+    db ? db.from('leads').insert(row).then(({ error }) => { if (error) console.error('[leads] insert failed', error.message); return !error }) : false,
+    getSettings()
+      .then((s) => withTimeout(sendLeadMail({ ...lead, services: lead.services }, s.brand.name), 12_000))
+      .then((r) => r.sent)
+      .catch((e) => { console.error('[leads] email failed', e); return false }),
+  ])
+  if (!saved && !mailed) return fail('Could not send your message. Please email us instead.', 500)
   return json({ ok: true }, 201)
+}
+
+function withTimeout<T>(p: Promise<T>, ms: number) {
+  return Promise.race([p, new Promise<never>((_, reject) => setTimeout(() => reject(new Error('Email timed out')), ms))])
 }

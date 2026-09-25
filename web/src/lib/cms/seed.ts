@@ -130,7 +130,7 @@ const SECTIONS: Record<string, SeedSection[]> = {
         line3: 'IS REAL, IT SHOWS',
         rating: '9.6',
         ratingText: 'OVERALL CLIENT RATING SCORE ·',
-        logos: ['zenith', 'KITE', 'OrbitPay', 'UMBRA', 'pulse+', 'Northwind', 'BLOOM', 'volt'].map((name) => ({ name })),
+        logos: [],
       },
     },
     { key: 'services-head', type: 'heading', label: 'Services heading', data: { title: 'WHAT ARE WE\nBUILDING FOR\nYOU?' } },
@@ -198,6 +198,17 @@ const SECTIONS: Record<string, SeedSection[]> = {
           { label: 'I want a product', ring: 'I WANT A PRODUCT · I WANT A PRODUCT · I WANT A PRODUCT ·', cta: 'get my product', href: '/quote' },
           { label: 'I want a free audit', ring: 'I WANT A FREE AUDIT · I WANT A FREE AUDIT · I WANT A FREE AUDIT ·', cta: 'get my free audit', href: '/quote?service=seo-performance' },
         ],
+      },
+    },
+    {
+      key: 'enquiry', type: 'enquiry', label: 'Enquiry form',
+      data: {
+        label: 'START A PROJECT',
+        title: 'GOT AN IDEA?\nLET\'S TALK',
+        text: 'Tell us what you are building. We reply within 24 hours with next steps and a rough estimate.',
+        formTitle: 'SEND AN ENQUIRY',
+        button: 'send enquiry',
+        success: 'Thanks! Your enquiry is in. We will reply within 24 hours.',
       },
     },
     {

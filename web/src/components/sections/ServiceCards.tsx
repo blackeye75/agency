@@ -25,7 +25,7 @@ export function ServiceCards({ data }: { data: ServiceCardsData }) {
 
   return (
     <section className="services" ref={ref} id="services">
-      <div className="services__stage" style={{ gridTemplateColumns: mobile ? undefined : `repeat(${Math.max(cards.length, 1)}, 1fr)` }}>
+      <div className="services__stage" style={{ '--cols': Math.max(cards.length, 1) } as React.CSSProperties}>
         {cards.map((c, i) => (
           <article key={i} className={`scard tone-${c.tone}`}>
             <h3>{lines(c.title)}</h3>

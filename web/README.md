@@ -53,6 +53,21 @@ supabase/migrations   database schema, row level security, storage bucket, realt
 - **Fallback**: without Supabase variables the site renders the default content in `src/lib/cms/seed.ts`, so it always builds.
 - **New database**: apply `supabase/migrations/*.sql`, then run the output of `npm run seed:sql` in the SQL editor.
 
+## Enquiry emails (Gmail)
+
+The enquiry, contact and quote forms save every message to **Leads** and, when these variables are set, email it through Gmail's SMTP server (`smtp.gmail.com:465`). Replying to the email answers the visitor directly.
+
+1. On the Google account that should send the mail, turn on 2-Step Verification.
+2. Create an app password: Google Account → Security → 2-Step Verification → **App passwords**.
+3. Add the variables in Vercel (or `.env.local`):
+
+| Variable | Value |
+| --- | --- |
+| `GMAIL_USER` | the sending address, e.g. `hello@yourdomain.com` or `you@gmail.com` |
+| `GMAIL_APP_PASSWORD` | the 16-character app password |
+| `LEADS_NOTIFY_TO` | optional: who receives enquiries (comma separated), defaults to `GMAIL_USER` |
+| `LEADS_AUTOREPLY` | optional: `true` also sends the visitor a short confirmation |
+
 ## Deploy (Vercel)
 
 Import the repository, set **Root Directory** to `web`, and add the three variables from `.env.example` (set `NEXT_PUBLIC_SITE_URL` to the real domain). In Supabase → Authentication → URL configuration, add the domain to the redirect URLs so confirmation emails link back correctly.

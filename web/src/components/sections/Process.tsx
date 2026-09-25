@@ -23,7 +23,7 @@ export function Process({ data }: { data: ProcessData }) {
     })
   }, { scope: ref, dependencies: [JSON.stringify(data.steps), mobile, reduce], revertOnUpdate: true })
   return (
-    <section className={`sec sec--lilac process${reduce ? ' is-static' : ''}`} ref={ref}>
+    <section className="sec sec--lilac process" ref={ref}>
       <div className="sec-head">
         <div>
           <p className="label label--ink" style={{ marginBottom: '3vh' }}>{data.label}</p>

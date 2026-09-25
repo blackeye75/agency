@@ -69,7 +69,7 @@
 
 /* ============ Service cards ============ */
 .services { position: relative; height: 100vh; min-height: 680px; background: var(--surface); overflow: hidden; }
-.services__stage { position: absolute; inset: 7vh var(--gutter) 12vh; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6vw; perspective: 1400px; }
+.services__stage { position: absolute; inset: 7vh var(--gutter) 12vh; display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 1.6vw; perspective: 1400px; }
 .scard { border-radius: 36px; padding: 4vh 2.2vw 3vh; display: flex; flex-direction: column; align-items: center; text-align: center; backface-visibility: hidden; will-change: transform; background: var(--t); color: var(--t-fg); }
 .scard h3 { font: 400 clamp(38px, 4.2vw, 80px)/.9 var(--display); margin: 0 0 16px; }
 .scard p { font-size: clamp(13px, 1vw, 16px); line-height: 1.4; margin: 0; max-width: 34ch; font-weight: 600; }
@@ -191,7 +191,9 @@
   .story__row, .icon-layer { display: none; }
   .statement { margin-top: 10vh; width: auto; }
   .slot svg { visibility: visible; }
-  .conn { margin-left: 0; font-size: 15vw; }
+  .clients { padding-bottom: 8vh; }
+  .conn { margin: 4vh 0 0; font-size: 14vw; }
+  .coil { width: 2.1em; }
   .rating { position: relative; right: auto; top: auto; margin: 4vh 0 0 auto; width: 40vw; }
   .services { height: auto; min-height: 0; padding: 8vh var(--gutter) 14vh; }
   .services__stage { position: static; grid-template-columns: 1fr; gap: 18px; }
