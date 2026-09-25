@@ -1,7 +1,7 @@
 'use client'
 import { useRef } from 'react'
 import { gsap, ScrollTrigger, SplitText, useGSAP } from '@/components/motion/gsap'
-import { whenIntroDone } from '@/components/motion/scroll'
+import { whenIntroDone, whenRevealed } from '@/components/motion/scroll'
 import { useViewport } from '@/components/motion/useViewport'
 import { Wave } from '@/components/motion/Wave'
 import { ScBadge } from '@/components/site/ScBadge'
@@ -42,7 +42,7 @@ export function Hero({ data, next }: { data: HeroData; next?: string }) {
       .from('.scbadge', { scale: 0, rotation: 90, duration: 0.9, ease: 'back.out(2)' }, 0.7)
       .from('.hero__tag', { opacity: 0, y: 20, duration: 0.6 }, 0.6)
       .add(() => show(0), 0.4)
-    whenIntroDone(() => tl.play())
+    whenIntroDone(() => whenRevealed(() => tl.play()))
     ScrollTrigger.create({
       trigger: root, start: 'top top', end: 'bottom top',
       onEnterBack: () => gsap.fromTo(chars, { yPercent: 120, rotation: () => gsap.utils.random(-14, 14) }, { yPercent: 0, rotation: 0, duration: 0.7, ease: 'power3.out', stagger: 0.02, overwrite: true }),

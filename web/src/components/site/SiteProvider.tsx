@@ -3,7 +3,7 @@ import { createContext, use, useCallback, useEffect, useMemo, useRef, useState, 
 import { useRouter } from 'next/navigation'
 import Lenis from 'lenis'
 import { gsap, ScrollTrigger, prefersReduced } from '@/components/motion/gsap'
-import { scroll } from '@/components/motion/scroll'
+import { scroll, setCovered } from '@/components/motion/scroll'
 
 type Site = {
   navigate: (href: string) => void
@@ -12,8 +12,6 @@ type Site = {
   // Registered by the menu so a link inside it can close it before leaving.
   closeMenuRef: React.RefObject<((after?: () => void) => void) | null>
   transitionRef: React.RefObject<HTMLDivElement | null>
-  // The band marquees, played only while the transition is on screen.
-  loopsRef: React.RefObject<gsap.core.Tween[]>
   onRoute: (path: string) => void
 }
 
@@ -30,7 +28,6 @@ export function SiteProvider({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const closeMenuRef = useRef<((after?: () => void) => void) | null>(null)
   const transitionRef = useRef<HTMLDivElement | null>(null)
-  const loopsRef = useRef<gsap.core.Tween[]>([])
   const pending = useRef<{ path: string; resolve: () => void } | null>(null)
   const busy = useRef(false)
 
@@ -98,42 +95,52 @@ export function SiteProvider({ children }: { children: ReactNode }) {
       }
       busy.current = true
       scroll.lenis?.stop()
-      const dim = layer.querySelector('.transition__dim')
-      const bands = layer.querySelector('.transition__bands')
-      const loops = loopsRef.current
-      // Gentle in-out curve and unhurried timing so the sweep reads as one calm motion.
-      const ease = 'power2.inOut'
-      const SWEEP = 1.1
+      const panel = layer.querySelector('.curtain__panel')!
+      const bands = layer.querySelectorAll('.lb')
+      const texts = layer.querySelectorAll('.loader__count, .loader__word')
+      const count = layer.querySelector('[data-count]')!
+      const n = { v: 0 }
+      const show = () => { count.textContent = String(Math.round(n.v)) }
+      const started = performance.now()
       layer.classList.add('is-active')
-      loops.forEach((l) => l.play())
-      gsap.timeline()
-        .set(layer, { visibility: 'visible' })
-        .fromTo(dim, { opacity: 0 }, { opacity: 0.6, duration: 0.8, ease: 'sine.out' }, 0)
-        .fromTo(bands, { yPercent: 105 }, { yPercent: 0, duration: SWEEP, ease }, 0)
-        .add(() => {
+      gsap.set(layer, { visibility: 'visible' })
+      gsap.set(bands, { scaleY: 0 })
+      gsap.set(texts, { opacity: 1 })
+      show()
+      // 1. The loader panel slides up over the page and starts counting.
+      gsap.to(n, { v: 72, duration: 1.3, ease: 'power2.out', onUpdate: show })
+      gsap.fromTo(panel, { yPercent: 100 }, {
+        yPercent: 0, duration: 0.8, ease: 'power3.inOut',
+        onComplete: () => {
+          setCovered(true)
           router.push(target, { scroll: false })
           arrived.then(() => {
             land()
-            // Let the new page finish its heavy setup (splits, pins) while
-            // it is still covered, then lift the bands off in one motion.
+            // 2. Once the new page has set itself up (still covered), finish
+            // exactly like the intro loader: count to 100, colour columns
+            // rise, then the whole loader lifts off.
             requestAnimationFrame(() => requestAnimationFrame(() => {
               ScrollTrigger.refresh()
-              scroll.lenis?.start()
+              const wait = Math.max(0, 1.1 - (performance.now() - started) / 1000)
               gsap.timeline({
-                delay: 0.3, // hold the covered screen a beat so the band words read
+                delay: wait,
                 onComplete: () => {
                   gsap.set(layer, { visibility: 'hidden' })
-                  gsap.set(bands, { yPercent: 105 })
-                  loops.forEach((l) => l.pause())
+                  gsap.set(panel, { yPercent: 100 })
                   layer.classList.remove('is-active')
                   busy.current = false
                 },
               })
-                .to(bands, { yPercent: -105, duration: SWEEP, ease }, 0)
-                .to(dim, { opacity: 0, duration: 0.8, ease: 'sine.inOut' }, 0.35)
+                .to(n, { v: 100, duration: 0.6, ease: 'power2.inOut', onUpdate: show, overwrite: true })
+                .to(bands, { scaleY: 1, duration: 0.6, ease: 'power3.inOut', stagger: 0.1 }, 0.1)
+                .to(texts, { opacity: 0, duration: 0.2 }, 0.55)
+                .add(() => scroll.lenis?.start(), 0.8)
+                .to(panel, { yPercent: -100, duration: 0.8, ease: 'power4.inOut' }, 0.8)
+                .add(() => setCovered(false), 1.15)
             }))
           })
-        })
+        },
+      })
     },
     [router, scrollToHash],
   )
@@ -148,7 +155,7 @@ export function SiteProvider({ children }: { children: ReactNode }) {
   )
 
   const value = useMemo(
-    () => ({ navigate, menuOpen, setMenuOpen, closeMenuRef, transitionRef, loopsRef, onRoute }),
+    () => ({ navigate, menuOpen, setMenuOpen, closeMenuRef, transitionRef, onRoute }),
     [navigate, menuOpen, onRoute],
   )
   return <SiteContext value={value}>{children}</SiteContext>

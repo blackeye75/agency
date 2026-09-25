@@ -1,3 +1,7 @@
+/* ============ Scrollbar ============ */
+html { scrollbar-width: none; -ms-overflow-style: none; }
+html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
 /* ============ Loader ============ */
 .loader { position: fixed; inset: 0; z-index: 500; background: var(--ink); display: grid; place-items: center; overflow: hidden; animation: loader-failsafe .01s 7s forwards; }
 .loader__bands { position: absolute; inset: 0; display: flex; }
@@ -81,20 +85,11 @@ html.has-cursor .cursor { display: block; }
 .page-blur { filter: blur(10px); scale: 1.03; transition: filter .5s, scale .5s; }
 
 /* ============ Page transition ============
-   One solid block of three tilted bands sweeps up over the page, the route
-   changes underneath, and the block keeps rising off the top. */
-.transition { position: fixed; inset: 0; z-index: 300; pointer-events: none; visibility: hidden; overflow: hidden; }
-.transition.is-active { pointer-events: auto; }
-.transition__dim { position: absolute; inset: 0; background: var(--ink); opacity: 0; }
-.transition__bands { position: absolute; left: -6vw; right: -6vw; top: -8vh; bottom: -8vh; display: flex; flex-direction: column; will-change: transform; }
-.band { flex: 1 0 0; min-height: 0; display: flex; align-items: center; overflow: hidden; margin: -3vh 0; }
-.band--lime { background: var(--lime); color: var(--ink); rotate: -2deg; }
-.band--orange { background: var(--orange); color: var(--cream); rotate: 1.5deg; z-index: 1; }
-.band--blue { background: var(--blue); color: var(--lilac); rotate: -1deg; }
-.band__track { display: flex; align-items: center; gap: 3vw; padding-right: 3vw; width: max-content; font: 400 clamp(84px, 17vh, 220px)/1 var(--display); will-change: transform; }
-.band .mq-ast { color: var(--lime); }
-.ico-target { width: .55em; height: .55em; border-radius: 50%; background: radial-gradient(circle, var(--orange) 0 32%, var(--lime) 33% 52%, var(--ink) 53%); flex: none; }
-.ico-eye { width: .7em; height: .42em; border-radius: 50%; background: radial-gradient(circle, var(--ink) 0 30%, var(--cream) 31%); flex: none; }
+   The intro loader again: it slides up over the page, counts to 100 while
+   the next page loads, the colour columns rise, then it lifts off. */
+.curtain { position: fixed; inset: 0; z-index: 300; visibility: hidden; pointer-events: none; overflow: hidden; }
+.curtain.is-active { pointer-events: auto; }
+.curtain__panel { position: absolute; inset: 0; background: var(--ink); display: grid; place-items: center; overflow: hidden; will-change: transform; }
 .mq-ast { width: .6em; height: .6em; color: var(--blue); flex: none; }
 
 /* ============ Footer (Copula dictionary) ============ */

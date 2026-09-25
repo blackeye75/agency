@@ -23,7 +23,7 @@ export default async function SiteLayout({ children }: LayoutProps<'/'>) {
       <main id="main">{children}</main>
       <Footer settings={settings} services={published} />
       <Menu settings={settings} />
-      <Transition words={settings.transitionWords} />
+      <Transition text={settings.loader.text} />
       <ChromeIntro />
       <RouteWatcher />
       <LiveRefresh />
