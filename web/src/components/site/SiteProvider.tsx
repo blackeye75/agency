@@ -101,13 +101,15 @@ export function SiteProvider({ children }: { children: ReactNode }) {
       const dim = layer.querySelector('.transition__dim')
       const bands = layer.querySelector('.transition__bands')
       const loops = loopsRef.current
-      const ease = 'power4.inOut'
+      // Gentle in-out curve and unhurried timing so the sweep reads as one calm motion.
+      const ease = 'power2.inOut'
+      const SWEEP = 1.1
       layer.classList.add('is-active')
       loops.forEach((l) => l.play())
       gsap.timeline()
         .set(layer, { visibility: 'visible' })
-        .fromTo(dim, { opacity: 0 }, { opacity: 0.55, duration: 0.6, ease: 'power2.out' }, 0)
-        .fromTo(bands, { yPercent: 105 }, { yPercent: 0, duration: 0.85, ease }, 0)
+        .fromTo(dim, { opacity: 0 }, { opacity: 0.6, duration: 0.8, ease: 'sine.out' }, 0)
+        .fromTo(bands, { yPercent: 105 }, { yPercent: 0, duration: SWEEP, ease }, 0)
         .add(() => {
           router.push(target, { scroll: false })
           arrived.then(() => {
@@ -118,7 +120,7 @@ export function SiteProvider({ children }: { children: ReactNode }) {
               ScrollTrigger.refresh()
               scroll.lenis?.start()
               gsap.timeline({
-                delay: 0.12,
+                delay: 0.3, // hold the covered screen a beat so the band words read
                 onComplete: () => {
                   gsap.set(layer, { visibility: 'hidden' })
                   gsap.set(bands, { yPercent: 105 })
@@ -127,8 +129,8 @@ export function SiteProvider({ children }: { children: ReactNode }) {
                   busy.current = false
                 },
               })
-                .to(bands, { yPercent: -105, duration: 0.85, ease }, 0)
-                .to(dim, { opacity: 0, duration: 0.6, ease: 'power2.inOut' }, 0.2)
+                .to(bands, { yPercent: -105, duration: SWEEP, ease }, 0)
+                .to(dim, { opacity: 0, duration: 0.8, ease: 'sine.inOut' }, 0.35)
             }))
           })
         })
