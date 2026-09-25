@@ -171,14 +171,18 @@ export function Cursor() {
 }
 
 export function Transition({ words }: { words: string[] }) {
-  const { transitionRef } = useSite()
+  const { transitionRef, loopsRef } = useSite()
   const tones = ['lime', 'orange', 'blue'] as const
   const icons = [<i key="t" className="ico-target" />, <i key="e" className="ico-eye" />, <Use key="a" id="asterisk" className="mq-ast" />]
   useGSAP(() => {
-    if (prefersReduced()) return
-    gsap.utils.toArray<HTMLElement>('.band__track', transitionRef.current).forEach((t, i) =>
-      gsap.fromTo(t, { xPercent: i % 2 ? -50 : 0 }, { xPercent: i % 2 ? 0 : -50, duration: 9, ease: 'none', repeat: -1 }))
-  }, { scope: transitionRef })
+    // Parked below the screen (GSAP owns the transform so offsets never stack).
+    gsap.set('.transition__bands', { yPercent: 105 })
+    // Paused loops; the transition plays them while the bands are visible.
+    loopsRef.current = gsap.utils.toArray<HTMLElement>('.band__track', transitionRef.current).map((t, i) =>
+      gsap.fromTo(t, { xPercent: i % 2 ? -50 : 0 }, { xPercent: i % 2 ? 0 : -50, duration: 14, ease: 'none', repeat: -1, paused: true }))
+  }, { scope: transitionRef, dependencies: [words.join('|')], revertOnUpdate: true })
+  // Enough repeats that half a track is always wider than the widest screen.
+  const reps = 10
   return (
     <div className="transition" ref={transitionRef} aria-hidden="true">
       <div className="transition__dim" />
@@ -186,14 +190,13 @@ export function Transition({ words }: { words: string[] }) {
         {tones.map((tone, i) => (
           <div key={tone} className={`band band--${tone}`}>
             <div className="band__track">
-              {Array.from({ length: 6 }, (_, k) => (
+              {Array.from({ length: reps }, (_, k) => (
                 <span key={k} style={{ display: 'contents' }}><span>{words[i] ?? words[0] ?? ''}</span>{icons[i]}</span>
               ))}
             </div>
           </div>
         ))}
       </div>
-      <div className="transition__wipe" />
     </div>
   )
 }

@@ -44,6 +44,7 @@ export type CtaBandData = { title: string; text: string; button: Link }
 export type ProjectsGridData = { label: string; allLabel: string }
 export type PostsGridData = { label: string; empty: string }
 export type ContactData = { title: string; text: string; formTitle: string; success: string }
+export type EnquiryData = { label: string; title: string; text: string; formTitle: string; success: string; button: string }
 export type QuoteData = {
   title: string; text: string; budgets: { text: string }[]; timelines: { text: string }[]; success: string
 }
@@ -70,6 +71,7 @@ export type SectionDataMap = {
   projectsGrid: ProjectsGridData
   postsGrid: PostsGridData
   contact: ContactData
+  enquiry: EnquiryData
   quote: QuoteData
 }
 
@@ -156,7 +158,7 @@ export type Post = {
 
 export type Lead = {
   id: string
-  kind: 'contact' | 'quote'
+  kind: 'contact' | 'quote' | 'enquiry'
   name: string
   email: string
   phone: string | null

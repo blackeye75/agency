@@ -41,7 +41,7 @@ export function Leads() {
         <div><h1>Leads</h1><p>Messages from the contact and quote forms.</p></div>
         <div className="adm-actions">
           <select className="in" style={{ width: 170 }} value={filter} onChange={(e) => setFilter(e.target.value)} aria-label="Filter">
-            <option value="all">All</option><option value="quote">Quote requests</option><option value="contact">Contact messages</option>
+            <option value="all">All</option><option value="enquiry">Enquiries</option><option value="quote">Quote requests</option><option value="contact">Contact messages</option>
             {STATUSES.map((s) => <option key={s} value={s}>Status: {s}</option>)}
           </select>
           <button className="btn" onClick={exportCsv} disabled={!items?.length}>Export CSV</button>

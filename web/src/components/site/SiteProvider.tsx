@@ -12,6 +12,8 @@ type Site = {
   // Registered by the menu so a link inside it can close it before leaving.
   closeMenuRef: React.RefObject<((after?: () => void) => void) | null>
   transitionRef: React.RefObject<HTMLDivElement | null>
+  // The band marquees, played only while the transition is on screen.
+  loopsRef: React.RefObject<gsap.core.Tween[]>
   onRoute: (path: string) => void
 }
 
@@ -28,6 +30,7 @@ export function SiteProvider({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const closeMenuRef = useRef<((after?: () => void) => void) | null>(null)
   const transitionRef = useRef<HTMLDivElement | null>(null)
+  const loopsRef = useRef<gsap.core.Tween[]>([])
   const pending = useRef<{ path: string; resolve: () => void } | null>(null)
   const busy = useRef(false)
 
@@ -87,7 +90,8 @@ export function SiteProvider({ children }: { children: ReactNode }) {
       }
 
       const layer = transitionRef.current
-      if (prefersReduced() || !layer || busy.current) {
+      if (busy.current) return
+      if (prefersReduced() || !layer) {
         router.push(target, { scroll: false })
         arrived.then(land)
         return
@@ -96,28 +100,36 @@ export function SiteProvider({ children }: { children: ReactNode }) {
       scroll.lenis?.stop()
       const dim = layer.querySelector('.transition__dim')
       const bands = layer.querySelector('.transition__bands')
-      const wipe = layer.querySelector('.transition__wipe')
+      const loops = loopsRef.current
+      const ease = 'power4.inOut'
       layer.classList.add('is-active')
+      loops.forEach((l) => l.play())
       gsap.timeline()
         .set(layer, { visibility: 'visible' })
-        .fromTo(dim, { opacity: 0 }, { opacity: 0.8, duration: 0.35, ease: 'power2.out' })
-        .fromTo(bands, { opacity: 0 }, { opacity: 1, duration: 0.01 })
-        .fromTo(layer.querySelectorAll('.band'), { yPercent: 160 }, { yPercent: 0, duration: 0.6, ease: 'power4.out', stagger: 0.08 }, '<')
-        .fromTo(wipe, { xPercent: -101 }, { xPercent: 0, duration: 0.45, ease: 'power3.inOut' }, '+=0.25')
+        .fromTo(dim, { opacity: 0 }, { opacity: 0.55, duration: 0.6, ease: 'power2.out' }, 0)
+        .fromTo(bands, { yPercent: 105 }, { yPercent: 0, duration: 0.85, ease }, 0)
         .add(() => {
           router.push(target, { scroll: false })
           arrived.then(() => {
             land()
-            scroll.lenis?.start()
-            gsap.timeline({
-              onComplete: () => {
-                layer.classList.remove('is-active')
-                busy.current = false
-              },
-            })
-              .set([bands, dim], { opacity: 0 })
-              .to(wipe, { xPercent: 101, duration: 0.55, ease: 'power3.inOut', delay: 0.1 })
-              .set(layer, { visibility: 'hidden' })
+            // Let the new page finish its heavy setup (splits, pins) while
+            // it is still covered, then lift the bands off in one motion.
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+              ScrollTrigger.refresh()
+              scroll.lenis?.start()
+              gsap.timeline({
+                delay: 0.12,
+                onComplete: () => {
+                  gsap.set(layer, { visibility: 'hidden' })
+                  gsap.set(bands, { yPercent: 105 })
+                  loops.forEach((l) => l.pause())
+                  layer.classList.remove('is-active')
+                  busy.current = false
+                },
+              })
+                .to(bands, { yPercent: -105, duration: 0.85, ease }, 0)
+                .to(dim, { opacity: 0, duration: 0.6, ease: 'power2.inOut' }, 0.2)
+            }))
           })
         })
     },
@@ -134,7 +146,7 @@ export function SiteProvider({ children }: { children: ReactNode }) {
   )
 
   const value = useMemo(
-    () => ({ navigate, menuOpen, setMenuOpen, closeMenuRef, transitionRef, onRoute }),
+    () => ({ navigate, menuOpen, setMenuOpen, closeMenuRef, transitionRef, loopsRef, onRoute }),
     [navigate, menuOpen, onRoute],
   )
   return <SiteContext value={value}>{children}</SiteContext>

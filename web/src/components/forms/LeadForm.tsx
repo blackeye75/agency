@@ -7,7 +7,7 @@ type Status = { kind: 'idle' | 'sending' | 'ok' | 'error'; message?: string }
 
 // Shared submit logic for the contact and quote forms (POST /api/leads).
 export function LeadForm({ kind, title, success, submitLabel, children, className = '' }: {
-  kind: 'contact' | 'quote'; title: string; success: string; submitLabel: string; children: ReactNode; className?: string
+  kind: 'contact' | 'quote' | 'enquiry'; title: string; success: string; submitLabel: string; children: ReactNode; className?: string
 }) {
   const [status, setStatus] = useState<Status>({ kind: 'idle' })
   const okRef = useRef<HTMLParagraphElement>(null)

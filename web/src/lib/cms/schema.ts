@@ -57,11 +57,11 @@ export const SECTION_TYPES: Record<SectionType, { label: string; description: st
     ],
   },
   connection: {
-    label: 'Clients', description: 'Coil lettering, rating badge and a marquee of client logos.',
+    label: 'Clients', description: 'Coil lettering and the rating badge, with an optional client logo marquee.',
     fields: [
       text('label', 'Label'), text('line1', 'Line 1'), text('word', 'Coil word', 'The first O becomes the coil.'),
       text('line3', 'Line 3'), text('rating', 'Rating'), text('ratingText', 'Rating ring text'),
-      logos('logos', 'Client logos'),
+      { ...logos('logos', 'Client logo marquee'), hint: 'Optional. Leave empty to hide the marquee.' },
     ],
   },
   logoBand: {
@@ -127,6 +127,10 @@ export const SECTION_TYPES: Record<SectionType, { label: string; description: st
   contact: {
     label: 'Contact', description: 'Contact details (from Settings) and a contact form.',
     fields: [text('title', 'Title'), area('text', 'Text'), text('formTitle', 'Form title'), area('success', 'Message after sending')],
+  },
+  enquiry: {
+    label: 'Enquiry form', description: 'Short enquiry form (name, email, phone, service, message). Sends an email and lands in Leads.',
+    fields: [text('label', 'Label'), area('title', 'Title', ALT_HINT), area('text', 'Text'), text('formTitle', 'Form title'), text('button', 'Button text'), area('success', 'Message after sending')],
   },
   quote: {
     label: 'Quote form', description: 'Services, budget and timeline picker.',

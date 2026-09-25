@@ -1,7 +1,7 @@
 import { Lines } from '@/components/motion/Lines'
-import { Field, LeadForm } from '@/components/forms/LeadForm'
+import { EnquiryForm } from '@/components/forms/EnquiryForm'
 import { TLink } from '@/components/site/TLink'
-import type { ContactData, Settings } from '@/lib/cms/types'
+import type { ContactData, Service, Settings } from '@/lib/cms/types'
 
 const ICON = {
   mail: 'M3 6h18v12H3z M3 6l9 7 9-7',
@@ -13,7 +13,7 @@ const Icon = ({ d }: { d: string }) => (
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d={d} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
 )
 
-export function Contact({ data, settings }: { data: ContactData; settings: Settings }) {
+export function Contact({ data, settings, services }: { data: ContactData; settings: Settings; services: Service[] }) {
   const { email, phone, address, mapUrl, hours } = settings.contact
   return (
     <section className="sec sec--cream">
@@ -34,17 +34,7 @@ export function Contact({ data, settings }: { data: ContactData; settings: Setti
             {hours && <li data-reveal="0.15"><div className="tone-violet"><i><Icon d={ICON.clock} /></i><span><small>Hours</small><strong>{hours}</strong></span></div></li>}
           </ul>
         </div>
-        <LeadForm kind="contact" title={data.formTitle} success={data.success} submitLabel="send message">
-          <div className="form__row">
-            <Field label="Your name" name="name" required autoComplete="name" />
-            <Field label="Email" name="email" type="email" required autoComplete="email" />
-          </div>
-          <div className="form__row">
-            <Field label="Phone" name="phone" type="tel" autoComplete="tel" />
-            <Field label="Company" name="company" autoComplete="organization" />
-          </div>
-          <Field label="How can we help?" name="message" textarea required placeholder="A few lines about your project" />
-        </LeadForm>
+        <EnquiryForm title={data.formTitle} success={data.success} button="send enquiry" services={services.map((s) => s.title)} />
       </div>
     </section>
   )
