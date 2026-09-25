@@ -8,6 +8,8 @@ export function QuoteForm({ data, services }: { data: QuoteData; services: { slu
   // ?service=seo-performance preselects a service (links from the audit and service pages).
   useEffect(() => {
     const s = new URLSearchParams(window.location.search).get('service')
+    // Read once after hydration; the server render can't know the query string.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (s) setPicked((p) => (p.includes(s) ? p : [...p, s]))
   }, [])
   const toggle = (slug: string) => setPicked((p) => (p.includes(slug) ? p.filter((x) => x !== slug) : [...p, slug]))

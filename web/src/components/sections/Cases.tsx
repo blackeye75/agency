@@ -43,7 +43,9 @@ export function Cases({ projects, brand }: { projects: Project[]; brand: string 
         if (mobile) {
           const x = on ? 0 : s * (w * 0.9 + (a - 1) * w * 0.08)
           gsap.to(card, { x, z: -a * 60, rotationY: on ? 0 : -s * 28, scale: on ? 1 : 0.9, zIndex: 100 - a, duration: dur, ease: 'power3.out', overwrite: 'auto' })
-          gsap.to(detail, { height: on ? detail.scrollHeight : 0, duration: dur, ease: 'power3.out', overwrite: 'auto' })
+          const inner = detail.firstElementChild as HTMLElement
+          gsap.to(detail, { height: on ? inner.offsetHeight : 0, duration: dur, ease: 'power3.out', overwrite: 'auto' })
+          if (on) stage.style.height = card.querySelector<HTMLElement>('.case__cover')!.offsetHeight + inner.offsetHeight + 56 + 'px'
         } else {
           const x = on ? -w / 2 : s * (w * 0.95 + (a - 1) * w * 0.2)
           gsap.to(card, { x: x * spread, z: -a * 70, rotationY: on ? 0 : -s * 34, scale: 1 - a * 0.025, zIndex: 100 - a, duration: dur, ease: 'power3.out', overwrite: 'auto' })

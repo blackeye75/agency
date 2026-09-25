@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nova Studio website + CMS
 
-## Getting Started
+The agency website: Next.js 16 (App Router, Cache Components) with a built-in content management system on Supabase. Every text, image, section, service, project and blog post is editable at `/admin`. Saved changes go live within seconds.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd web
+cp .env.example .env.local   # already filled in for the "agency-website" Supabase project
+npm install
+npm run dev                  # http://localhost:3000, CMS at http://localhost:3000/admin
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Other scripts: `npm run build`, `npm run lint`, `npm run typecheck`, `npm run seed:sql`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Admin access
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Open `/admin/login` and choose **Create account** with the email on the admin list, then confirm it from your inbox.
+2. Only emails in the `admins` table can edit. To add someone, run this in the Supabase SQL editor:
+   ```sql
+   insert into public.admins (email) values ('teammate@example.com');
+   ```
 
-## Learn More
+## What you can edit
 
-To learn more about Next.js, take a look at the following resources:
+| Admin page | Controls |
+| --- | --- |
+| Pages (Home, Services, Projects, Blog, Contact, Get a quote) | Each page is a list of sections. Edit any field, add sections of 22 types, reorder, hide or delete them, and set the page's SEO. A live preview sits beside the editor. |
+| Services, Projects, Blog posts | Full collections with their own detail pages (`/services/…`, `/projects/…`, `/blog/…`), drafts, SEO fields and Markdown bodies. |
+| Leads | Messages from the contact and quote forms, with status and CSV export. |
+| Media | Upload images and videos (up to 50 MB) to Supabase Storage and reuse them anywhere. |
+| Settings | Logo word, menu, header button, dock, contact details, socials, footer, loader, transition words, default SEO. |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Text markers: in headings, a new line breaks the line and `{O}` swaps a letter for the alternate font (`{O|wide}`, `{T|slant}`, `{b|script}`, `{G|g}`). In the icon story, `[crown] [heart] [bolt] [cursor] [chart]` place the icons.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## How it fits together
 
-## Deploy on Vercel
+```
+src/
+  app/(site)/         public pages: home, services, projects, blog, contact, quote (+ detail pages)
+  app/admin/          CMS screens
+  app/api/leads       public form endpoint
+  app/api/admin/*     CMS API: settings, pages, sections, collections, leads, media
+  components/sections one component per section type (GSAP + Lenis motion)
+  lib/cms/            content types, field schema, default content, cached queries
+  lib/supabase/       Supabase clients
+  proxy.ts            keeps the admin session fresh and guards /admin
+supabase/migrations   database schema, row level security, storage bucket, realtime
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Reads** are cached with `'use cache'` under the `cms` tag. The admin API expires the tag after each write, and a realtime listener refreshes open tabs.
+- **Security** lives in the database: row level security lets anyone read published content and send a lead, and only admins can change content, read leads or manage media.
+- **Fallback**: without Supabase variables the site renders the default content in `src/lib/cms/seed.ts`, so it always builds.
+- **New database**: apply `supabase/migrations/*.sql`, then run the output of `npm run seed:sql` in the SQL editor.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy (Vercel)
+
+Import the repository, set **Root Directory** to `web`, and add the three variables from `.env.example` (set `NEXT_PUBLIC_SITE_URL` to the real domain). In Supabase → Authentication → URL configuration, add the domain to the redirect URLs so confirmation emails link back correctly.

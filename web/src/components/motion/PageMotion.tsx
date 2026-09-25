@@ -12,7 +12,7 @@ export function PageMotion({ version }: { version?: string }) {
         gsap.from(el, {
           y: 60, opacity: 0, duration: 1, ease: 'power3.out',
           delay: Number(el.dataset.reveal) || 0,
-          scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none reverse' },
+          scrollTrigger: { trigger: el, start: 'top 97%', toggleActions: 'play none none reverse' },
         })
       })
       gsap.utils.toArray<HTMLElement>('[data-spin]', main).forEach((el) => {

@@ -210,7 +210,8 @@
   .case__screen { width: 76%; font-size: 18px; border-width: 5px; border-bottom-width: 8px; }
   .case__icons svg { width: 24px; height: 24px; }
   .case__spine { display: none; }
-  .case__detail { width: 100% !important; height: 0; }
+  .case__detail { width: 100% !important; height: 0; justify-content: flex-start; }
+  .cases__stage { transition: height .6s cubic-bezier(.2,.8,.2,1); }
   .case__detail-in { width: 100%; padding: 18px 6% 16px; gap: 12px; }
   .case__count { position: static; }
   .case__quote { font-size: 22px; }
