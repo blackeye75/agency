@@ -1,0 +1,114 @@
+/* ============ Tokens: Crency base + Copula colours ============ */
+:root {
+  --ink: #120030;
+  --ink-2: #1e0b45;
+  --cream: #f2eee9;
+  --lilac: #cebcf2;
+  --orange: #eb4304;
+  --blue: #0500d4;
+  --sky: #3d5bff;
+  --lime: #d4ff3a;
+  --pink: #e6368c;
+  --red: #d81e24;
+  --yellow: #ffd60a;
+  --violet: #4b00f0;
+  --grey: #444444;
+  --stone: #bcb0a8;
+  --display: "Bebas Neue", "Anton", "Arial Narrow", sans-serif;
+  --alt: "Unbounded", "Mulish", sans-serif;
+  --body: "Mulish", system-ui, sans-serif;
+  --gutter: clamp(16px, 2.6vw, 48px);
+  --spring: cubic-bezier(.3, 1.5, .5, 1);
+
+  /* Surfaces that follow the theme toggle (the dark ink sections). */
+  --surface: var(--ink);
+  --surface-2: var(--ink-2);
+  --on-surface: var(--lilac);
+  --on-surface-strong: var(--cream);
+  --glass: rgba(30, 11, 69, .7);
+  --glass-line: rgba(206, 188, 242, .22);
+  --card: var(--cream);
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --surface: #fbf8f3;
+  --surface-2: #ece4f8;
+  --on-surface: var(--ink);
+  --on-surface-strong: var(--ink);
+  --glass: rgba(255, 255, 255, .72);
+  --glass-line: rgba(18, 0, 48, .14);
+  --card: #fff;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--surface); color: var(--on-surface); font-family: var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+img { max-width: 100%; display: block; }
+.sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
+:root[data-theme="light"] :focus-visible { outline-color: var(--violet); }
+@media (pointer: fine) { html.has-cursor, html.has-cursor * { cursor: none !important; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+.skip { position: fixed; left: 12px; top: -60px; z-index: 1001; background: var(--lime); color: var(--ink); padding: 10px 16px; border-radius: 99px; font-weight: 800; }
+.skip:focus { top: 12px; }
+
+/* Tone helpers: --t is the colour, --t-fg the text on it. */
+.tone-orange { --t: var(--orange); --t-fg: var(--cream); --t-soft: #ffd6c2; }
+.tone-blue { --t: var(--blue); --t-fg: var(--cream); --t-soft: var(--lilac); }
+.tone-lime { --t: var(--lime); --t-fg: var(--ink); --t-soft: var(--ink); }
+.tone-violet { --t: var(--violet); --t-fg: var(--cream); --t-soft: var(--lilac); }
+.tone-pink { --t: var(--pink); --t-fg: #fff; --t-soft: #ffd1e6; }
+.tone-sky { --t: var(--sky); --t-fg: #fff; --t-soft: #d6ddff; }
+.tone-red { --t: var(--red); --t-fg: #fff; --t-soft: #ffd0d1; }
+.tone-yellow { --t: var(--yellow); --t-fg: var(--ink); --t-soft: var(--ink); }
+.tone-ink { --t: var(--ink); --t-fg: var(--lilac); --t-soft: var(--lime); }
+.tone-lilac { --t: var(--lilac); --t-fg: var(--ink); --t-soft: var(--blue); }
+.tone-cream { --t: var(--cream); --t-fg: var(--ink); --t-soft: var(--orange); }
+:root[data-theme="light"] .tone-ink { --t: #2a1459; }
+
+/* Alternate letterforms */
+.alt { font-family: var(--alt); font-weight: 300; display: inline-block; text-transform: none; line-height: 0; transform: scaleX(1.3); margin: 0 .1em; }
+.alt--wide { transform: scaleX(1.45); margin: 0 .16em; font-weight: 400; }
+.alt--slant { font-family: var(--display); font-weight: 400; transform: skewX(-22deg) scaleX(1.25); margin: 0 .08em; }
+.alt--script { font-weight: 400; transform: scaleX(1.2); margin: 0 .04em 0 0; }
+.alt--g { transform: scaleX(1.4); margin-right: .16em; }
+
+/* ============ Shared pieces ============ */
+.wave { position: absolute; left: 0; bottom: -1px; width: 100%; height: 9vw; min-height: 50px; z-index: 3; pointer-events: none; }
+.mega { font-family: var(--display); font-weight: 400; text-transform: uppercase; line-height: .88; margin: 0; }
+.mega--ink { color: var(--ink); } .mega--lilac { color: var(--on-surface); }
+.label { display: flex; align-items: center; gap: 6px; margin: 0; font: 400 clamp(18px, 1.6vw, 30px)/1 var(--display); letter-spacing: .02em; color: var(--cream); }
+.label svg { width: 1.05em; height: 1.05em; flex: none; }
+.label--ink { color: var(--ink); }
+.label--orange { color: var(--orange); }
+.ulink { display: inline-block; font: 400 clamp(20px, 1.8vw, 32px)/1 var(--display); border-bottom: 2px solid currentColor; padding-bottom: 4px; }
+
+.cta { display: inline-flex; align-items: center; position: relative; font-weight: 800; font-size: 16px; }
+.cta__pill { padding: 14px 24px; border-radius: 99px; position: relative; z-index: 1; white-space: nowrap; }
+.cta__arrow { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; margin-left: 4px; position: relative; z-index: 2; flex: none; }
+.cta__arrow svg { width: 22px; height: 22px; }
+.cta--white .cta__pill { background: #fff; color: var(--ink); } .cta--white .cta__arrow { background: var(--lime); color: var(--ink); }
+.cta--ink .cta__pill { background: var(--ink); color: var(--lilac); } .cta--ink .cta__arrow { background: var(--orange); color: var(--cream); }
+.cta--orange .cta__pill { background: var(--orange); color: var(--cream); } .cta--orange .cta__arrow { background: var(--ink); color: var(--lime); }
+:root[data-theme="light"] .cta--white .cta__pill { background: var(--ink); color: var(--cream); }
+.cta[aria-disabled="true"], .cta:disabled { opacity: .55; pointer-events: none; }
+
+/* Copula scalloped badge */
+.scbadge { position: relative; display: inline-grid; place-items: center; width: clamp(96px, 9vw, 170px); aspect-ratio: 1; font: 400 clamp(16px, 1.4vw, 26px)/.95 var(--display); text-align: center; color: var(--cream); vertical-align: middle; transition: scale .4s var(--spring); flex: none; }
+.scbadge svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; animation: spin 16s linear infinite; }
+.scbadge span { position: relative; }
+.scbadge:hover { scale: 1.08; }
+.scbadge--orange path { fill: var(--orange); }
+.scbadge--lime path { fill: var(--lime); } .scbadge--lime { color: var(--ink); }
+.scbadge--lg { width: clamp(120px, 11vw, 210px); font-size: clamp(20px, 1.8vw, 34px); }
+
+/* Round arrow button (lists, cards) */
+.arrow-btn { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--lime); color: var(--ink); flex: none; transition: rotate .45s var(--spring), background .25s; }
+.arrow-btn svg { width: 22px; height: 22px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scbadge svg { animation: none; }
+}
