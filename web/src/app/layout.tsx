@@ -14,10 +14,10 @@ import '@/styles/base.css'
 import { getSettings } from '@/lib/cms/queries'
 import { SITE_URL } from '@/lib/supabase/env'
 
-// Runs before paint: restores the theme and decides whether the intro plays.
+// Runs before paint: restores the theme and decides whether the intro loader
+// plays (every time the site opens, except in the CMS preview or with reduced motion).
 const BOOT = `(function(){var d=document.documentElement;try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')d.dataset.theme=t}catch(e){}
-var s=false;try{s=!!sessionStorage.getItem('intro')}catch(e){}
-if(s||window.top!==window.self||matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('intro-seen');d.classList.add('intro-pending')})()`
+if(window.top!==window.self||matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('intro-seen');d.classList.add('intro-pending')})()`
 
 export async function generateMetadata(): Promise<Metadata> {
   const { seo, brand } = await getSettings()
