@@ -85,11 +85,19 @@ export function SiteProvider({ children }: { children: ReactNode }) {
         pending.current = { path: url.pathname, resolve }
         setTimeout(resolve, 6000)
       })
-      const land = () => {
-        window.scrollTo(0, 0)
+      // Jump to the top by every route the browser offers. iOS Safari ignores
+      // window.scrollTo while a swipe is still coasting, so callers retry.
+      const toTop = () => {
         scroll.lenis?.scrollTo(0, { immediate: true, force: true })
+        window.scrollTo(0, 0)
+        document.documentElement.scrollTop = 0
+        document.body.scrollTop = 0
+      }
+      const land = () => {
+        toTop()
         ScrollTrigger.refresh()
         if (url.hash) requestAnimationFrame(() => scrollToHash(url.hash))
+        else [60, 180, 400].forEach((ms) => setTimeout(() => { if (window.scrollY > 0 && !pending.current) toTop() }, ms))
       }
 
       if (busy.current) return
@@ -109,10 +117,17 @@ export function SiteProvider({ children }: { children: ReactNode }) {
       // the new page has set itself up (splits, pins) underneath.
       const swap = (reveal: () => void) => {
         setCovered(true)
+        // Reset the old page to the top while it is covered, so the new page
+        // never inherits a deep scroll position (and lands at the footer).
+        toTop()
         router.push(target, { scroll: false })
         arrived.then(() => {
           land()
-          requestAnimationFrame(() => requestAnimationFrame(() => { ScrollTrigger.refresh(); reveal() }))
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            if (!url.hash && window.scrollY > 0) toTop()
+            ScrollTrigger.refresh()
+            reveal()
+          }))
         })
       }
       const done = () => {
