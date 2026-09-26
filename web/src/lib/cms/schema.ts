@@ -112,7 +112,7 @@ export const SECTION_TYPES: Record<SectionType, { label: string; description: st
     ],
   },
   stats: {
-    label: 'Big counter', description: 'A giant number counts up like the loader while the colour columns rise (e.g. 325+ projects).',
+    label: 'Big counter', description: 'A giant number counts up every time it scrolls into view (e.g. 325+ projects).',
     fields: [
       text('label', 'Label'), { kind: 'number', name: 'value', label: 'Number to count to', min: 0 }, text('suffix', 'After the number', 'e.g. +'),
       text('caption', 'Caption under the number'),
