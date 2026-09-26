@@ -111,6 +111,14 @@ export const SECTION_TYPES: Record<SectionType, { label: string; description: st
       list('options', 'Stickers', [text('label', 'Label'), text('ring', 'Ring text'), text('cta', 'Button text'), text('href', 'Button link')], 'label', 'Designed for three stickers.'),
     ],
   },
+  stats: {
+    label: 'Big counter', description: 'A giant number counts up like the loader while the colour columns rise (e.g. 325+ projects).',
+    fields: [
+      text('label', 'Label'), { kind: 'number', name: 'value', label: 'Number to count to', min: 0 }, text('suffix', 'After the number', 'e.g. +'),
+      text('caption', 'Caption under the number'),
+      list('items', 'Smaller facts', [text('value', 'Value'), text('label', 'Label')], 'label', 'Optional, up to four.'),
+    ],
+  },
   marquee: { label: 'Name marquee', description: 'The giant orange marquee.', fields: [text('text', 'Word')] },
   pageHero: {
     label: 'Page hero', description: 'Title block at the top of inner pages.',

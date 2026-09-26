@@ -1,4 +1,4 @@
-# Nova Studio website + CMS
+# NexusBee website + CMS
 
 The agency website: Next.js 16 (App Router, Cache Components) with a built-in content management system on Supabase. Every text, image, section, service, project and blog post is editable at `/admin`. Saved changes go live within seconds.
 

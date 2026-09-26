@@ -248,3 +248,23 @@
   .chip { transform: none; }
   .bond__orange { -webkit-mask-image: none; mask-image: none; }
 }
+
+/* ============ Big counter (the loader, as a section) ============ */
+.stats { position: relative; min-height: 100vh; background: var(--ink); color: var(--lilac); overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12vh var(--gutter); text-align: center; }
+.stats__cols { position: absolute; inset: 0; display: flex; }
+.stats__col { flex: 1; transform-origin: bottom; }
+/* White + difference blend inverts over each column (orange → cyan, blue → yellow, lime → violet), so the text reads everywhere. */
+.stats__label, .stats__num, .stats__caption, .stats__items { position: relative; mix-blend-mode: difference; color: #fff; }
+.stats__label { margin: 0 0 2vh; font: 600 14px var(--body); letter-spacing: .08em; text-transform: uppercase; }
+.stats__num { margin: 0; display: flex; align-items: flex-start; font: 400 clamp(140px, 30vw, 460px)/.8 var(--display); }
+.stats__num i { font-style: normal; font-size: .4em; margin-top: .1em; }
+.stats__caption { margin: 3vh 0 0; font: 400 clamp(28px, 4vw, 72px)/1 var(--display); letter-spacing: .02em; }
+.stats__items { list-style: none; margin: 8vh 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3vw; width: min(1100px, 100%); }
+.stats__item { display: flex; flex-direction: column; gap: 6px; }
+.stats__item b { font: 400 clamp(36px, 3.4vw, 64px)/1 var(--display); font-weight: 400; }
+.stats__item span { font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: .05em; }
+@media (max-width: 767px) {
+  .stats { min-height: 90vh; }
+  .stats__num { font-size: 38vw; }
+  .stats__items { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5vh 6vw; }
+}

@@ -65,7 +65,7 @@ export function AuthCallback() {
   return (
     <div className="login">
       <div className="login__box">
-        <h1>NOVA<br /><span>CMS</span></h1>
+        <h1>NEXUSBEE<br /><span>CMS</span></h1>
         {state.step === 'checking' && <p>Checking your link…</p>}
         {state.step === 'done' && <p className="notice notice--ok">{state.message ?? 'Signed in. Opening the CMS…'}</p>}
         {state.step === 'error' && (

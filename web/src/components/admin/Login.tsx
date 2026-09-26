@@ -35,7 +35,7 @@ export function Login() {
   return (
     <div className="login">
       <div className="login__box">
-        <h1>NOVA<br /><span>CMS</span></h1>
+        <h1>NEXUSBEE<br /><span>CMS</span></h1>
         <p>Edit every page, section, service, project and post on the site.</p>
         {!db ? <p className="notice notice--err">Supabase is not configured. Add the keys to .env.local and restart.</p> : (
           <form onSubmit={submit}>

@@ -51,7 +51,7 @@ export function Shell({ children }: { children: ReactNode }) {
     <Toasts>
       <div className="adm">
         <aside className="adm-side">
-          <Link href="/admin" className="adm-brand">nova<svg viewBox="-50 -50 100 100" aria-hidden="true"><g fill="currentColor"><rect x="-8" y="-48" width="16" height="96" rx="2" /><rect x="-8" y="-48" width="16" height="96" rx="2" transform="rotate(60)" /><rect x="-8" y="-48" width="16" height="96" rx="2" transform="rotate(120)" /></g></svg><small>CMS</small></Link>
+          <Link href="/admin" className="adm-brand">nexusbee<svg viewBox="-50 -50 100 100" aria-hidden="true"><g fill="currentColor"><rect x="-8" y="-48" width="16" height="96" rx="2" /><rect x="-8" y="-48" width="16" height="96" rx="2" transform="rotate(60)" /><rect x="-8" y="-48" width="16" height="96" rx="2" transform="rotate(120)" /></g></svg><small>CMS</small></Link>
           <Suspense fallback={<Nav />}><NavLive /></Suspense>
           <div className="adm-side__foot">
             <a className="btn btn--sm" href="/" target="_blank" rel="noreferrer">View site ↗</a>

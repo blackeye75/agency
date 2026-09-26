@@ -9,11 +9,11 @@
 import type { Page, Post, Project, Section, SectionDataMap, SectionType, Service, Settings } from './types'
 
 export const seedSettings: Settings = {
-  brand: { name: 'nova', tagline: 'Digital 360: software, product and growth, all in one studio.' },
+  brand: { name: 'nexusbee', tagline: 'Digital 360: software, product and growth, all in one studio.' },
   seo: {
-    title: 'Nova Studio · Digital 360 agency',
+    title: 'NexusBee · Digital 360 agency',
     description:
-      'Nova Studio designs, builds and grows digital products: websites, web software, e-commerce, mobile apps, SEO, marketing and AI automation.',
+      'NexusBee designs, builds and grows digital products: websites, web software, e-commerce, mobile apps, SEO, marketing and AI automation.',
   },
   contact: {
     email: 'hello@example.com',
@@ -42,11 +42,11 @@ export const seedSettings: Settings = {
     { label: 'x', href: 'https://x.com' },
   ],
   footer: {
-    word: 'nova',
-    pronunciation: '[noh-vuh] noun • latin',
+    word: 'nexusbee',
+    pronunciation: '[nek-suhs-bee] noun',
     definition:
-      'The word *nova* derives from the Latin word *novus* meaning "new": a star that suddenly shines brighter than ever before.',
-    credit: 'Developed and designed by Nova Studio, 2026. All rights reserved.',
+      'A *nexus* is the point where things connect; a *bee* never stops building. Together: one busy studio where brands, code and growth meet.',
+    credit: 'Developed and designed by NexusBee, 2026. All rights reserved.',
     badge: "LET'S\nBUILD",
     legal: [
       { label: 'Terms', href: '/blog' },
@@ -61,11 +61,11 @@ export const seedSettings: Settings = {
 
 export const seedPages: Page[] = [
   { slug: 'home', title: 'Home', seo_title: null, seo_description: null, og_image: null },
-  { slug: 'services', title: 'Services', seo_title: 'Services · Nova Studio', seo_description: 'Nine ways we help brands grow in digital, from corporate websites to AI agents.', og_image: null },
-  { slug: 'projects', title: 'Projects', seo_title: 'Projects · Nova Studio', seo_description: 'Selected websites, software, stores and apps we designed and built.', og_image: null },
-  { slug: 'blog', title: 'Blog', seo_title: 'Blog · Nova Studio', seo_description: 'Notes on design, engineering, SEO and growth from the Nova team.', og_image: null },
-  { slug: 'contact', title: 'Contact', seo_title: 'Contact · Nova Studio', seo_description: 'Tell us about your project. We reply within 24 hours.', og_image: null },
-  { slug: 'quote', title: 'Get a quote', seo_title: 'Get a quote · Nova Studio', seo_description: 'Pick the services you need, share a budget and get a fixed quote.', og_image: null },
+  { slug: 'services', title: 'Services', seo_title: 'Services · NexusBee', seo_description: 'Nine ways we help brands grow in digital, from corporate websites to AI agents.', og_image: null },
+  { slug: 'projects', title: 'Projects', seo_title: 'Projects · NexusBee', seo_description: 'Selected websites, software, stores and apps we designed and built.', og_image: null },
+  { slug: 'blog', title: 'Blog', seo_title: 'Blog · NexusBee', seo_description: 'Notes on design, engineering, SEO and growth from the NexusBee team.', og_image: null },
+  { slug: 'contact', title: 'Contact', seo_title: 'Contact · NexusBee', seo_description: 'Tell us about your project. We reply within 24 hours.', og_image: null },
+  { slug: 'quote', title: 'Get a quote', seo_title: 'Get a quote · NexusBee', seo_description: 'Pick the services you need, share a budget and get a fixed quote.', og_image: null },
 ]
 
 const PROCESS: SectionDataMap['process'] = {
@@ -133,6 +133,13 @@ const SECTIONS: Record<string, SeedSection[]> = {
         logos: [],
       },
     },
+    {
+      key: 'stats', type: 'stats', label: 'Projects counter',
+      data: {
+        label: 'OUR TRACK RECORD', value: 325, suffix: '+', caption: 'PROJECTS COMPLETED',
+        items: [{ value: '120+', label: 'happy clients' }, { value: '7', label: 'years building' }, { value: '9', label: 'services under one roof' }, { value: '4.9', label: 'average rating' }],
+      },
+    },
     { key: 'services-head', type: 'heading', label: 'Services heading', data: { title: 'WHAT ARE WE\nBUILDING FOR\nYOU?' } },
     {
       key: 'service-cards', type: 'serviceCards', label: 'Service cards (3D flip)',
@@ -144,6 +151,7 @@ const SECTIONS: Record<string, SeedSection[]> = {
         ],
       },
     },
+    { key: 'services-list', type: 'servicesList', label: 'Services list', data: { label: 'OUR SERVICES', title: 'EVERYTHING\nWE DO' } },
     {
       key: 'tech-stack', type: 'logoBand', label: 'Tech stack marquee',
       data: {
@@ -224,7 +232,7 @@ const SECTIONS: Record<string, SeedSection[]> = {
         ],
       },
     },
-    { key: 'marquee', type: 'marquee', label: 'Name marquee', data: { text: 'NOVA' } },
+    { key: 'marquee', type: 'marquee', label: 'Name marquee', data: { text: 'NEXUSBEE' } },
   ],
   services: [
     { key: 'hero', type: 'pageHero', label: 'Page hero', data: { eyebrow: 'SERVICES', title: 'WE GROW\nYOUR BRAND\nIN DIGIT{A}L', text: 'Nine services, one team. Pick one, or let us run your whole digital 360: from the first pixel to the thousandth customer.' } },
@@ -245,7 +253,7 @@ const SECTIONS: Record<string, SeedSection[]> = {
   contact: [
     { key: 'hero', type: 'pageHero', label: 'Page hero', data: { eyebrow: 'CONTACT', title: "LET'S TALK\nAB{O|wide}UT IT", text: 'A new website, an app, or a second opinion on what you already have: tell us, we reply within 24 hours.' } },
     { key: 'form', type: 'contact', label: 'Contact details + form', data: { title: 'SAY HELLO', text: 'Prefer email or a call? Use the details below, or send the form and we will get back to you.', formTitle: 'SEND A MESSAGE', success: 'Thanks! Your message is in. We will reply within 24 hours.' } },
-    { key: 'marquee', type: 'marquee', label: 'Name marquee', data: { text: 'NOVA' } },
+    { key: 'marquee', type: 'marquee', label: 'Name marquee', data: { text: 'NEXUSBEE' } },
   ],
   quote: [
     { key: 'hero', type: 'pageHero', label: 'Page hero', data: { eyebrow: 'GET A QUOTE', title: 'TELL US WHAT\nY{O|wide}U NEED', text: 'Pick the services, share a budget and a timeline. We send a fixed quote within two working days.' } },
@@ -440,21 +448,21 @@ export const seedPosts: Post[] = [
     id: 'seed-post-website-speed', slug: 'why-website-speed-wins-clients', title: 'Why website speed quietly wins you clients',
     excerpt: 'Every second of load time costs enquiries. Here is what actually makes a site fast, and what to fix first.',
     body: 'A slow site does not look broken, it just loses people.\n\n## What to measure\n\nLook at **Largest Contentful Paint**, **Interaction to Next Paint** and **Cumulative Layout Shift**. Google uses all three.\n\n## What to fix first\n\n1. Oversized images\n2. Render-blocking fonts and scripts\n3. Slow hosting and no caching\n\nFix those and most sites get twice as fast in a week.',
-    cover_url: null, tags: [{ text: 'PERFORMANCE' }, { text: 'SEO' }], author: 'Nova Studio', read_minutes: 4,
+    cover_url: null, tags: [{ text: 'PERFORMANCE' }, { text: 'SEO' }], author: 'NexusBee', read_minutes: 4,
     published_at: '2026-09-01T09:00:00Z', published: true, seo_title: null, seo_description: null,
   },
   {
     id: 'seed-post-ai-agents', slug: 'ai-agents-for-small-teams', title: 'AI agents for small teams: where to start',
     excerpt: 'Skip the hype. Pick one repetitive task, measure it, automate it. A practical guide.',
     body: 'The best first AI project is boring: a task your team repeats every day.\n\n## Good first use cases\n\n- Answering common customer questions\n- Summarising calls and emails\n- Sorting and tagging incoming leads\n\n## Keep a human in the loop\n\nStart with drafts a person approves. When the drafts are reliably good, let the agent act on its own.',
-    cover_url: null, tags: [{ text: 'AI' }, { text: 'AUTOMATION' }], author: 'Nova Studio', read_minutes: 5,
+    cover_url: null, tags: [{ text: 'AI' }, { text: 'AUTOMATION' }], author: 'NexusBee', read_minutes: 5,
     published_at: '2026-08-20T09:00:00Z', published: true, seo_title: null, seo_description: null,
   },
   {
     id: 'seed-post-shopify-or-custom', slug: 'shopify-or-custom-store', title: 'Shopify, WooCommerce or custom: choosing your store',
     excerpt: 'Each option fits a different stage of growth. How to choose without regretting it a year later.',
     body: '## Shopify\n\nFastest to launch, great apps, monthly fees.\n\n## WooCommerce\n\nFlexible and familiar if you already run WordPress.\n\n## Custom\n\nWhen your catalogue, pricing or checkout does not fit a template.\n\nNot sure? Ask us for a free audit and we will recommend one in writing.',
-    cover_url: null, tags: [{ text: 'E-COMMERCE' }], author: 'Nova Studio', read_minutes: 3,
+    cover_url: null, tags: [{ text: 'E-COMMERCE' }], author: 'NexusBee', read_minutes: 3,
     published_at: '2026-08-05T09:00:00Z', published: true, seo_title: null, seo_description: null,
   },
 ]

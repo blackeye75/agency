@@ -24,7 +24,7 @@ export function ServiceCards({ data }: { data: ServiceCardsData }) {
   }, { scope: ref, dependencies: [JSON.stringify(cards), mobile, reduce], revertOnUpdate: true })
 
   return (
-    <section className="services" ref={ref} id="services">
+    <section className="services" ref={ref}>
       <div className="services__stage" style={{ '--cols': Math.max(cards.length, 1) } as React.CSSProperties}>
         {cards.map((c, i) => (
           <article key={i} className={`scard tone-${c.tone}`}>

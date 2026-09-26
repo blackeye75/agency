@@ -37,6 +37,7 @@ export type AboutData = { label: string; paragraph: string; link: Link; photos: 
 export type AuditData = { title: string; chips: { label: string; value: number; tone: Tone }[]; cta: Link }
 export type MoodData = { title: string; sub: string; options: { label: string; ring: string; cta: string; href: string }[] }
 export type MarqueeData = { text: string }
+export type StatsData = { label: string; value: number; suffix: string; caption: string; items: { value: string; label: string }[] }
 export type PageHeroData = { eyebrow: string; title: string; text: string }
 export type ServicesListData = { label: string; title: string }
 export type ProcessData = { label: string; title: string; steps: { title: string; text: string; duration: string }[] }
@@ -64,6 +65,7 @@ export type SectionDataMap = {
   audit: AuditData
   mood: MoodData
   marquee: MarqueeData
+  stats: StatsData
   pageHero: PageHeroData
   servicesList: ServicesListData
   process: ProcessData
