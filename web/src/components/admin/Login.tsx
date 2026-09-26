@@ -17,11 +17,11 @@ export function Login() {
     const password = String(fd.get('password') ?? '')
     setBusy(true)
     setMsg(null)
-    const redirect = `${window.location.origin}/admin`
+    const redirect = `${window.location.origin}/admin/auth`
     const { error } =
       mode === 'in' ? await db.auth.signInWithPassword({ email, password })
       : mode === 'up' ? await db.auth.signUp({ email, password, options: { emailRedirectTo: redirect } })
-      : await db.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/admin/settings` })
+      : await db.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/admin/auth?next=reset` })
     setBusy(false)
     if (error) return setMsg({ text: error.message })
     if (mode === 'in') {
@@ -29,7 +29,7 @@ export function Login() {
       window.location.href = next?.startsWith('/admin') ? next : '/admin'
       return
     }
-    setMsg({ ok: true, text: mode === 'up' ? 'Account created. Check your inbox to confirm the email, then sign in. Only emails on the admin list can edit content.' : 'Check your inbox for a reset link.' })
+    setMsg({ ok: true, text: mode === 'up' ? 'Account created. Check your inbox to confirm the email, then sign in. Only emails on the admin list can edit content.' : 'Check your inbox and open the newest reset link in this same browser. Asking again cancels earlier links.' })
   }
 
   return (

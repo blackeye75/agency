@@ -25,7 +25,9 @@ export async function proxy(request: NextRequest) {
   const signedIn = Boolean(data?.claims?.sub)
   const path = request.nextUrl.pathname
 
-  if (path.startsWith('/admin') && path !== '/admin/login' && !signedIn) {
+  // The login page and the email-link landing page must stay reachable signed out.
+  const open = path === '/admin/login' || path === '/admin/auth'
+  if (path.startsWith('/admin') && !open && !signedIn) {
     const login = request.nextUrl.clone()
     login.pathname = '/admin/login'
     login.searchParams.set('next', path)
