@@ -24,6 +24,7 @@ import { PostsGrid } from './PostsGrid'
 import { Contact } from './Contact'
 import { Quote } from './Quote'
 import { Enquiry } from './Enquiry'
+import { Stats } from './Stats'
 
 // The footer follows the last section.
 const FOOTER_BG = 'var(--surface)'
@@ -36,7 +37,7 @@ const BG: Record<SectionType, string> = {
   heading: 'var(--cream)', serviceCards: 'var(--surface)', cases: 'var(--surface)', signposts: 'var(--surface)', bond: 'var(--cream)',
   about: 'var(--orange)', audit: 'var(--surface)', mood: 'var(--lilac)', marquee: 'var(--orange)', pageHero: 'var(--surface)',
   servicesList: 'var(--cream)', process: 'var(--lilac)', ctaBand: 'var(--orange)', projectsGrid: 'var(--surface)', postsGrid: 'var(--cream)',
-  contact: 'var(--cream)', quote: 'var(--cream)', enquiry: 'var(--cream)',
+  contact: 'var(--cream)', quote: 'var(--cream)', enquiry: 'var(--cream)', stats: 'var(--ink)',
 }
 
 function render(s: Section, ctx: Ctx, next: string | undefined, index: number): ReactNode {
@@ -59,6 +60,7 @@ function render(s: Section, ctx: Ctx, next: string | undefined, index: number): 
     case 'about': return <About data={s.data as Section<'about'>['data']} next={wave} />
     case 'audit': return <Audit data={s.data as Section<'audit'>['data']} next={wave} />
     case 'mood': return <Mood data={s.data as Section<'mood'>['data']} />
+    case 'stats': return <Stats data={s.data as Section<'stats'>['data']} />
     case 'marquee': return <Marquee data={s.data as Section<'marquee'>['data']} />
     case 'pageHero': return <PageHero data={s.data as Section<'pageHero'>['data']} next={wave} index={String(index + 1).padStart(2, '0')} />
     case 'servicesList': return <ServicesList data={s.data as Section<'servicesList'>['data']} services={ctx.services} />
