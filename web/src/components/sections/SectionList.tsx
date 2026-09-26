@@ -37,7 +37,7 @@ const BG: Record<SectionType, string> = {
   heading: 'var(--cream)', serviceCards: 'var(--surface)', cases: 'var(--surface)', signposts: 'var(--surface)', bond: 'var(--cream)',
   about: 'var(--orange)', audit: 'var(--surface)', mood: 'var(--lilac)', marquee: 'var(--orange)', pageHero: 'var(--surface)',
   servicesList: 'var(--cream)', process: 'var(--lilac)', ctaBand: 'var(--orange)', projectsGrid: 'var(--surface)', postsGrid: 'var(--cream)',
-  contact: 'var(--cream)', quote: 'var(--cream)', enquiry: 'var(--cream)', stats: 'var(--ink)',
+  contact: 'var(--cream)', quote: 'var(--cream)', enquiry: 'var(--cream)', stats: 'var(--surface)',
 }
 
 function render(s: Section, ctx: Ctx, next: string | undefined, index: number): ReactNode {
