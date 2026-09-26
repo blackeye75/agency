@@ -221,6 +221,7 @@ export const SETTINGS_GROUPS: { key: string; title: string; fields: Field[]; lis
     text('word', 'Big word'), text('pronunciation', 'Pronunciation'), area('definition', 'Definition', 'Wrap words in *stars* to colour them.'),
     text('credit', 'Credit line'), area('badge', 'Badge text'), list('legal', 'Legal links', [text('label', 'Label'), text('href', 'Link')], 'label'),
   ] },
-  { key: 'loader', title: 'Loader and page transition', fields: [{ kind: 'boolean', name: 'enabled', label: 'Show the loader on the first visit' }, text('text', 'Text under the counter (also shown between pages)')] },
+  { key: 'transitionWords', title: 'Page transition words (the three bands)', fields: [], strings: true },
+  { key: 'loader', title: 'Loader (site opening and going home)', fields: [{ kind: 'boolean', name: 'enabled', label: 'Show the loader when the site opens' }, text('text', 'Text under the counter')] },
   { key: 'detailCta', title: 'Detail page call to action', fields: [area('title', 'Title', ALT_HINT), link('button', 'Button')] },
 ]

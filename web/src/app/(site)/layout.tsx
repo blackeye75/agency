@@ -4,7 +4,7 @@ import '@/styles/pages.css'
 import { getServices, getSettings } from '@/lib/cms/queries'
 import { SiteProvider } from '@/components/site/SiteProvider'
 import { Sprites } from '@/components/site/Sprites'
-import { ChromeIntro, Cursor, Dock, Loader, Nav, RouteWatcher, Transition } from '@/components/site/Chrome'
+import { ChromeIntro, Curtain, Cursor, Dock, Loader, Nav, RouteWatcher, Transition } from '@/components/site/Chrome'
 import { Menu } from '@/components/site/Menu'
 import { Footer } from '@/components/site/Footer'
 import { LiveRefresh } from '@/components/site/LiveRefresh'
@@ -23,7 +23,8 @@ export default async function SiteLayout({ children }: LayoutProps<'/'>) {
       <main id="main">{children}</main>
       <Footer settings={settings} services={published} />
       <Menu settings={settings} />
-      <Transition text={settings.loader.text} />
+      <Transition words={settings.transitionWords} />
+      <Curtain text={settings.loader.text} />
       <ChromeIntro />
       <RouteWatcher />
       <LiveRefresh />

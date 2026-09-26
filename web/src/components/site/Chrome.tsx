@@ -101,7 +101,6 @@ export function Loader({ settings }: { settings: Settings }) {
       finishIntro()
       return
     }
-    try { sessionStorage.setItem('intro', '1') } catch {}
     scroll.lenis?.stop()
     gsap.ticker.lagSmoothing(500, 33) // don't let a slow first frame skip the intro
     const n = { v: 0 }
@@ -170,16 +169,48 @@ export function Cursor() {
   )
 }
 
-// Page transition: the preview's loader (0–100% counter, three colour columns)
-// slides up over the page, counts while the next page loads, then lifts off.
-export function Transition({ text }: { text: string }) {
-  const { transitionRef } = useSite()
+// Between inner pages: a solid block of three tilted marquee bands sweeps up
+// over the page, the route changes underneath, and the block lifts off.
+export function Transition({ words }: { words: string[] }) {
+  const { transitionRef, loopsRef } = useSite()
+  const tones = ['lime', 'orange', 'blue'] as const
+  const icons = [<i key="t" className="ico-target" />, <i key="e" className="ico-eye" />, <Use key="a" id="asterisk" className="mq-ast" />]
   useGSAP(() => {
-    // Parked below the screen; GSAP owns the transform so offsets never stack.
-    gsap.set('.curtain__panel', { yPercent: 100 })
-  }, { scope: transitionRef })
+    // Parked below the screen (GSAP owns the transform so offsets never stack).
+    gsap.set('.transition__bands', { yPercent: 105 })
+    // Paused loops; the transition plays them while the bands are visible.
+    loopsRef.current = gsap.utils.toArray<HTMLElement>('.band__track', transitionRef.current).map((t, i) =>
+      gsap.fromTo(t, { xPercent: i % 2 ? -50 : 0 }, { xPercent: i % 2 ? 0 : -50, duration: 14, ease: 'none', repeat: -1, paused: true }))
+  }, { scope: transitionRef, dependencies: [words.join('|')], revertOnUpdate: true })
+  // Enough repeats that half a track is always wider than the widest screen.
+  const reps = 10
   return (
-    <div className="curtain" ref={transitionRef} aria-hidden="true">
+    <div className="transition" ref={transitionRef} aria-hidden="true">
+      <div className="transition__dim" />
+      <div className="transition__bands">
+        {tones.map((tone, i) => (
+          <div key={tone} className={`band band--${tone}`}>
+            <div className="band__track">
+              {Array.from({ length: reps }, (_, k) => (
+                <span key={k} style={{ display: 'contents' }}><span>{words[i] ?? words[0] ?? ''}</span>{icons[i]}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// Going to the home page: the intro loader (0–100% counter, three colour
+// columns) slides up, counts while the page loads, then lifts off.
+export function Curtain({ text }: { text: string }) {
+  const { curtainRef } = useSite()
+  useGSAP(() => {
+    gsap.set('.curtain__panel', { yPercent: 100 })
+  }, { scope: curtainRef })
+  return (
+    <div className="curtain" ref={curtainRef} aria-hidden="true">
       <div className="curtain__panel">
         <div className="loader__bands"><div className="lb lb--orange" /><div className="lb lb--blue" /><div className="lb lb--lime" /></div>
         <p className="loader__count"><span data-count>0</span><i>%</i></p>
