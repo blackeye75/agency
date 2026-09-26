@@ -14,9 +14,9 @@ import '@/styles/base.css'
 import { getSettings } from '@/lib/cms/queries'
 import { SITE_URL } from '@/lib/supabase/env'
 
-// Runs before paint: restores the theme and decides whether the intro loader
+// Runs before paint: forwards Supabase email links to /admin/auth, restores the theme and decides whether the intro loader
 // plays (every time the site opens, except in the CMS preview or with reduced motion).
-const BOOT = `(function(){var d=document.documentElement;try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')d.dataset.theme=t}catch(e){}
+const BOOT = `(function(){var l=location;if(l.pathname!=='/admin/auth'&&(/[#&](access_token|error_description)=/.test(l.hash)||/[?&](code|token_hash)=/.test(l.search))){l.replace('/admin/auth'+l.search+l.hash);return}var d=document.documentElement;try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')d.dataset.theme=t}catch(e){}
 if(window.top!==window.self||matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('intro-seen');d.classList.add('intro-pending')})()`
 
 export async function generateMetadata(): Promise<Metadata> {

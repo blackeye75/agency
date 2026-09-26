@@ -42,9 +42,9 @@
 
 /* ============ Clients / connection ============ */
 .clients { background: var(--cream); color: var(--grey); padding: 40px var(--gutter) 12vh; overflow: hidden; }
-.conn { position: relative; margin: 6vh 0 0 4vw; font: 400 clamp(64px, 11.4vw, 220px)/.95 var(--display); display: flex; flex-direction: column; }
+.conn { position: relative; margin: 6vh 0 0 4vw; font: 400 clamp(64px, 11.4vw, 220px)/.95 var(--display); letter-spacing: .02em; display: flex; flex-direction: column; }
 .conn > span[aria-hidden] { display: flex; align-items: flex-end; white-space: nowrap; }
-.coil { width: 3.8em; height: .82em; margin: 0 .02em .06em; overflow: visible; flex: none; }
+.coil { width: 3.8em; height: .82em; margin: 0 .08em .06em; overflow: visible; flex: none; }
 .coil path { fill: none; stroke: var(--orange); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
 .rating { position: absolute; right: 4%; top: 36%; width: clamp(150px, 17vw, 330px); aspect-ratio: 1; }
 .rating svg { width: 100%; height: 100%; overflow: visible; }
@@ -150,10 +150,11 @@
 .faces > .is-on { opacity: 1; }
 
 /* ============ Audit ============ */
-.audit { position: relative; background: var(--surface); padding: 14vh var(--gutter) 26vh; display: flex; flex-direction: column; align-items: center; gap: 6vh; }
+.audit { position: relative; overflow-x: clip; background: var(--surface); padding: 14vh var(--gutter) 26vh; display: flex; flex-direction: column; align-items: center; gap: 6vh; }
 .audit__wrap { position: relative; }
 .audit__title { font-size: clamp(76px, 13.5vw, 260px); text-align: center; }
-.chip { position: absolute; left: var(--x); top: var(--y); translate: -50% 0; width: clamp(150px, 15vw, 230px); padding: 9px 12px 11px; border-radius: 8px; color: var(--t-fg); background: var(--t); font-weight: 800; font-size: clamp(12px, 1vw, 16px); display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 4px 8px; border: 2px solid rgba(255,255,255,.85); transform: scale(0); }
+/* Centred with a margin: GSAP drops the CSS translate property when it animates the chip. */
+.chip { --cw: clamp(150px, 15vw, 230px); position: absolute; left: var(--x); top: var(--y); margin-left: calc(var(--cw) / -2); width: var(--cw); padding: 9px 12px 11px; border-radius: 8px; color: var(--t-fg); background: var(--t); font-weight: 800; font-size: clamp(12px, 1vw, 16px); display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 4px 8px; border: 2px solid rgba(255,255,255,.85); transform: scale(0); }
 .chip i { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); border: 1px solid var(--ink); }
 .chip u { grid-column: 1 / -1; height: 3px; border-radius: 3px; background: rgba(255,255,255,.3); overflow: hidden; }
 .chip s { display: block; height: 100%; background: currentColor; transform: scaleX(0); transform-origin: left; }
@@ -192,8 +193,8 @@
   .statement { margin-top: 10vh; width: auto; }
   .slot svg { visibility: visible; }
   .clients { padding-bottom: 8vh; }
-  .conn { margin: 4vh 0 0; font-size: 14vw; }
-  .coil { width: 2.1em; }
+  .conn { margin: 4vh 0 0; font-size: 12vw; letter-spacing: .03em; }
+  .coil { width: 2.9em; margin: 0 .1em .06em; }
   .rating { position: relative; right: auto; top: auto; margin: 4vh 0 0 auto; width: 40vw; }
   .services { height: auto; min-height: 0; padding: 8vh var(--gutter) 14vh; }
   .services__stage { position: static; grid-template-columns: 1fr; gap: 18px; }
@@ -227,7 +228,12 @@
   .about__para { margin: 12vh 0 5vh; }
   .about .ulink { margin-left: 0; }
   .faces { position: relative; right: auto; bottom: auto; width: 56vw; margin: 6vh 0 0 auto; }
-  .chip { width: 38vw; }
+  /* Narrower chips whose centres stay far enough from both edges to fit on screen. */
+  .chip { --cw: 40vw; width: var(--cw); padding: 7px 9px 9px; font-size: 11px; gap: 3px 6px; grid-template-columns: auto minmax(0, 1fr) auto; white-space: nowrap; left: clamp(20vw, var(--x), calc(100% - 20vw)); }
+  .audit__wrap { width: 100%; }
+  .audit__title { font-size: 15vw; }
+  .services-head .mega { font-size: 17vw; }
+  .mood .mega { font-size: 14vw; }
   .mood__options { gap: 10px; }
 }
 
