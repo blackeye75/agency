@@ -8,7 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const img = (url: string | null) => (url ? [abs(url)] : undefined)
   return [
     { url: abs('/'), changeFrequency: 'weekly', priority: 1 },
-    ...['/services', '/locations', '/projects', '/blog', '/contact', '/quote'].map((p) => ({ url: abs(p), changeFrequency: 'weekly' as const, priority: 0.8 })),
+    ...['/services', '/locations', '/projects', '/blog', '/contact', '/quote', '/privacy-policy'].map((p) => ({ url: abs(p), changeFrequency: 'weekly' as const, priority: 0.8 })),
     ...services.filter((s) => s.published).map((s) => ({ url: abs(`/services/${s.slug}`), lastModified: s.updated_at, changeFrequency: 'monthly' as const, priority: 0.9, images: img(s.cover_url) })),
     ...LOCATIONS.map((l) => ({ url: abs(`/locations/${l.slug}`), changeFrequency: 'monthly' as const, priority: 0.9 })),
     ...projects.filter((p) => p.published).map((p) => ({ url: abs(`/projects/${p.slug}`), lastModified: p.updated_at, changeFrequency: 'yearly' as const, priority: 0.6, images: [p.cover_url, ...p.gallery.map((g) => g.src)].filter(Boolean).map((u) => abs(u!)) })),

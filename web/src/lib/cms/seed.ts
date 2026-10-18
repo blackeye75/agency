@@ -51,9 +51,8 @@ export const seedSettings: Settings = {
     credit: 'Developed and designed by NexusBee, 2026. All rights reserved.',
     badge: "LET'S\nBUILD",
     legal: [
-      { label: 'Terms', href: '/blog' },
-      { label: 'Privacy Policy', href: '/blog' },
-      { label: 'Cookie policy', href: '/blog' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Cookie policy', href: '/privacy-policy' },
     ],
   },
   transitionWords: ['CODE', 'SPEED', 'SCALE'],
@@ -459,27 +458,4 @@ export const seedProjects: Project[] = PROJECTS.map((p, i) => ({
   seo_description: null,
 }))
 
-export const seedPosts: Post[] = [
-  ...SEO_POSTS,
-  {
-    id: 'seed-post-website-speed', slug: 'why-website-speed-wins-clients', title: 'Why website speed quietly wins you clients',
-    excerpt: 'Every second of load time costs enquiries. Here is what actually makes a site fast, and what to fix first.',
-    body: 'A slow site does not look broken, it just loses people.\n\n## What to measure\n\nLook at **Largest Contentful Paint**, **Interaction to Next Paint** and **Cumulative Layout Shift**. Google uses all three.\n\n## What to fix first\n\n1. Oversized images\n2. Render-blocking fonts and scripts\n3. Slow hosting and no caching\n\nFix those and most sites get twice as fast in a week.',
-    cover_url: null, tags: [{ text: 'PERFORMANCE' }, { text: 'SEO' }], author: 'NexusBee', read_minutes: 4,
-    published_at: '2026-09-01T09:00:00Z', published: true, seo_title: null, seo_description: null,
-  },
-  {
-    id: 'seed-post-ai-agents', slug: 'ai-agents-for-small-teams', title: 'AI agents for small teams: where to start',
-    excerpt: 'Skip the hype. Pick one repetitive task, measure it, automate it. A practical guide.',
-    body: 'The best first AI project is boring: a task your team repeats every day.\n\n## Good first use cases\n\n- Answering common customer questions\n- Summarising calls and emails\n- Sorting and tagging incoming leads\n\n## Keep a human in the loop\n\nStart with drafts a person approves. When the drafts are reliably good, let the agent act on its own.',
-    cover_url: null, tags: [{ text: 'AI' }, { text: 'AUTOMATION' }], author: 'NexusBee', read_minutes: 5,
-    published_at: '2026-08-20T09:00:00Z', published: true, seo_title: null, seo_description: null,
-  },
-  {
-    id: 'seed-post-shopify-or-custom', slug: 'shopify-or-custom-store', title: 'Shopify, WooCommerce or custom: choosing your store',
-    excerpt: 'Each option fits a different stage of growth. How to choose without regretting it a year later.',
-    body: '## Shopify\n\nFastest to launch, great apps, monthly fees.\n\n## WooCommerce\n\nFlexible and familiar if you already run WordPress.\n\n## Custom\n\nWhen your catalogue, pricing or checkout does not fit a template.\n\nNot sure? Ask us for a free audit and we will recommend one in writing.',
-    cover_url: null, tags: [{ text: 'E-COMMERCE' }], author: 'NexusBee', read_minutes: 3,
-    published_at: '2026-08-05T09:00:00Z', published: true, seo_title: null, seo_description: null,
-  },
-]
+export const seedPosts: Post[] = SEO_POSTS

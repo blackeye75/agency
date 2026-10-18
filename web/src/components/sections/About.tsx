@@ -28,7 +28,7 @@ export function About({ data, next }: { data: AboutData; next?: string }) {
     if (!reduce && faces.length > 1) ScrollTrigger.create({ trigger: sec, start: 'top bottom', end: 'bottom top', onToggle: (s) => { clearInterval(timer); if (s.isActive) timer = setInterval(tick, 800) } })
     const para = sec.querySelector<HTMLElement>('.about__para')!
     SplitText.create(para, {
-      type: 'words', wordsClass: 'w', autoSplit: true,
+      type: 'words', wordsClass: 'w', autoSplit: true, aria: 'none',
       onSplit(self) {
         if (reduce) return
         return gsap.to(self.words, { opacity: 1, ease: 'none', stagger: 0.1, scrollTrigger: { trigger: para, start: 'top 75%', end: 'bottom 45%', scrub: 1 } })

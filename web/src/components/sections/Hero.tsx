@@ -57,8 +57,8 @@ export function Hero({ data, next }: { data: HeroData; next?: string }) {
         <span className="sr">{plain(data.line1)} {words.join(', ')} {plain(data.line3)}</span>
         <span className="hl hl--1" aria-hidden="true" data-split data-intro>{alt(data.line1)}</span>
         <span className="hl hl--rotor" aria-hidden="true" ref={rotor} data-intro>{' '}</span>
-        <span className="hl hl--3" aria-hidden="true">
-          <span data-split data-intro>{alt(data.line3)}</span>
+        <span className="hl hl--3">
+          <span aria-hidden="true" data-split data-intro>{alt(data.line3)}</span>
           <Use id="asterisk" className="ast" />
           {data.badge?.href && <ScBadge href={data.badge.href} label={data.badge.label} />}
         </span>

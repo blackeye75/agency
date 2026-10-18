@@ -17,7 +17,7 @@ export function ConsentBanner() {
   }
   return (
     <div className="consent" role="dialog" aria-label="Cookie consent">
-      <p>We use cookies to measure traffic and improve our ads. You can say no and the site works the same.</p>
+      <p>We use cookies to measure traffic and improve our ads. You can say no and the site works the same. <a href="/privacy-policy">Cookie policy</a></p>
       <div>
         <button type="button" onClick={() => choose('denied')}>Reject</button>
         <button type="button" className="consent__ok" onClick={() => choose('granted')}>Accept</button>
