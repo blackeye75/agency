@@ -1,8 +1,8 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { withCurrentServices, withPageSeo, withPostDefaults, withProjectService, withServiceDefaults, withSettingsDefaults } from './defaults.ts'
-import { LEGACY_POST_BODIES, LEGACY_SERVICE_BODIES, LEGACY_SERVICE_SEO, LEGACY_SERVICES, LEGACY_SITE_SEO } from './legacy.ts'
-import { seedPages, seedPosts, seedProjects, seedServices, seedSettings } from './seed.ts'
+import { withCurrentServices, withDefaultPosts, withPageSeo, withPostDefaults, withProjectService, withSectionDefaults, withServiceDefaults, withSettingsDefaults } from './defaults.ts'
+import { LEGACY_POST_BODIES, LEGACY_SECTIONS, LEGACY_SERVICE_BODIES, LEGACY_SERVICE_SEO, LEGACY_SERVICES, LEGACY_SITE_SEO } from './legacy.ts'
+import { seedPages, seedPosts, seedProjects, seedSections, seedServices, seedSettings } from './seed.ts'
 import { SERVICE_COPY } from './service-copy.ts'
 
 test('legacy site title and description are upgraded, edited ones kept', () => {
@@ -67,4 +67,24 @@ test('edited services keep their fields; old October SEO titles upgrade', () => 
 test('projects on a merged service point at its replacement', () => {
   const p = withProjectService({ ...seedProjects[0], service_slug: 'e-commerce' })
   assert.equal(p.service_slug, 'website-app-development')
+})
+
+test('default posts missing from the database are added, newest first, without duplicates', () => {
+  const inDb = { ...seedPosts.find((p) => p.slug === 'shopify-or-custom-store')!, title: 'Edited title' }
+  const out = withDefaultPosts([inDb])
+  assert.equal(out.length, seedPosts.length)
+  assert.equal(out.filter((p) => p.slug === inDb.slug).length, 1)
+  assert.equal(out.find((p) => p.slug === inDb.slug)!.title, 'Edited title')
+  assert.deepEqual(out.map((p) => p.published_at), [...out.map((p) => p.published_at)].sort().reverse())
+})
+
+test('home FAQ is added before the enquiry form until the database has it; legacy fields upgrade', () => {
+  const legacyHome = seedSections.filter((s) => s.page_slug === 'home' && s.key !== 'faq').map((s, i) => ({ ...s, position: i }))
+  legacyHome.find((s) => s.key === 'hero')!.data = { ...legacyHome.find((s) => s.key === 'hero')!.data, ...LEGACY_SECTIONS['home/hero'] } as never
+  const out = withSectionDefaults('home', legacyHome)
+  const keys = out.map((s) => s.key)
+  assert.equal(keys.indexOf('faq'), keys.indexOf('enquiry') - 1)
+  assert.deepEqual((out[0].data as { words: unknown }).words, (seedSections.find((s) => s.key === 'hero' && s.page_slug === 'home')!.data as { words: unknown }).words)
+  const hiddenFaq = [...legacyHome, { ...seedSections.find((s) => s.key === 'faq')!, visible: false }]
+  assert.equal(withSectionDefaults('home', hiddenFaq).some((s) => s.key === 'faq'), false)
 })
