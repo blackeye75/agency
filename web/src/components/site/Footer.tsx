@@ -3,6 +3,7 @@ import { TLink } from './TLink'
 import { FooterMotion } from './FooterMotion'
 import { emphasis } from '@/lib/cms/text'
 import type { Service, Settings } from '@/lib/cms/types'
+import { LOCATIONS } from '@/lib/locations'
 
 // Copula's dictionary footer, with webmind-style contact and service links.
 export function Footer({ settings, services }: { settings: Settings; services: Service[] }) {
@@ -26,6 +27,10 @@ export function Footer({ settings, services }: { settings: Settings; services: S
           {services.map((s) => <TLink key={s.slug} href={`/services/${s.slug}`}>{s.title}</TLink>)}
         </nav>
       )}
+      <nav className="footer__services" style={{ marginTop: 0 }} aria-label="Locations">
+        <TLink href="/locations">Agency in India</TLink>
+        {LOCATIONS.map((l) => <TLink key={l.slug} href={`/locations/${l.slug}`}>{l.name}</TLink>)}
+      </nav>
       <div className="footer__bottom">
         <p>{footer.credit}</p>
         <div className="footer__social">

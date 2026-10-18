@@ -158,3 +158,11 @@ html.has-cursor .cursor { display: block; }
   .loader { display: none; }
   .blink { animation: none; }
 }
+
+/* Cookie consent (only rendered when a GTM ID is set) */
+.consent { position: fixed; left: 16px; bottom: 16px; z-index: 1000; max-width: min(420px, calc(100vw - 32px)); display: flex; flex-direction: column; gap: 12px; padding: 18px; border-radius: 20px; background: var(--cream); color: var(--ink); box-shadow: 0 12px 40px rgba(0,0,0,.35); font-size: 14px; line-height: 1.45; font-weight: 600; }
+.consent p { margin: 0; }
+.consent a { text-decoration: underline; }
+.consent div { display: flex; gap: 8px; justify-content: flex-end; }
+.consent button { border: 1px solid var(--ink); border-radius: 99px; padding: 8px 18px; background: transparent; color: var(--ink); font: inherit; font-weight: 800; cursor: pointer; }
+.consent .consent__ok { background: var(--ink); color: var(--cream); }

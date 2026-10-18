@@ -227,3 +227,17 @@
   .next-link strong { font-size: 16vw; }
 }
 .form .cta--orange .cta__arrow { background: var(--lime); color: var(--ink); }
+
+/* FAQ and city links (locations pages) */
+.faq { color: var(--ink); }
+.faq__list { display: flex; flex-direction: column; gap: 12px; max-width: 980px; margin-top: 6vh; }
+.faq__item { border-radius: 22px; background: rgba(18,0,48,.06); padding: 0 clamp(18px, 2vw, 32px); }
+.faq__item summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 0; }
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after { content: '+'; font: 400 34px/1 var(--display); color: var(--orange); transition: transform .3s; }
+.faq__item[open] summary::after { transform: rotate(45deg); }
+.faq__item h3 { margin: 0; font-size: clamp(17px, 1.3vw, 22px); line-height: 1.3; font-weight: 800; }
+.faq__item p { margin: 0 0 22px; max-width: 70ch; line-height: 1.6; font-weight: 500; }
+.loclinks { display: flex; flex-direction: column; gap: 3vh; padding-top: 8vh; padding-bottom: 8vh; }
+.post-services { max-width: 70ch; margin: 10vh auto 0; display: flex; flex-direction: column; gap: 16px; }
+.post-services h2 { margin: 0; font: 400 clamp(30px, 2.6vw, 48px)/1 var(--display); text-transform: uppercase; }

@@ -9,6 +9,7 @@ import { TLink } from '@/components/site/TLink'
 import { Markdown } from '@/components/pages/Markdown'
 import { Crumbs, DetailFallback, NextLink } from '@/components/pages/Detail'
 import { CtaBand } from '@/components/sections/CtaBand'
+import { JsonLd, projectLd } from '@/lib/seo'
 
 export async function generateStaticParams() {
   return (await getProjects()).filter((p) => p.published).map((p) => ({ slug: p.slug }))
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: PageProps<'/projects/[slug]'>
   if (!p) return {}
   const title = p.seo_title || `${p.name} · ${settings.brand.name}`
   const description = p.seo_description || p.summary
-  return { title, description, alternates: { canonical: `/projects/${slug}` }, openGraph: { title, description, images: p.cover_url ? [p.cover_url] : undefined } }
+  return { title, description, alternates: { canonical: `/projects/${slug}` }, openGraph: { title, description, images: [p.cover_url || '/og'] } }
 }
 
 async function ProjectDetail({ params }: Pick<PageProps<'/projects/[slug]'>, 'params'>) {
@@ -67,7 +68,7 @@ async function ProjectDetail({ params }: Pick<PageProps<'/projects/[slug]'>, 'pa
         </div>
         {p.gallery.length > 0 && (
           <div className="gallery" style={{ marginTop: '8vh' }}>
-            {p.gallery.map((g, k) => <figure key={k} data-reveal={String((k % 2) * 0.1)}><img src={g.src} alt={g.alt} /></figure>)}
+            {p.gallery.map((g, k) => <figure key={k} data-reveal={String((k % 2) * 0.1)}><img src={g.src} alt={g.alt} loading="lazy" decoding="async" /></figure>)}
           </div>
         )}
       </section>
@@ -83,6 +84,7 @@ async function ProjectDetail({ params }: Pick<PageProps<'/projects/[slug]'>, 'pa
 
       {next && next.slug !== p.slug && <NextLink href={`/projects/${next.slug}`} label="Next project" title={next.name} tone={next.color} />}
       <CtaBand data={{ title: ctx.settings.detailCta.title, text: '', button: ctx.settings.detailCta.button }} />
+      <JsonLd data={projectLd(p)} />
       <PageMotion version={p.id} />
     </>
   )

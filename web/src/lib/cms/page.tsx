@@ -24,7 +24,7 @@ export async function pageMetadata(slug: string): Promise<Metadata> {
   return {
     title, description,
     alternates: { canonical: slug === 'home' ? '/' : `/${slug}` },
-    openGraph: { title, description, images: image ? [image] : undefined },
+    openGraph: { title, description, images: [image || '/og'] },
   }
 }
 

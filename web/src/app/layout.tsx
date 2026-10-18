@@ -26,8 +26,10 @@ export async function generateMetadata(): Promise<Metadata> {
     title: { default: seo.title, template: `%s` },
     description: seo.description,
     applicationName: brand.name,
-    openGraph: { title: seo.title, description: seo.description, images: seo.ogImage ? [seo.ogImage] : undefined, type: 'website' },
-    icons: { icon: '/icon.svg' },
+    openGraph: { title: seo.title, description: seo.description, images: [seo.ogImage || '/og'], type: 'website', locale: 'en_IN', siteName: brand.name, url: '/' },
+    twitter: { card: 'summary_large_image' },
+    icons: { icon: '/icon.svg', apple: '/apple-icon' },
+    verification: { google: seo.googleVerification || undefined, other: seo.bingVerification ? { 'msvalidate.01': seo.bingVerification } : undefined },
   }
 }
 
@@ -35,7 +37,7 @@ export const viewport: Viewport = { themeColor: '#120030', width: 'device-width'
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning>
+    <html lang="en-IN" data-theme="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: BOOT }} />
       </head>

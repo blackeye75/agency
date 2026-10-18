@@ -6,14 +6,16 @@
 // ({O|wide}, {T|slant}, {b|script}, {G|g} pick a variant) and a new line breaks
 // a heading. In the icon story, [crown] [heart] [bolt] [cursor] [chart] place icons.
 
+import { SERVICE_COPY } from './service-copy.ts'
+import { SEO_POSTS } from './seo-posts.ts'
 import type { Page, Post, Project, Section, SectionDataMap, SectionType, Service, Settings } from './types'
 
 export const seedSettings: Settings = {
   brand: { name: 'nexusbee', tagline: 'Digital 360: software, product and growth, all in one studio.' },
   seo: {
-    title: 'NexusBee · Digital 360 agency',
+    title: 'NexusBee · Website Development, Digital Marketing & AI Automation Agency in India',
     description:
-      'NexusBee designs, builds and grows digital products: websites, web software, e-commerce, mobile apps, SEO, marketing and AI automation.',
+      'NexusBee is a Noida-based digital agency with 7+ years of experience in website development, web apps, e-commerce, mobile apps, SEO, digital marketing and AI automation for businesses across India.',
   },
   contact: {
     email: 'hello@example.com',
@@ -49,9 +51,8 @@ export const seedSettings: Settings = {
     credit: 'Developed and designed by NexusBee, 2026. All rights reserved.',
     badge: "LET'S\nBUILD",
     legal: [
-      { label: 'Terms', href: '/blog' },
-      { label: 'Privacy Policy', href: '/blog' },
-      { label: 'Cookie policy', href: '/blog' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Cookie policy', href: '/privacy-policy' },
     ],
   },
   transitionWords: ['CODE', 'SPEED', 'SCALE'],
@@ -209,6 +210,20 @@ const SECTIONS: Record<string, SeedSection[]> = {
       },
     },
     {
+      key: 'faq', type: 'faq', label: 'FAQ',
+      data: {
+        title: 'QUESTIONS\nWE GET ASKED',
+        items: [
+          { q: 'What does NexusBee do?', a: 'NexusBee is a digital agency in Noida with 7+ years of experience. We design and build websites, web applications, e-commerce stores and mobile apps, run SEO and digital marketing, and build AI agents and business automation for companies across India.' },
+          { q: 'Do you work with businesses outside Noida?', a: 'Yes. We work with clients all over India, including Delhi NCR, Mumbai, Pune, Bangalore and Hyderabad. Projects run smoothly over video calls, a shared project board and a live staging link.' },
+          { q: 'How much does a website or app cost?', a: 'It depends on the pages, features and integrations you need. After a short discovery call we send a fixed, written quote, so the price does not change halfway through the project.' },
+          { q: 'How long does a project take?', a: 'A company website usually takes 4 to 8 weeks, an MVP web or mobile app 8 to 14 weeks, and a first AI automation a few weeks. We agree a timeline with milestones before we start.' },
+          { q: 'Will we own the website, code and accounts?', a: 'Yes. Your domain, code, hosting, ad accounts and data stay in your name from day one.' },
+          { q: 'Do you offer support after launch?', a: 'Yes. Monthly maintenance plans cover updates, backups, security, monitoring, content changes and new features, with clear response times.' },
+        ],
+      },
+    },
+    {
       key: 'enquiry', type: 'enquiry', label: 'Enquiry form',
       data: {
         label: 'START A PROJECT',
@@ -284,7 +299,7 @@ export const seedSections: Section[] = Object.entries(SECTIONS).flatMap(([page, 
 )
 
 const svc = (s: Omit<Service, 'id' | 'published' | 'cover_url' | 'seo_title' | 'seo_description'>): Service => ({
-  id: `seed-service-${s.slug}`, published: true, cover_url: null, seo_title: null, seo_description: null, ...s,
+  id: `seed-service-${s.slug}`, published: true, cover_url: null, ...s, ...SERVICE_COPY[s.slug],
 })
 
 export const seedServices: Service[] = [
@@ -443,26 +458,4 @@ export const seedProjects: Project[] = PROJECTS.map((p, i) => ({
   seo_description: null,
 }))
 
-export const seedPosts: Post[] = [
-  {
-    id: 'seed-post-website-speed', slug: 'why-website-speed-wins-clients', title: 'Why website speed quietly wins you clients',
-    excerpt: 'Every second of load time costs enquiries. Here is what actually makes a site fast, and what to fix first.',
-    body: 'A slow site does not look broken, it just loses people.\n\n## What to measure\n\nLook at **Largest Contentful Paint**, **Interaction to Next Paint** and **Cumulative Layout Shift**. Google uses all three.\n\n## What to fix first\n\n1. Oversized images\n2. Render-blocking fonts and scripts\n3. Slow hosting and no caching\n\nFix those and most sites get twice as fast in a week.',
-    cover_url: null, tags: [{ text: 'PERFORMANCE' }, { text: 'SEO' }], author: 'NexusBee', read_minutes: 4,
-    published_at: '2026-09-01T09:00:00Z', published: true, seo_title: null, seo_description: null,
-  },
-  {
-    id: 'seed-post-ai-agents', slug: 'ai-agents-for-small-teams', title: 'AI agents for small teams: where to start',
-    excerpt: 'Skip the hype. Pick one repetitive task, measure it, automate it. A practical guide.',
-    body: 'The best first AI project is boring: a task your team repeats every day.\n\n## Good first use cases\n\n- Answering common customer questions\n- Summarising calls and emails\n- Sorting and tagging incoming leads\n\n## Keep a human in the loop\n\nStart with drafts a person approves. When the drafts are reliably good, let the agent act on its own.',
-    cover_url: null, tags: [{ text: 'AI' }, { text: 'AUTOMATION' }], author: 'NexusBee', read_minutes: 5,
-    published_at: '2026-08-20T09:00:00Z', published: true, seo_title: null, seo_description: null,
-  },
-  {
-    id: 'seed-post-shopify-or-custom', slug: 'shopify-or-custom-store', title: 'Shopify, WooCommerce or custom: choosing your store',
-    excerpt: 'Each option fits a different stage of growth. How to choose without regretting it a year later.',
-    body: '## Shopify\n\nFastest to launch, great apps, monthly fees.\n\n## WooCommerce\n\nFlexible and familiar if you already run WordPress.\n\n## Custom\n\nWhen your catalogue, pricing or checkout does not fit a template.\n\nNot sure? Ask us for a free audit and we will recommend one in writing.',
-    cover_url: null, tags: [{ text: 'E-COMMERCE' }], author: 'NexusBee', read_minutes: 3,
-    published_at: '2026-08-05T09:00:00Z', published: true, seo_title: null, seo_description: null,
-  },
-]
+export const seedPosts: Post[] = SEO_POSTS

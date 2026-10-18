@@ -7,7 +7,7 @@ export type Logo = { name: string; icon?: string; logo?: string }
 
 export type Settings = {
   brand: { name: string; tagline: string }
-  seo: { title: string; description: string; ogImage?: string }
+  seo: { title: string; description: string; ogImage?: string; googleVerification?: string; bingVerification?: string; gtmId?: string }
   contact: { email: string; phone: string; address: string; mapUrl: string; hours: string }
   nav: Link[]
   cta: Link
@@ -46,6 +46,7 @@ export type ProjectsGridData = { label: string; allLabel: string }
 export type PostsGridData = { label: string; empty: string }
 export type ContactData = { title: string; text: string; formTitle: string; success: string }
 export type EnquiryData = { label: string; title: string; text: string; formTitle: string; success: string; button: string }
+export type FaqData = { title: string; items: { q: string; a: string }[] }
 export type QuoteData = {
   title: string; text: string; budgets: { text: string }[]; timelines: { text: string }[]; success: string
 }
@@ -75,6 +76,7 @@ export type SectionDataMap = {
   contact: ContactData
   enquiry: EnquiryData
   quote: QuoteData
+  faq: FaqData
 }
 
 export type SectionType = keyof SectionDataMap
@@ -114,6 +116,7 @@ export type Service = {
   published: boolean
   seo_title: string | null
   seo_description: string | null
+  updated_at?: string
 }
 
 export type Project = {
@@ -140,6 +143,7 @@ export type Project = {
   published: boolean
   seo_title: string | null
   seo_description: string | null
+  updated_at?: string
 }
 
 export type Post = {
@@ -156,6 +160,7 @@ export type Post = {
   published: boolean
   seo_title: string | null
   seo_description: string | null
+  updated_at?: string
 }
 
 export type Lead = {

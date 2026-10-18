@@ -129,6 +129,10 @@ export const SECTION_TYPES: Record<SectionType, { label: string; description: st
     label: 'Process', description: 'Numbered timeline of how you work.',
     fields: [text('label', 'Label'), area('title', 'Title', ALT_HINT), list('steps', 'Steps', [text('title', 'Title'), text('duration', 'Duration'), area('text', 'Text')], 'title')],
   },
+  faq: {
+    label: 'FAQ', description: 'Questions and answers. Google can show them in search (FAQ structured data).',
+    fields: [area('title', 'Title', ALT_HINT), list('items', 'Questions', [text('q', 'Question'), area('a', 'Answer')], 'q')],
+  },
   ctaBand: { label: 'Call to action', description: 'Big closing call to action.', fields: [area('title', 'Title', ALT_HINT), area('text', 'Text'), link('button', 'Button')] },
   projectsGrid: { label: 'Projects grid', description: 'All projects with category filters.', fields: [text('label', 'Label'), text('allLabel', '"All" filter label')] },
   postsGrid: { label: 'Posts grid', description: 'All published blog posts.', fields: [text('label', 'Label'), text('empty', 'Text when there are no posts')] },
@@ -219,7 +223,10 @@ export const COLLECTIONS: Record<CollectionName, { label: string; singular: stri
 // Settings are edited as grouped objects; each group maps to a key of Settings.
 export const SETTINGS_GROUPS: { key: string; title: string; fields: Field[]; listOf?: Field[]; strings?: boolean }[] = [
   { key: 'brand', title: 'Brand', fields: [text('name', 'Logo word'), area('tagline', 'Tagline')] },
-  { key: 'seo', title: 'Default SEO', fields: [text('title', 'Site title'), area('description', 'Description'), { kind: 'media', name: 'ogImage', label: 'Share image' }] },
+  { key: 'seo', title: 'Default SEO', fields: [text('title', 'Site title'), area('description', 'Description'), { kind: 'media', name: 'ogImage', label: 'Share image' },
+    text('googleVerification', 'Google Search Console code', 'Only the content="…" value of the HTML tag method.'),
+    text('bingVerification', 'Bing Webmaster code', 'Only the content="…" value of the msvalidate.01 tag.'),
+    text('gtmId', 'Google Tag Manager ID', 'GTM-XXXXXXX. Cookies stay off until a visitor accepts (Consent Mode v2).')] },
   { key: 'contact', title: 'Contact details', fields: [text('email', 'Email'), text('phone', 'Phone'), area('address', 'Address'), text('mapUrl', 'Map link'), text('hours', 'Opening hours')] },
   { key: 'nav', title: 'Main menu', fields: [], listOf: [text('label', 'Label'), text('href', 'Link')] },
   { key: 'cta', title: 'Header button', fields: [text('label', 'Label'), text('href', 'Link')] },
