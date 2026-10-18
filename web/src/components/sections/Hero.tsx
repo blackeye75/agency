@@ -10,7 +10,7 @@ import { alt, lines, plain } from '@/lib/cms/text'
 import type { HeroData } from '@/lib/cms/types'
 
 // Crency's hero with Copula's rotating word. The pen line and the floating
-// stickers are gone; the rotor now cycles DIGITAL 360 / SOFTWARE / PRODUCT / ALL-IN-ONE.
+// stickers are gone; the rotor cycles the CMS words (by default the four services, for the H1).
 export function Hero({ data, next }: { data: HeroData; next?: string }) {
   const ref = useRef<HTMLElement>(null)
   const rotor = useRef<HTMLSpanElement>(null)
