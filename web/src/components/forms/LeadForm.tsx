@@ -42,6 +42,8 @@ export function LeadForm({ kind, title, success, submitLabel, children, classNam
       if (!res.ok) throw new Error(json.error ?? 'Something went wrong. Please try again or email us.')
       form.reset()
       setStatus({ kind: 'ok' })
+      // GTM's form trigger can't see fetch submissions; this event is the "lead" conversion. No personal data.
+      ;(window as { dataLayer?: object[] }).dataLayer?.push({ event: 'generate_lead', form_type: kind, services: body.services.join(', ') })
     } catch (err) {
       setStatus({ kind: 'error', message: (err as Error).message })
     }
