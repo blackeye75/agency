@@ -28,7 +28,15 @@ export async function generateMetadata(): Promise<Metadata> {
     applicationName: brand.name,
     openGraph: { title: seo.title, description: seo.description, images: [seo.ogImage || '/og'], type: 'website', locale: 'en_IN', siteName: brand.name, url: '/' },
     twitter: { card: 'summary_large_image' },
-    icons: { icon: '/icon.svg', apple: '/apple-icon' },
+    // ICO and PNG alongside the SVG: Google's result favicon and older browsers don't use SVG.
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: '48x48' },
+        { url: '/icon.svg', type: 'image/svg+xml' },
+        { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      ],
+      apple: '/apple-icon',
+    },
     verification: { google: seo.googleVerification || undefined, other: seo.bingVerification ? { 'msvalidate.01': seo.bingVerification } : undefined },
   }
 }
