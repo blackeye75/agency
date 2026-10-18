@@ -2,6 +2,7 @@ import 'server-only'
 import { cacheLife, cacheTag } from 'next/cache'
 import { publicClient } from '@/lib/supabase/public'
 import { seedPages, seedPosts, seedProjects, seedSections, seedServices, seedSettings } from './seed'
+import { withPageSeo, withPostDefaults, withServiceDefaults, withSettingsDefaults } from './defaults'
 import type { Page, Post, Project, Section, Service, Settings } from './types'
 
 // Every public read is cached under the 'cms' tag. The admin API expires the
@@ -21,7 +22,7 @@ export async function getSettings(): Promise<Settings> {
   const { data } = await db.from('settings').select('data').eq('id', 'site').maybeSingle()
   const saved = (data?.data ?? {}) as Partial<Settings>
   // Keys added to the site after the row was saved fall back to the defaults.
-  return { ...seedSettings, ...saved }
+  return withSettingsDefaults({ ...seedSettings, ...saved })
 }
 
 export type PageContent = { page: Page; sections: Section[] }
@@ -41,7 +42,7 @@ export async function getPage(slug: string): Promise<PageContent | null> {
   ])
   if (page.error || sections.error) return fallback()
   if (!page.data) return fallback()
-  return { page: page.data, sections: sections.data as unknown as Section[] }
+  return { page: withPageSeo(page.data), sections: sections.data as unknown as Section[] }
 }
 
 export async function getServices(): Promise<Service[]> {
@@ -50,7 +51,7 @@ export async function getServices(): Promise<Service[]> {
   const db = publicClient()
   if (!db) return seedServices
   const { data, error } = await db.from('services').select('*').order('position')
-  return error ? seedServices : (data as unknown as Service[])
+  return error ? seedServices : (data as unknown as Service[]).map(withServiceDefaults)
 }
 
 export async function getService(slug: string) {
@@ -78,7 +79,7 @@ export async function getPosts(): Promise<Post[]> {
   const live = (posts: Post[]) => posts.filter((p) => new Date(p.published_at).getTime() <= Date.now())
   if (!db) return live(seedPosts)
   const { data, error } = await db.from('posts').select('*').order('published_at', { ascending: false })
-  return live(error ? seedPosts : (data as unknown as Post[]))
+  return live(error ? seedPosts : (data as unknown as Post[]).map(withPostDefaults))
 }
 
 export async function getPost(slug: string) {

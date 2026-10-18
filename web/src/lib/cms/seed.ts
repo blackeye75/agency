@@ -13,9 +13,9 @@ import type { Page, Post, Project, Section, SectionDataMap, SectionType, Service
 export const seedSettings: Settings = {
   brand: { name: 'nexusbee', tagline: 'Digital 360: software, product and growth, all in one studio.' },
   seo: {
-    title: 'NexusBee · Website Development, Digital Marketing & AI Automation Agency in India',
+    title: 'Website Development, Digital Marketing, SEO & AI Automation Agency in India · NexusBee',
     description:
-      'NexusBee is a Noida-based digital agency with 7+ years of experience in website development, web apps, e-commerce, mobile apps, SEO, digital marketing and AI automation for businesses across India.',
+      'NexusBee is a Noida-based agency for website development, digital marketing, SEO and AI automation, with 7+ years of experience helping businesses across India grow.',
   },
   contact: {
     email: 'hello@example.com',
@@ -62,11 +62,11 @@ export const seedSettings: Settings = {
 
 export const seedPages: Page[] = [
   { slug: 'home', title: 'Home', seo_title: null, seo_description: null, og_image: null },
-  { slug: 'services', title: 'Services', seo_title: 'Services · NexusBee', seo_description: 'Nine ways we help brands grow in digital, from corporate websites to AI agents.', og_image: null },
-  { slug: 'projects', title: 'Projects', seo_title: 'Projects · NexusBee', seo_description: 'Selected websites, software, stores and apps we designed and built.', og_image: null },
-  { slug: 'blog', title: 'Blog', seo_title: 'Blog · NexusBee', seo_description: 'Notes on design, engineering, SEO and growth from the NexusBee team.', og_image: null },
-  { slug: 'contact', title: 'Contact', seo_title: 'Contact · NexusBee', seo_description: 'Tell us about your project. We reply within 24 hours.', og_image: null },
-  { slug: 'quote', title: 'Get a quote', seo_title: 'Get a quote · NexusBee', seo_description: 'Pick the services you need, share a budget and get a fixed quote.', og_image: null },
+  { slug: 'services', title: 'Services', seo_title: 'Website Development, Digital Marketing, SEO & AI Automation Services in India · NexusBee', seo_description: 'Website and app development, digital marketing, SEO and AI automation from one Noida-based team with 7+ years of experience, for businesses across India.', og_image: null },
+  { slug: 'projects', title: 'Projects', seo_title: 'Our Work: Websites, Apps, Marketing & AI Automation Projects · NexusBee', seo_description: 'Selected websites, web apps, e-commerce stores, marketing campaigns and AI automation projects designed and built by NexusBee.', og_image: null },
+  { slug: 'blog', title: 'Blog', seo_title: 'Web Development, Digital Marketing, SEO & AI Automation Insights · NexusBee', seo_description: 'In-depth guides on website development, digital marketing, SEO and AI automation for Indian businesses, from the NexusBee team.', og_image: null },
+  { slug: 'contact', title: 'Contact', seo_title: 'Contact NexusBee · Digital Agency in Noida, India', seo_description: 'Talk to NexusBee about website development, digital marketing, SEO or AI automation. Based in Noida, working across India. We reply within 24 hours.', og_image: null },
+  { slug: 'quote', title: 'Get a quote', seo_title: 'Get a Quote for Website Development, Marketing, SEO or AI Automation · NexusBee', seo_description: 'Tell us what you need: a website, app, digital marketing, SEO or AI automation. Share a budget and timeline and get a fixed quote within two working days.', og_image: null },
 ]
 
 const PROCESS: SectionDataMap['process'] = {
@@ -96,7 +96,7 @@ const SECTIONS: Record<string, SeedSection[]> = {
       data: {
         tag: 'New name, same\nengineering DNA',
         line1: 'Y{O|wide}UR',
-        words: [{ text: 'DIGITAL 360' }, { text: 'SOFTWARE' }, { text: 'PRODUCT' }, { text: 'ALL-IN-ONE' }],
+        words: [{ text: 'WEBSITES' }, { text: 'MARKETING' }, { text: 'SEO' }, { text: 'AI AUTOMATION' }],
         line3: 'AGEN{c}Y',
         badge: { label: "LET'S\nBUILD", href: '/quote' },
       },
