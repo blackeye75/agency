@@ -141,7 +141,7 @@ Copywriting, stock photography, premium plugins, hosting, email setup, content m
 
 ## How NexusBee prices websites
 
-We start with a short discovery call, then send a fixed, written proposal that lists every template, feature, integration and deliverable, plus what is excluded. You own every account and line of code from day one. Read about our [website development service](/services/corporate-web-design), see the [cities we serve](/locations) or [request a proposal](/quote).
+We start with a short discovery call, then send a fixed, written proposal that lists every template, feature, integration and deliverable, plus what is excluded. You own every account and line of code from day one. Read about our [website development service](/services/website-app-development), see the [cities we serve](/locations) or [request a proposal](/quote).
 
 ## Frequently asked questions
 
@@ -299,7 +299,7 @@ Proximity helps with workshops and shoots, but expertise, communication and tran
 
 ## How NexusBee works
 
-We are a Noida-based agency with more than seven years of experience across [websites](/services/corporate-web-design), [digital marketing](/services/digital-marketing), [SEO](/services/seo-performance) and AI automation. Accounts stay in your name, tracking is in place before spend, and we report on leads, pipeline and revenue. [Book a consultation](/quote) and put all twelve questions to us.
+We are a Noida-based agency with more than seven years of experience across [websites](/services/website-app-development), [digital marketing](/services/digital-marketing), [SEO](/services/seo-performance) and AI automation. Accounts stay in your name, tracking is in place before spend, and we report on leads, pipeline and revenue. [Book a consultation](/quote) and put all twelve questions to us.
 
 ## Frequently asked questions
 
@@ -449,7 +449,7 @@ Most businesses end up with a combination: platforms for simple connections and 
 
 ## How NexusBee can help
 
-NexusBee designs and builds [AI agents and chatbots](/services/ai-agents-automation) and [business process automation](/services/business-automation) for companies across India. We start with a short process review, agree on one measurable use case and deliver it with monitoring and human review built in. For agent design in more depth, read [AI agents for small teams](/blog/ai-agents-for-small-teams), or [talk to us](/quote) about the process you would most like to automate.
+NexusBee designs and builds [AI agents and chatbots](/services/ai-agents-automation) and [business process automation](/services/ai-agents-automation) for companies across India. We start with a short process review, agree on one measurable use case and deliver it with monitoring and human review built in. For agent design in more depth, read [AI agents for small teams](/blog/ai-agents-for-small-teams), or [talk to us](/quote) about the process you would most like to automate.
 
 ## Frequently asked questions
 
@@ -592,7 +592,7 @@ Google's AI Overviews, ChatGPT and Perplexity increasingly answer questions dire
 
 ## How NexusBee helps
 
-NexusBee is an [SEO agency in India](/services/seo-performance) with developers and marketers in one team, so technical issues are fixed rather than just reported. We also build [fast, SEO-ready websites](/services/corporate-web-design) and [city landing pages](/locations). Read [why website speed matters](/blog/why-website-speed-wins-clients), or [request a free SEO audit](/quote?service=seo-performance).
+NexusBee is an [SEO agency in India](/services/seo-performance) with developers and marketers in one team, so technical issues are fixed rather than just reported. We also build [fast, SEO-ready websites](/services/website-app-development) and [city landing pages](/locations). Read [why website speed matters](/blog/why-website-speed-wins-clients), or [request a free SEO audit](/quote?service=seo-performance).
 
 ## Frequently asked questions
 
@@ -708,7 +708,7 @@ Websites get slower over time as new plugins, scripts, campaigns and images are 
 
 ## How we build for speed
 
-At NexusBee, every [website we build](/services/corporate-web-design) starts with a performance budget, and our [SEO and performance service](/services/seo-performance) diagnoses and fixes slow sites built elsewhere. For the wider picture, read our [SEO checklist for Indian businesses](/blog/seo-checklist-for-indian-businesses), or [request a free speed and SEO audit](/quote?service=seo-performance).
+At NexusBee, every [website we build](/services/website-app-development) starts with a performance budget, and our [SEO and performance service](/services/seo-performance) diagnoses and fixes slow sites built elsewhere. For the wider picture, read our [SEO checklist for Indian businesses](/blog/seo-checklist-for-indian-businesses), or [request a free speed and SEO audit](/quote?service=seo-performance).
 
 ## Frequently asked questions
 
@@ -845,7 +845,7 @@ Use business-grade AI services that do not train on your data, keep personal dat
 
 ## How NexusBee can help
 
-NexusBee builds [AI agents and chatbots](/services/ai-agents-automation) and [business process automation](/services/business-automation) for teams across India, starting with one measurable use case and building in evaluation, monitoring and human review. For more ideas, read [10 AI automation use cases for Indian businesses](/blog/ai-automation-for-small-business-india), or [tell us about the task](/quote) you would most like to hand over.
+NexusBee builds [AI agents and chatbots](/services/ai-agents-automation) and [business process automation](/services/ai-agents-automation) for teams across India, starting with one measurable use case and building in evaluation, monitoring and human review. For more ideas, read [10 AI automation use cases for Indian businesses](/blog/ai-automation-for-small-business-india), or [tell us about the task](/quote) you would most like to hand over.
 
 ## Frequently asked questions
 
@@ -984,7 +984,7 @@ Moving platforms is common as businesses grow. A safe migration includes a full 
 
 ## How NexusBee helps
 
-NexusBee builds [e-commerce websites](/services/e-commerce) on Shopify, WooCommerce and custom stacks, and we recommend a platform in writing after a short discovery call. Read our guide to [website development costs in India](/blog/website-development-cost-india), or [ask us for a platform recommendation](/quote?service=e-commerce).
+NexusBee builds [e-commerce websites](/services/website-app-development) on Shopify, WooCommerce and custom stacks, and we recommend a platform in writing after a short discovery call. Read our guide to [website development costs in India](/blog/website-development-cost-india), or [ask us for a platform recommendation](/quote?service=e-commerce).
 
 ## Frequently asked questions
 

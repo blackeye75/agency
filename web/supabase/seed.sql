@@ -20,7 +20,7 @@ insert into public.sections (page_slug, key, type, label, position, visible, dat
   ('home', 'clients', 'connection', 'Clients (coil + rating)', 3, true, '{"label":"OUR CLIENTS","line1":"WHEN THE","word":"CONNECTION","line3":"IS REAL, IT SHOWS","rating":"9.6","ratingText":"OVERALL CLIENT RATING SCORE ·","logos":[]}'::jsonb),
   ('home', 'stats', 'stats', 'Projects counter', 4, true, '{"label":"OUR TRACK RECORD","value":325,"suffix":"+","caption":"PROJECTS COMPLETED","items":[{"value":"120+","label":"happy clients"},{"value":"7","label":"years building"},{"value":"9","label":"services under one roof"},{"value":"4.9","label":"average rating"}]}'::jsonb),
   ('home', 'services-head', 'heading', 'Services heading', 5, true, '{"title":"WHAT ARE WE\nBUILDING FOR\nYOU?"}'::jsonb),
-  ('home', 'service-cards', 'serviceCards', 'Service cards (3D flip)', 6, true, '{"cards":[{"title":"PRODUCT\nDESIGN","tone":"lime","text":"Interfaces that convert. Clear flows that make the next step obvious. Less hesitation. More forward movement.","button":{"label":"design my product","href":"/services/corporate-web-design"}},{"title":"WEB & APP\nENGINEERING","tone":"orange","text":"Speed you can feel: fast loading, rock-solid APIs, tests built in. Your product just works, and quietly earns trust.","button":{"label":"build my product","href":"/services/web-software-apps"}},{"title":"CUSTOM\nSOFTWARE?","tone":"blue","text":"When things don''t fit templates (SaaS, platform, marketplace or internal tools) we turn complexity into clarity.","button":{"label":"discuss my project","href":"/quote"}}]}'::jsonb),
+  ('home', 'service-cards', 'serviceCards', 'Service cards (3D flip)', 6, true, '{"cards":[{"title":"PRODUCT\nDESIGN","tone":"lime","text":"Interfaces that convert. Clear flows that make the next step obvious. Less hesitation. More forward movement.","button":{"label":"design my product","href":"/services/website-app-development"}},{"title":"WEB & APP\nENGINEERING","tone":"orange","text":"Speed you can feel: fast loading, rock-solid APIs, tests built in. Your product just works, and quietly earns trust.","button":{"label":"build my product","href":"/services/website-app-development"}},{"title":"CUSTOM\nSOFTWARE?","tone":"blue","text":"When things don''t fit templates (SaaS, platform, marketplace or internal tools) we turn complexity into clarity.","button":{"label":"discuss my project","href":"/quote"}}]}'::jsonb),
   ('home', 'services-list', 'servicesList', 'Services list', 7, true, '{"label":"OUR SERVICES","title":"EVERYTHING\nWE DO"}'::jsonb),
   ('home', 'tech-stack', 'logoBand', 'Tech stack marquee', 8, true, '{"label":"OUR TECH STACK","tone":"lime","direction":"left","items":[{"name":"JavaScript","icon":"javascript"},{"name":"TypeScript","icon":"typescript"},{"name":"React","icon":"react"},{"name":"Next.js","icon":"nextdotjs"},{"name":"Node.js","icon":"nodedotjs"},{"name":"Supabase","icon":"supabase"},{"name":"PostgreSQL","icon":"postgresql"},{"name":"Tailwind CSS","icon":"tailwindcss"},{"name":"GSAP","icon":"gsap"},{"name":"Flutter","icon":"flutter"},{"name":"Figma","icon":"figma"},{"name":"Docker","icon":"docker"},{"name":"VS Code"},{"name":"Cursor","icon":"cursor"},{"name":"Claude","icon":"claude"},{"name":"Codex"},{"name":"GitHub Copilot","icon":"githubcopilot"},{"name":"Vercel","icon":"vercel"}]}'::jsonb),
   ('home', 'cases', 'cases', 'Case carousel', 9, true, '{"limit":11}'::jsonb),
@@ -34,8 +34,8 @@ insert into public.sections (page_slug, key, type, label, position, visible, dat
   ('home', 'enquiry', 'enquiry', 'Enquiry form', 17, true, '{"label":"START A PROJECT","title":"GOT AN IDEA?\nLET''S TALK","text":"Tell us what you are building. We reply within 24 hours with next steps and a rough estimate.","formTitle":"SEND AN ENQUIRY","button":"send enquiry","success":"Thanks! Your enquiry is in. We will reply within 24 hours."}'::jsonb),
   ('home', 'partners', 'logoBand', 'Partners marquee', 18, true, '{"label":"OUR PARTNERS","tone":"blue","direction":"right","items":[{"name":"Razorpay","icon":"razorpay"},{"name":"Shiprocket"},{"name":"Shopify","icon":"shopify"},{"name":"WordPress","icon":"wordpress"},{"name":"WooCommerce","icon":"woocommerce"},{"name":"Stripe","icon":"stripe"},{"name":"PayPal","icon":"paypal"},{"name":"Google","icon":"google"},{"name":"Meta","icon":"meta"},{"name":"Cloudflare","icon":"cloudflare"},{"name":"Zoho","icon":"zoho"},{"name":"HubSpot","icon":"hubspot"},{"name":"WhatsApp","icon":"whatsapp"},{"name":"Mailchimp","icon":"mailchimp"}]}'::jsonb),
   ('home', 'marquee', 'marquee', 'Name marquee', 19, true, '{"text":"NEXUSBEE"}'::jsonb),
-  ('services', 'hero', 'pageHero', 'Page hero', 0, true, '{"eyebrow":"SERVICES","title":"WE GROW\nYOUR BRAND\nIN DIGIT{A}L","text":"Nine services, one team. Pick one, or let us run your whole digital 360: from the first pixel to the thousandth customer."}'::jsonb),
-  ('services', 'list', 'servicesList', 'Services list', 1, true, '{"label":"WHAT WE DO","title":"NINE WAYS\nWE HELP"}'::jsonb),
+  ('services', 'hero', 'pageHero', 'Page hero', 0, true, '{"eyebrow":"SERVICES","title":"WE GROW\nYOUR BRAND\nIN DIGIT{A}L","text":"Five services, one team. Pick one, or let us run your whole digital 360: from the first pixel to the thousandth customer."}'::jsonb),
+  ('services', 'list', 'servicesList', 'Services list', 1, true, '{"label":"WHAT WE DO","title":"FIVE WAYS\nWE HELP"}'::jsonb),
   ('services', 'process', 'process', 'Process', 2, true, '{"label":"HOW WE WORK","title":"FROM IDEA\nTO LAUNCH","steps":[{"title":"Discovery","duration":"1–2 weeks","text":"We learn your business, users and goals, audit what exists and agree on scope, budget and success metrics."},{"title":"Design","duration":"1–2 weeks","text":"Wireframes, then high-fidelity screens and a clickable prototype. You approve every screen before we write code."},{"title":"Development","duration":"2–3 weeks","text":"Clean, tested code in short sprints with a live staging link, so you see progress every few days."},{"title":"Launch","duration":"1 week","text":"Performance, SEO and security checks, analytics, go-live and a handover session for your team."},{"title":"Support","duration":"Ongoing","text":"Monitoring, updates, backups and new features on a monthly plan, with a 24-hour response time."}]}'::jsonb),
   ('services', 'cta', 'ctaBand', 'Call to action', 3, true, '{"title":"LET''S BUILD\nSOMETHING GREAT","text":"Tell us where you want to be in six months. We will map the fastest way there, with a fixed quote.","button":{"label":"get a quote","href":"/quote"}}'::jsonb),
   ('projects', 'hero', 'pageHero', 'Page hero', 0, true, '{"eyebrow":"PROJECTS","title":"WORK WE''RE\nPR{O|wide}UD OF","text":"Corporate sites, software, stores and apps, built for brands that wanted more than a template."}'::jsonb),
@@ -52,192 +52,224 @@ insert into public.sections (page_slug, key, type, label, position, visible, dat
 on conflict (page_slug, key) do nothing;
 
 insert into public.services (published, cover_url, slug, position, color, title, summary, body, features, deliverables, seo_title, seo_description) values
-  (true, null, 'corporate-web-design', 0, 'orange', 'Corporate web design', 'Fast, beautiful company websites that explain what you do in five seconds and turn visitors into enquiries.', 'Your website is usually the first meeting a buyer has with your company, and it often happens before you know they exist. They compare you with two or three competitors on their phone, decide in seconds whether you look credible, and either send an enquiry or close the tab. NexusBee designs and builds corporate websites that win that moment: clear about what you do, fast on every device and easy for your team to keep up to date.
+  (true, null, 'website-app-development', 0, 'orange', 'Website & app development', 'Corporate websites, web applications, e-commerce stores and mobile apps: fast, SEO-ready and built to scale.', 'Your website or app is often the first serious conversation a buyer has with your business, and increasingly it is where the business itself runs: bookings, orders, client portals, dashboards and the tools your team uses every day. NexusBee designs and builds all of it under one roof, so your corporate website, web application, online store and mobile app share one standard of design, engineering and care.
 
-We are a website development company based in Noida, and for more than seven years we have built websites for startups, SMEs and established businesses across India. Every site is designed from scratch around your brand and your buyers. No recycled themes, no page builders that slow everything down.
-
-## What a NexusBee website includes
-
-- **Custom design** based on your brand, your audience and the action you want visitors to take.
-- **Responsive development** that is tested on real phones, tablets and desktops, not just a resized browser window.
-- **A content management system** so your team can edit text, images, pages, services, case studies and blog posts without calling a developer.
-- **Technical SEO built in**: clean HTML, one H1 per page, meta tags, canonical URLs, an XML sitemap, robots.txt and structured data for Google.
-- **Performance budgets**: we aim to pass Core Web Vitals on mobile, with optimised images, lean code and fast hosting.
-- **Conversion tracking**: enquiry forms, click-to-call and WhatsApp buttons connected to Google Analytics and your CRM.
-- **Accessibility**: readable contrast, keyboard navigation and screen-reader labels, because a site everyone can use converts better.
-- **Security basics**: HTTPS, spam-protected forms, regular updates and backups.
-
-## Our website development process
-
-**1. Discovery.** We learn about your business, your customers and your competitors, review your current website and analytics, and agree on goals such as more enquiries, better-quality leads or a stronger brand.
-
-**2. Structure and content.** We plan the sitemap, the page structure and the keywords each page should rank for. If you need help with copy, we write it with you.
-
-**3. Design.** You see wireframes first, then high-fidelity designs for desktop and mobile. Nothing is built until you approve the screens.
-
-**4. Development.** We build in short sprints on a live staging link, so you can click through progress every few days instead of waiting for a big reveal.
-
-**5. Launch.** Before go-live we run performance, SEO, accessibility and cross-browser checks, set up redirects from your old URLs so you keep your Google rankings, and connect analytics.
-
-**6. Support.** After launch we train your team on the CMS and offer monthly maintenance plans for updates, backups, monitoring and improvements.
-
-## Built to rank, not just to look good
-
-A beautiful website that nobody finds is an expensive brochure. Every page we build targets a clear search intent, loads quickly and carries the structured data Google uses for rich results. For businesses that serve specific cities, we add location pages and local SEO so you show up for searches like "website development company near me".
-
-## Who we build websites for
-
-We work with manufacturers, professional services firms, healthcare providers, education businesses, real estate developers, SaaS companies and D2C brands across India, including Delhi NCR, Mumbai, Pune, Bangalore and Hyderabad. Some clients need a five-page company site; others need a multilingual website with hundreds of pages, a resource library and integrations with their CRM or ERP.
-
-## Why choose NexusBee as your website development company
-
-- **One team from design to growth**: the people who build your website also understand SEO, marketing and automation.
-- **Fixed, written scope**: you know exactly which pages and features you are paying for.
-- **You own everything**: domain, code, hosting and content stay in your name.
-- **Long-term support**: we are still here after launch, with clear response times.
-
-## Frequently asked questions
-
-### How much does website development cost in India?
-
-It depends on the number of pages, custom design work, integrations and content. A focused company website costs far less than a large multilingual site or a web application. After a short discovery call we send a fixed quote, so the price does not change halfway through the project.
-
-### How long does it take to build a corporate website?
-
-Most company websites take 4 to 8 weeks from discovery to launch. Larger sites with many templates, integrations or content migration take longer and are planned in milestones.
-
-### Will I be able to update the website myself?
-
-Yes. Every website comes with an easy content management system and a training session, so your team can edit pages, add blog posts and update services without a developer.
-
-### Will my new website be SEO-friendly?
-
-Yes. Technical SEO is part of every build: fast pages, clean markup, meta tags, an XML sitemap, structured data and redirects from your old URLs so you keep existing rankings.
-
-### Do you redesign existing websites?
-
-Yes. We audit your current site, keep what works, fix what does not and migrate your content and URLs carefully, so the redesign improves your search performance instead of resetting it.', '[{"title":"Custom design","text":"No templates. A look built around your brand and your buyers."},{"title":"Editable content","text":"Update every text, image and page yourself, no developer needed."},{"title":"Motion that guides","text":"Tasteful animation that draws the eye to what matters."},{"title":"SEO ready","text":"Clean markup, fast pages and structured data from day one."}]'::jsonb, '[{"text":"Brand-aligned UI design"},{"text":"Responsive website"},{"text":"CMS with page sections"},{"text":"Analytics and SEO setup"},{"text":"Training session"}]'::jsonb, 'Website Development Company in India | Corporate Website Design · NexusBee', 'Custom website design and development for Indian businesses. Fast, SEO-ready corporate websites with an easy CMS, built by a Noida team with 7+ years of experience.'),
-  (true, null, 'web-software-apps', 1, 'blue', 'Web software & apps', 'Dashboards, portals, SaaS products and internal tools, engineered to scale and pleasant to use.', 'Off-the-shelf software fits most businesses until it suddenly does not. Your team starts exporting spreadsheets, copying data between tools and building workarounds for things the software should simply do. That is when a custom web application pays for itself. NexusBee designs and builds web software that fits the way your business actually works: SaaS products, customer portals, dashboards and internal tools.
-
-We are a web application development company in Noida with more than seven years of experience building software for startups and growing businesses across India. Our engineers write clean, typed and tested code, and our designers make sure the result is pleasant to use every day.
+We are a Noida-based website and app development company with more than seven years of experience building for startups, SMEs and established businesses across India. Every project is designed around your buyers and your workflows, built on modern, well-supported technology and handed over with full ownership.
 
 ## What we build
 
-- **SaaS products and MVPs**: from the first version you put in front of users to a multi-tenant platform with billing, roles and an admin panel.
-- **Customer and partner portals**: self-service portals for orders, bookings, documents, support tickets and account management.
-- **Dashboards and reporting**: real-time views of sales, operations and finance data pulled from your existing systems.
-- **Internal tools**: approval workflows, inventory and job tracking, CRM extensions and back-office tools that replace fragile spreadsheets.
-- **Marketplaces and booking platforms**: listings, search, payments, availability and notifications.
-- **APIs and integrations**: connecting your application with payment gateways like Razorpay and Stripe, CRMs, ERPs, WhatsApp, email and accounting tools.
+### Corporate and business websites
+Fast, custom-designed websites that explain what you do in seconds, prove why you are credible and turn visitors into enquiries. Every site includes a content management system your team can use, technical SEO foundations, structured data and conversion tracking.
+
+### Web applications and SaaS
+Customer portals, dashboards, booking and marketplace platforms, internal tools and SaaS products. We plan the data model and user roles with you, design clear flows and ship in short sprints with a live staging environment.
+
+### E-commerce stores
+Shopify, WooCommerce and custom stores built for speed and conversion, with Indian payment gateways (Razorpay, PayU, Cashfree, UPI and cash on delivery), GST-ready invoicing, shipping integrations such as Shiprocket and Delhivery, and WhatsApp order updates.
+
+### Mobile apps
+Android and iOS apps from a single cross-platform codebase, with secure login, payments, push notifications, offline support and store submission handled for you.
+
+### Integrations and APIs
+Connections to CRMs, ERPs, accounting tools, payment gateways, WhatsApp and third-party APIs, so your website or app fits the systems you already use.
 
 ## Our technology
 
-We build mostly with **TypeScript, React, Next.js and Node.js**, with **PostgreSQL** (often via Supabase) for data. This stack is fast, well supported and easy to hire for, so your in-house team can take over the code whenever you are ready. We deploy to reliable cloud platforms such as Vercel and AWS, with automated backups, monitoring and error tracking.
+We build mostly with **TypeScript, React, Next.js and Node.js**, with **PostgreSQL** (often through Supabase) for data, and cross-platform frameworks for mobile. This stack is fast, secure and widely supported, so your in-house team or another partner can take over the code whenever you choose. Where you already have a platform, we work with it rather than rebuilding for the sake of it.
 
-When you already have a stack, we work with it rather than rewriting everything.
+## How we work
 
-## How we run a software project
+| Phase | What happens | Typical duration |
+| --- | --- | --- |
+| Discovery | Goals, users, scope, integrations and success metrics agreed in writing | 1–2 weeks |
+| Design | Wireframes, high-fidelity screens and a clickable prototype you approve | 1–3 weeks |
+| Development | Short sprints with demos and a live staging link | 2–10 weeks |
+| Quality and launch | Performance, SEO, accessibility, security and device testing, then go-live | 1 week |
+| Support | Training, monitoring, updates and improvements on a monthly plan | Ongoing |
 
-**Discovery and scoping.** We map your users, workflows and data, then agree on the smallest version that delivers real value. A tight first release gets you feedback sooner and costs less.
+A focused company website typically launches in 4 to 8 weeks; web applications, large stores and mobile apps are delivered in phases.
 
-**Design and prototyping.** Clickable prototypes let you test flows with real users before we write production code.
+## Built for performance and search
 
-**Development in sprints.** Two-week sprints with a demo at the end of each one and a live staging environment you can use at any time. You always know what is done, what is next and what it costs.
+Every build has a performance budget so pages pass Core Web Vitals on mobile, along with clean markup, metadata, structured data, an XML sitemap and redirects from old URLs. A website that loads quickly and ranks well keeps paying back long after launch.
 
-**Quality and security.** Automated tests, code review, role-based access control, input validation and secure handling of personal data are part of every sprint, not an afterthought.
+## Why businesses choose NexusBee
 
-**Launch and growth.** We handle deployment, monitoring and a smooth handover, then keep improving the product on a monthly retainer if you want us to.
-
-## Why businesses choose NexusBee for custom software
-
-- **Product thinking**: we question requirements and help you cut scope that does not move the needle.
-- **Transparent pricing**: fixed-price phases or a monthly team, agreed in writing.
-- **Handover-ready code**: documented, typed and tested, so you are never locked in.
-- **Full ownership**: the code, data and cloud accounts belong to you.
-- **One partner**: the same team can build the marketing website, run growth campaigns and add AI features later.
-
-## Frequently asked questions
-
-### How much does custom web application development cost in India?
-
-Cost depends on the number of user roles, screens, integrations and the level of security and scale required. We usually start with a fixed-price discovery phase, then quote the first release in writing so you can budget with confidence.
-
-### How long does it take to build an MVP?
-
-A focused MVP typically takes 8 to 12 weeks from discovery to launch. We help you define the smallest version that proves your idea, then grow it based on real user feedback.
-
-### Which technologies do you use for web applications?
-
-Mostly TypeScript, React, Next.js and Node.js with PostgreSQL, deployed on Vercel or AWS. We adapt to your existing stack when that is the better choice.
-
-### Will we own the source code?
-
-Yes. You own the code, the data and every cloud account from day one. We hand over documentation so your team or another vendor can continue the work.
-
-### Can you take over an existing application?
-
-Yes. We start with a code and security audit, fix the most urgent issues, then continue development in regular sprints.', '[{"title":"Product thinking","text":"We challenge scope so you launch sooner with what matters."},{"title":"Solid architecture","text":"Typed code, tests and a database designed for growth."},{"title":"Roles and security","text":"Sign-in, permissions and audit trails done properly."},{"title":"Integrations","text":"Payments, email, CRMs, ERPs and any API you use."}]'::jsonb, '[{"text":"Product scope and roadmap"},{"text":"UX flows and UI design"},{"text":"Web application"},{"text":"Admin panel"},{"text":"Documentation and handover"}]'::jsonb, 'Custom Web Application Development Company in India | SaaS & Portals · NexusBee', 'Custom web application development in India: SaaS products, dashboards, customer portals and internal tools built with Next.js, React and Node.js by a team with 7+ years of experience.'),
-  (true, null, 'e-commerce', 2, 'lime', 'E-commerce', 'Online stores on Shopify, WooCommerce or custom stacks, with payments, shipping and marketing wired in.', 'Online shoppers in India are impatient. They browse on mobile data, compare prices across marketplaces and leave the moment a page is slow or a checkout step is confusing. NexusBee builds e-commerce websites that are fast, easy to buy from and simple to manage, so more visitors become customers and more customers come back.
-
-We are an e-commerce website development company based in Noida with more than seven years of experience building stores for D2C brands, retailers, manufacturers and wholesalers across India.
-
-## Shopify, WooCommerce or custom: we help you choose
-
-**Shopify** is the fastest way to launch a polished store, with reliable hosting, a huge app ecosystem and easy day-to-day management. It suits most D2C brands.
-
-**WooCommerce** makes sense if you already run WordPress, need full control over hosting or want to avoid monthly platform fees.
-
-**A custom store** built with Next.js and a headless commerce backend is the right choice when your catalogue, pricing, subscriptions or B2B ordering do not fit a template, or when speed and design freedom are your competitive edge.
-
-We recommend a platform in writing after a short discovery call, based on your catalogue, budget, team and growth plans.
-
-## What your online store includes
-
-- **Conversion-focused design** with clear product pages, honest reviews, size guides and trust signals.
-- **Fast, mobile-first performance**, with optimised images and lean themes that pass Core Web Vitals.
-- **Indian payments**: Razorpay, PayU, Cashfree, UPI, cards, net banking, wallets and cash on delivery.
-- **Shipping and logistics** through Shiprocket, Delhivery or your own couriers, with pin code checks and tracking.
-- **GST-ready invoices**, tax settings and accounting integrations.
-- **WhatsApp and email automation** for abandoned carts, order updates and repeat purchases.
-- **SEO foundations**: clean URLs, product and breadcrumb structured data, collection pages that target real searches and an XML sitemap.
-- **Analytics and ads tracking**: GA4 e-commerce events, Meta Pixel and Conversions API, and Google Merchant Center feeds.
-
-## Beyond launch: growing your store
-
-A store launch is the start, not the finish. We help you grow with SEO for category and product pages, performance marketing on Google Shopping and Meta, email and WhatsApp flows, and regular conversion rate optimisation based on real data. Our maintenance plans cover updates, backups, uptime monitoring and new features every month.
-
-## Migrating an existing store
-
-Moving from another platform? We migrate products, customers, orders and content, then set up 301 redirects from every old URL so you keep your search rankings and backlinks.
-
-## Why brands choose NexusBee for e-commerce development
-
-- **Speed first**: fast stores sell more, especially on mobile.
-- **Honest platform advice**: we recommend what fits your business, not what is easiest for us.
-- **One team for build and growth**: development, SEO, ads and automation under one roof.
-- **You own your store**: accounts, data and domain stay in your name.
+- **One team for every platform:** website, web app, store and mobile app built to one standard.
+- **Fixed, written scope:** every template, feature and integration listed before work begins.
+- **Engineering you can hand over:** typed, tested and documented code.
+- **You own everything:** domain, code, hosting, app store and cloud accounts stay in your name.
+- **Growth built in:** the same team can run [SEO](/services/seo-performance), [digital marketing](/services/digital-marketing) and [AI automation](/services/ai-agents-automation) once you launch.
 
 ## Frequently asked questions
 
-### How much does an e-commerce website cost in India?
+### How much does website or app development cost in India?
 
-It depends on the platform, the number of products and custom features such as subscriptions, B2B pricing or marketplace integrations. A Shopify store is usually the most affordable to launch; custom stores cost more but offer full control. We send a fixed quote after a discovery call.
+It depends on the number of templates or screens, custom features, integrations and content. A focused company website costs far less than a web application, a large online store or a mobile app. After a short discovery call we send a fixed, itemised quote. Our guide to [website development costs in India](/blog/website-development-cost-india) explains what drives the price.
 
-### Should I choose Shopify or WooCommerce?
+### How long does it take to build a website or app?
 
-Shopify is best if you want a reliable store that is easy to run with little technical effort. WooCommerce suits businesses already on WordPress or those who want full control over hosting. We will recommend one in writing based on your needs.
+A company website usually takes 4 to 8 weeks. Web applications and mobile app MVPs typically take 8 to 14 weeks, and larger platforms are delivered in phases.
 
-### Can you integrate Razorpay, UPI and cash on delivery?
+### Do you build e-commerce stores on Shopify and WooCommerce?
 
-Yes. We integrate Razorpay, PayU, Cashfree and other Indian payment gateways with UPI, cards, net banking, wallets and cash on delivery, plus shipping partners like Shiprocket and Delhivery.
+Yes. We build on Shopify, WooCommerce and custom stacks and recommend a platform in writing after discovery. Our comparison of [Shopify, WooCommerce and custom stores](/blog/shopify-or-custom-store) explains the trade-offs.
 
-### How long does it take to build an online store?
+### Can you build both Android and iOS apps?
 
-A Shopify or WooCommerce store usually takes 4 to 8 weeks, depending on the catalogue and integrations. Custom stores take longer and are delivered in milestones.
+Yes. We build Android and iOS apps from one cross-platform codebase, which reduces cost and keeps both apps in step, and we handle store submission.
 
-### Will my store be optimised for Google?
+### Will we be able to update the website ourselves?
 
-Yes. We set up SEO-friendly URLs, product structured data, collection pages that target real searches, an XML sitemap and fast page speed, and we can run ongoing SEO after launch.', '[{"title":"Conversion-first UX","text":"Product pages and checkout designed around buying."},{"title":"Payments and shipping","text":"Razorpay, Stripe, PayPal, Shiprocket and more."},{"title":"Catalogue tools","text":"Bulk import, variants, stock and discounts."},{"title":"Growth ready","text":"Pixels, feeds and email flows from day one."}]'::jsonb, '[{"text":"Store design"},{"text":"Shopify, WooCommerce or custom build"},{"text":"Payment and shipping setup"},{"text":"Product import"},{"text":"Launch checklist"}]'::jsonb, 'E-commerce Website Development Company in India | Shopify & WooCommerce · NexusBee', 'E-commerce website development in India: fast Shopify, WooCommerce and custom online stores with Razorpay payments, shipping, GST invoices and marketing built in.'),
+Yes. Every website comes with an easy content management system and a training session, so your team can edit pages, publish articles and update services without a developer.
+
+### Do we own the code?
+
+Yes. You own the code, design files, domain and every account from day one, and we provide documentation for a smooth handover.', '[{"title":"Business websites","text":"Custom-designed, fast websites with a CMS your team can edit."},{"title":"Web apps & SaaS","text":"Portals, dashboards, marketplaces and internal tools."},{"title":"E-commerce","text":"Shopify, WooCommerce or custom stores with Indian payments and GST."},{"title":"Mobile apps","text":"Android and iOS from one codebase, with store launch handled."},{"title":"Integrations","text":"CRMs, ERPs, payment gateways, WhatsApp and any API."},{"title":"SEO & speed built in","text":"Core Web Vitals, structured data and analytics from day one."}]'::jsonb, '[{"text":"Discovery and scope"},{"text":"UX and UI design"},{"text":"Website, web app, store or mobile app"},{"text":"CMS or admin panel"},{"text":"SEO, analytics and launch"},{"text":"Training and handover"}]'::jsonb, 'Website & App Development Company in India | Web, Mobile & E-commerce · NexusBee', 'Custom website, web application, e-commerce and mobile app development in India. Fast, SEO-ready and built to scale by a Noida team with 7+ years of experience.'),
+  (true, null, 'digital-marketing', 1, 'pink', 'Digital marketing & social media management', 'Social media management, Google and Meta ads, content and email campaigns measured against one thing: revenue.', 'Clicks, likes and impressions are easy to buy. Qualified leads, sales and a brand people remember are not. NexusBee is a digital marketing and social media management agency that runs every campaign and every content calendar against one question: is it growing the business at a cost that makes sense?
+
+We are based in Noida, with more than seven years of experience helping businesses across India grow online. Strategy, creative, paid media, social media, landing pages and analytics come from one team, so nothing gets lost between agencies.
+
+## Social media management
+
+Your social profiles are often where buyers check whether you are active, credible and worth contacting. We manage them end to end:
+
+- **Strategy and content pillars** that reflect your brand, audience and goals.
+- **Monthly content calendars** with posts, carousels, reels and stories for Instagram, LinkedIn, Facebook and YouTube.
+- **Design and short-form video** produced to a consistent visual identity.
+- **Community management:** replies to comments and messages, and escalation of enquiries to your team.
+- **LinkedIn for B2B:** company page management and thought-leadership content for founders and leaders.
+- **Monthly reporting** on reach, engagement, profile visits, website clicks and enquiries generated.
+
+## Performance marketing
+
+**Google Ads.** Search, Performance Max, Shopping and YouTube campaigns built around high-intent keywords, tight ad groups and landing pages designed for a single action.
+
+**Meta Ads (Facebook and Instagram).** Prospecting and retargeting with structured creative testing, lead forms, catalogue ads and the Conversions API for accurate tracking.
+
+**LinkedIn Ads.** Job-title and account-based targeting for B2B companies selling to specific industries and decision-makers.
+
+**Email and WhatsApp marketing.** Welcome series, nurture sequences, abandoned-cart flows and broadcasts that turn one-time visitors into repeat customers.
+
+## Landing pages and conversion
+
+Ads and social posts send people to your website, so the page they land on decides how much of your budget turns into enquiries. Because NexusBee also [builds websites](/services/website-app-development), we create fast, focused landing pages and test headlines, offers and forms instead of simply asking for a bigger budget.
+
+## Tracking you can trust
+
+GA4, Google Tag Manager, Meta Pixel and Conversions API, and CRM integration are set up and tested before we spend a rupee, so every lead and sale can be traced back to the campaign or post that produced it.
+
+## How we work
+
+1. **Strategy:** goals, unit economics, audiences and channels agreed in writing, with targets for cost per lead or return on ad spend.
+2. **Foundations:** tracking, profiles, brand templates and landing pages prepared.
+3. **Launch:** campaigns and content calendars go live, with several creatives and audiences to test.
+4. **Optimise weekly:** we cut what does not work and scale what does.
+5. **Report monthly:** spend, leads, cost per lead, sales, engagement and next steps in plain language.
+
+## Who we work with
+
+D2C and e-commerce brands, real estate developers, education and coaching businesses, healthcare providers, B2B and SaaS companies and local service businesses across India.
+
+## Why choose NexusBee
+
+- **Revenue-focused:** we report on leads, sales and return on ad spend, not vanity metrics.
+- **Social and performance together:** organic content and paid campaigns planned as one programme.
+- **Full-funnel team:** creative, ads, landing pages, [SEO](/services/seo-performance) and [automation](/services/ai-agents-automation) under one roof.
+- **Transparent:** ad accounts and social profiles stay in your name, and you see every rupee spent.
+
+## Frequently asked questions
+
+### What does social media management include?
+
+Strategy, monthly content calendars, post and reel design, captions, scheduling, community management and monthly reporting across the platforms that matter to your audience, such as Instagram, LinkedIn, Facebook and YouTube.
+
+### Which platforms should my business be on?
+
+It depends on your audience. B2B companies usually focus on LinkedIn and Google; consumer brands on Instagram, Meta Ads and YouTube. We recommend a channel mix based on where your buyers spend time and how they buy.
+
+### How much should I spend on digital marketing in India?
+
+It depends on your industry, competition and targets. We recommend starting with a test budget large enough to compare a few campaigns, then scaling what delivers the best cost per lead or return on ad spend.
+
+### How soon will we see results?
+
+Paid campaigns can bring enquiries within days and usually stabilise after a few weeks of testing. Social media and SEO build steadily over months.
+
+### Do we own our ad accounts and social profiles?
+
+Yes. All ad, analytics and social accounts stay in your name, and we work in them with access you control.', '[{"title":"Social media management","text":"Content calendars, reels, posts and community management."},{"title":"Paid ads","text":"Google, Meta and LinkedIn campaigns tuned every week."},{"title":"Landing pages","text":"Fast pages built to turn clicks into enquiries."},{"title":"Email and WhatsApp","text":"Automated flows that bring customers back."},{"title":"Tracking","text":"Pixels, conversions and dashboards set up correctly."},{"title":"Monthly reporting","text":"Leads, sales and return on ad spend in plain language."}]'::jsonb, '[{"text":"Marketing and content strategy"},{"text":"Monthly social media calendar"},{"text":"Ad campaigns"},{"text":"Creative assets"},{"text":"Landing pages"},{"text":"Monthly performance report"}]'::jsonb, 'Digital Marketing & Social Media Management Agency in India · NexusBee', 'Digital marketing and social media management in India: Google Ads, Meta Ads, Instagram and LinkedIn management, content and email campaigns measured on leads and revenue.'),
+  (true, null, 'ai-agents-automation', 2, 'ink', 'AI agents & automation', 'AI agents, chatbots and business process automation connected to your data and tools, built on Claude and other models.', 'AI is useful when it takes real, repetitive work off your team''s plate. NexusBee is an AI automation agency in India that builds practical AI agents, chatbots and business process automation connected to your data and tools: assistants that answer customers, workflows that move data between systems, and agents that qualify leads, read documents and keep your records up to date.
+
+We are based in Noida with more than seven years of experience building software and automation, and we build with leading AI models, including Claude, choosing the right one for each task.
+
+## AI agents and chatbots
+
+**Website and WhatsApp assistants.** Trained on your products, services, policies and FAQs, they answer questions around the clock in English, Hindi and other languages, collect lead details and hand over to a person when needed.
+
+**Lead qualification agents.** They respond to new enquiries within seconds, ask the right questions, score leads, update your CRM and book meetings in your calendar.
+
+**Customer support automation.** Agents draft replies, categorise and route tickets, summarise long conversations and look up order or account information.
+
+**Document processing.** Data from invoices, purchase orders, forms, resumes and contracts is extracted into your systems, with a person reviewing exceptions.
+
+**Internal knowledge assistants.** A private assistant answers your team''s questions from your SOPs, policies, product documents and past projects.
+
+## Business process automation
+
+Many tasks do not need AI at all, just reliable connections between your tools. We automate:
+
+- **Lead capture and follow-up** from your website, ads, WhatsApp and marketplaces into your CRM.
+- **Quotes, invoices and payment reminders,** including GST invoices and payment links.
+- **Reports and dashboards** pulled together automatically from sales, marketing and finance tools.
+- **Approvals** for purchases, leave and expenses, with reminders and an audit trail.
+- **Data sync** between your CRM, ERP, e-commerce store, accounting software and spreadsheets.
+
+We connect tools such as Google Workspace, Microsoft 365, Zoho, HubSpot, Salesforce, Tally, Razorpay, Shopify and WhatsApp Business, using platforms like Make, Zapier or n8n or custom integrations where you need more control, reliability or lower running costs.
+
+## How we build automation that works
+
+1. **Map the process** with your team and measure how long it takes today.
+2. **Simplify first.** Automating a messy process just makes mess faster.
+3. **Start with one measurable use case,** such as instant lead response or invoice processing.
+4. **Build with guardrails:** clear instructions, limited access, logging and human review where it matters.
+5. **Evaluate and monitor:** we test against real examples before launch and track accuracy and time saved afterwards.
+6. **Scale what works** to the next process.
+
+## Data privacy and security
+
+Your data stays under your control. We use business-grade AI services that do not train on your data, restrict each automation to the data it needs, log activity and keep human review for sensitive decisions, in line with India''s Digital Personal Data Protection Act.
+
+## Why choose NexusBee as your AI automation agency
+
+- **Practical, not hype:** use cases that save time in the first month.
+- **AI and automation together:** we use rules where rules work and AI where judgement is needed.
+- **Engineering depth:** secure integrations, evaluation and monitoring, not just a chatbot widget.
+- **Ownership:** accounts, data and code stay with you.
+
+Read our guides to [AI automation use cases for Indian businesses](/blog/ai-automation-for-small-business-india) and [getting started with AI agents](/blog/ai-agents-for-small-teams).
+
+## Frequently asked questions
+
+### What is the difference between AI agents and business process automation?
+
+Business process automation follows fixed rules, such as adding every website lead to your CRM. AI agents handle tasks that need understanding, such as reading an email, answering a question or extracting data from an invoice. Most workflows combine both.
+
+### Can you build a WhatsApp chatbot for my business?
+
+Yes. We build AI assistants on the WhatsApp Business API that answer questions from your knowledge base, capture leads, share order updates and hand conversations to your team when needed.
+
+### Will the AI give wrong answers to customers?
+
+We reduce this risk by grounding answers in your own documents, setting clear rules, testing against real questions and keeping a person in the loop until accuracy is proven. Assistants hand over when they are unsure.
+
+### Which tools can you connect?
+
+Common ones include Google Workspace, Microsoft 365, Zoho, HubSpot, Salesforce, Tally, Razorpay, Shopify, WooCommerce, WhatsApp Business and Slack, plus most tools that offer an API.
+
+### How much does AI automation cost in India?
+
+It depends on the use case, integrations and volume. Most clients start with one focused automation at a fixed price, plus modest running costs for AI usage, then expand once the results are clear.', '[{"title":"AI chatbots","text":"Answer customers on your website and WhatsApp, around the clock."},{"title":"Lead agents","text":"Reply instantly, qualify leads, update your CRM and book calls."},{"title":"Document processing","text":"Invoices, purchase orders and forms read into your systems."},{"title":"Process automation","text":"Leads, invoices, reports and approvals that run themselves."},{"title":"Knowledge search","text":"Ask questions over your own documents and data."},{"title":"Safe by design","text":"Guardrails, human review and clear logs."}]'::jsonb, '[{"text":"Process and use-case workshop"},{"text":"AI agent or chatbot"},{"text":"Workflow automation"},{"text":"Tool and data integrations"},{"text":"Evaluation and guardrails"},{"text":"Usage dashboard"}]'::jsonb, 'AI Automation Agency in India | AI Agents, Chatbots & Business Process Automation · NexusBee', 'AI agents, WhatsApp and website chatbots, document processing and business process automation for Indian businesses, built safely and connected to your tools.'),
   (true, null, 'seo-performance', 3, 'sky', 'SEO & performance', 'Technical SEO, content structure and Core Web Vitals work that moves you up the results page.', 'Ranking on Google is not about tricks. It is about a fast, well-structured website that clearly answers what people are searching for, backed by a reputation other websites are willing to link to. NexusBee is an SEO agency in India that combines engineering and marketing, so we can fix the technical problems most agencies only report on, and then build the content and authority that move you up the results page.
 
 We are based in Noida and have more than seven years of experience building and optimising websites for businesses across India.
@@ -301,7 +333,7 @@ Crawling and indexing, site speed and Core Web Vitals, mobile usability, duplica
 ### Do you offer local SEO for multiple cities?
 
 Yes. We optimise your Google Business Profile, keep your business details consistent across directories and build unique location pages for each city you serve.', '[{"title":"Technical audit","text":"Crawl, indexation, schema and site speed checked in depth."},{"title":"Core Web Vitals","text":"We make pages load and respond instantly."},{"title":"Content plan","text":"Topics and pages mapped to real search demand."},{"title":"Local SEO","text":"Google Business Profile and local listings tuned."}]'::jsonb, '[{"text":"Free audit report"},{"text":"Speed optimisation"},{"text":"Keyword and content map"},{"text":"Schema markup"},{"text":"Monthly reporting"}]'::jsonb, 'SEO Agency in India | Technical SEO, Local SEO & Core Web Vitals · NexusBee', 'SEO services in India from NexusBee: technical SEO audits, Core Web Vitals, local SEO, content strategy and link building that bring qualified leads, not just traffic.'),
-  (true, null, 'management-maintenance', 4, 'violet', 'Management & maintenance', 'Updates, backups, monitoring and small improvements every month, so your site never falls behind.', 'A website is never finished. Plugins and frameworks need updates, security threats change, content gets stale and small bugs appear when browsers update. Left alone, a website slowly gets slower, less secure and less effective. NexusBee''s website maintenance plans keep your site fast, secure and up to date, so you can focus on your business.
+  (true, null, 'management-maintenance', 4, 'violet', 'Maintenance & management', 'Updates, backups, security, monitoring and improvements every month, so your website and apps never fall behind.', 'A website is never finished. Plugins and frameworks need updates, security threats change, content gets stale and small bugs appear when browsers update. Left alone, a website slowly gets slower, less secure and less effective. NexusBee''s website maintenance plans keep your site fast, secure and up to date, so you can focus on your business.
 
 We are a Noida-based team with more than seven years of experience building and supporting websites, web applications and online stores for businesses across India.
 
@@ -359,265 +391,11 @@ Our monitoring alerts us immediately. We investigate, restore service from backu
 
 ### Do you maintain WordPress and Shopify websites?
 
-Yes. We maintain WordPress, WooCommerce, Shopify, Next.js and custom websites and applications.', '[{"title":"Security updates","text":"Frameworks, plugins and servers kept patched."},{"title":"Backups","text":"Daily backups with tested restores."},{"title":"Monitoring","text":"Uptime and error alerts go straight to us."},{"title":"Change hours","text":"Monthly hours for content and feature tweaks."}]'::jsonb, '[{"text":"Monthly maintenance plan"},{"text":"Uptime monitoring"},{"text":"Backups"},{"text":"Priority support"},{"text":"Monthly health report"}]'::jsonb, 'Website Maintenance Services in India | Updates, Security & Support · NexusBee', 'Monthly website maintenance in India: updates, backups, security, uptime monitoring, speed checks and content changes with a 24-hour response time.'),
-  (true, null, 'business-automation', 5, 'yellow', 'Business automation', 'Connect your tools and remove repetitive work: leads, invoices, reports and approvals that run themselves.', 'Every business has work that follows the same steps every day: copying leads from a form into a CRM, sending quotes, chasing payments, updating spreadsheets, preparing weekly reports and getting approvals by email. Each task takes a few minutes, but together they eat hours of your team''s week and cause mistakes. NexusBee''s business process automation services connect your tools so that work runs itself.
-
-We are a Noida-based team with more than seven years of experience building software and automation for businesses across India.
-
-## What we automate
-
-- **Lead management**: capture leads from your website, ads, WhatsApp and marketplaces, add them to your CRM, assign them to the right salesperson and send instant follow-ups.
-- **Sales and quotations**: generate quotes and proposals from templates, send them for approval and track their status.
-- **Invoicing and payments**: create GST invoices, send payment links, record payments in your accounting software and remind customers automatically.
-- **Reporting**: pull data from sales, marketing and operations tools into dashboards and scheduled reports.
-- **Approvals**: purchase requests, leave requests and expense claims routed to the right person with reminders and an audit trail.
-- **Customer onboarding**: welcome emails, document collection, account setup and task lists triggered automatically when a deal closes.
-- **Data sync**: keep your CRM, ERP, e-commerce store, spreadsheets and email tools in step without manual copy and paste.
-
-## Tools we work with
-
-We connect tools such as Google Workspace, Microsoft 365, Zoho, HubSpot, Salesforce, Tally, Razorpay, Shopify, WooCommerce, WhatsApp Business, Slack and many more. Depending on the job, we use automation platforms like Make, Zapier or n8n, or write custom integrations when you need more control, better reliability or lower running costs.
-
-## Our approach
-
-**1. Map the process.** We sit with your team, document how the work happens today and measure how long it takes.
-
-**2. Fix the process first.** Automating a messy process just makes mess faster. We simplify the steps before we automate them.
-
-**3. Start with one high-value workflow.** We pick the task that saves the most time or prevents the most errors, automate it and measure the result.
-
-**4. Scale what works.** Once the first automation proves its value, we roll out the next ones.
-
-**5. Monitor and maintain.** Every automation has logging and error alerts, so failures are caught and fixed quickly.
-
-## Add AI where it helps
-
-Some steps need judgement, such as reading an email, classifying a support request or extracting data from an invoice. We add AI to these steps with a person reviewing the output until the results are reliable. See our AI agents and automation service for more.
-
-## Why choose NexusBee for business automation
-
-- **Process first, tools second**: we design the workflow before choosing the platform.
-- **Measurable results**: we track hours saved and errors prevented.
-- **Reliable and documented**: every automation is logged, monitored and explained to your team.
-- **No lock-in**: accounts and workflows are set up in your name.
-
-## Frequently asked questions
-
-### What is business process automation?
-
-It means using software to perform repetitive, rule-based tasks, such as moving data between tools, sending follow-ups and generating invoices, so your team can focus on work that needs human judgement.
-
-### Which business processes should we automate first?
-
-Start with tasks that are frequent, time-consuming and follow clear rules, such as lead capture and follow-up, invoicing and reporting. We help you pick the workflow with the best return.
-
-### Do you use Zapier, Make or custom code?
-
-All three. Platforms like Zapier, Make and n8n are quick to set up; custom integrations are better for complex, high-volume or sensitive workflows. We recommend the right option for each process.
-
-### How much does business automation cost?
-
-It depends on the number of workflows, tools and how complex the logic is. Most clients start with one workflow at a fixed price, then add more once they see the time saved.
-
-### Can you automate WhatsApp messages and follow-ups?
-
-Yes. We use the WhatsApp Business API to send order updates, reminders and follow-ups and to route incoming messages to your team or CRM.', '[{"title":"Process mapping","text":"We find the tasks worth automating first."},{"title":"Tool integrations","text":"CRMs, sheets, accounting, WhatsApp and email."},{"title":"Custom workflows","text":"n8n, Zapier or code, whatever fits best."},{"title":"Dashboards","text":"Live numbers instead of weekly spreadsheets."}]'::jsonb, '[{"text":"Automation audit"},{"text":"Workflow build"},{"text":"Integrations"},{"text":"Reporting dashboard"},{"text":"Team training"}]'::jsonb, 'Business Process Automation Services in India | Workflow Automation · NexusBee', 'Business process automation in India: connect your CRM, forms, WhatsApp, sheets and accounting tools to automate leads, invoices, reports and approvals.'),
-  (true, null, 'digital-marketing', 6, 'pink', 'Digital marketing', 'Performance ads, social media and email campaigns measured against one thing: revenue.', 'Clicks, likes and impressions are easy to buy. Leads and sales are not. NexusBee is a digital marketing agency in India that runs every campaign against one question: is it bringing in revenue at a cost that makes sense for your business? We plan, run and optimise campaigns across Google, Meta, LinkedIn, email and WhatsApp, with tracking set up properly from day one.
-
-We are based in Noida and have more than seven years of experience helping businesses across India grow online.
-
-## Our digital marketing services
-
-**Google Ads.** Search, Performance Max, Shopping and YouTube campaigns built around high-intent keywords, tight ad groups, strong landing pages and negative keywords that stop wasted spend.
-
-**Meta Ads (Facebook and Instagram).** Prospecting and retargeting campaigns with creative testing, lead forms, catalogue ads for e-commerce and the Conversions API for accurate tracking.
-
-**LinkedIn Ads.** Account-based and job-title targeting for B2B companies that sell to specific industries and decision-makers.
-
-**Social media management.** Content calendars, posts, reels and community management for Instagram, LinkedIn, Facebook and YouTube that build your brand and support your paid campaigns.
-
-**Email and WhatsApp marketing.** Welcome series, nurture sequences, abandoned cart flows and broadcast campaigns that turn one-time visitors into repeat customers.
-
-**Landing pages and conversion rate optimisation.** Fast, focused landing pages for each campaign, with A/B tests on headlines, offers and forms.
-
-**Analytics and tracking.** GA4, Google Tag Manager, Meta Pixel and CRM integration so every lead and sale is attributed to the campaign that produced it.
-
-## How we run campaigns
-
-1. **Strategy**: we learn your margins, sales cycle and ideal customers, then set targets for cost per lead and return on ad spend.
-2. **Tracking setup**: conversion tracking is configured and tested before we spend a single rupee.
-3. **Launch**: campaigns go live with multiple ad creatives and audiences to test.
-4. **Optimise weekly**: we pause what does not work, scale what does and keep testing new ideas.
-5. **Report monthly**: clear reports on spend, leads, cost per lead, sales and next steps.
-
-## Built on a strong website
-
-Ads send people to your website, so your website decides how much of your budget turns into enquiries. Because NexusBee also builds websites and landing pages, we fix slow pages, confusing forms and weak offers instead of just asking for a bigger budget.
-
-## Who we work with
-
-We run campaigns for D2C and e-commerce brands, real estate developers, education and coaching businesses, healthcare providers, B2B and SaaS companies and local service businesses across India.
-
-## Why choose NexusBee as your digital marketing agency
-
-- **Revenue-focused**: we report on leads, sales and ROI, not vanity metrics.
-- **Full-funnel team**: ads, landing pages, SEO and automation under one roof.
-- **Transparent**: ad accounts are in your name and you see every rupee spent.
-- **No long lock-in contracts**: we keep clients by delivering results.
-
-## Frequently asked questions
-
-### How much should I spend on digital marketing in India?
-
-It depends on your industry, competition and targets. We recommend starting with a test budget large enough to gather data across a few campaigns, then scaling what delivers the best cost per lead or return on ad spend.
-
-### Which is better for my business: Google Ads or Meta Ads?
-
-Google Ads captures people who are already searching for what you sell, so it usually brings higher-intent leads. Meta Ads is better for creating demand, building an audience and retargeting. Most businesses benefit from a mix, which we plan based on your goals.
-
-### How soon will I see results from paid ads?
-
-Paid campaigns can start bringing leads within days of launch. It usually takes a few weeks of testing and optimisation to reach a stable cost per lead.
-
-### Do I own the ad accounts?
-
-Yes. All ad, analytics and tracking accounts are created in your name, and we work in them with access you control.
-
-### Do you also do SEO?
-
-Yes. SEO builds long-term organic traffic while paid ads deliver faster results. Many clients combine both for steady, compounding growth.', '[{"title":"Paid ads","text":"Google and Meta campaigns tuned every week."},{"title":"Social media","text":"Content calendars and creatives that fit your brand."},{"title":"Email and WhatsApp","text":"Automated flows that bring customers back."},{"title":"Tracking","text":"Pixels, conversions and dashboards set up correctly."}]'::jsonb, '[{"text":"Marketing plan"},{"text":"Ad campaigns"},{"text":"Landing pages"},{"text":"Creative assets"},{"text":"Monthly performance report"}]'::jsonb, 'Digital Marketing Agency in India | Google Ads, Meta Ads & Social Media · NexusBee', 'Performance-focused digital marketing in India: Google Ads, Meta Ads, LinkedIn, social media, email and WhatsApp campaigns measured on leads, sales and ROI.'),
-  (true, null, 'mobile-apps', 7, 'red', 'Mobile apps', 'iOS and Android apps with React Native or Flutter, from prototype to the App Store and Play Store.', 'A good mobile app becomes part of your customers'' daily routine. A bad one gets uninstalled after the first try. NexusBee designs and develops mobile apps for Android and iOS that are fast, easy to use and built to grow, from the first prototype to launch on the Google Play Store and Apple App Store.
-
-We are a mobile app development company based in Noida with more than seven years of experience building digital products for startups and businesses across India.
-
-## Apps we build
-
-- **Customer apps** for ordering, booking, loyalty, payments and account management.
-- **On-demand and marketplace apps** with real-time tracking, chat and notifications.
-- **Business and field-team apps** for sales teams, technicians and delivery staff, with offline support.
-- **Health, fitness and education apps** with content, progress tracking and subscriptions.
-- **Companion apps** for an existing web platform, SaaS product or e-commerce store.
-
-## Cross-platform development with React Native and Flutter
-
-Most businesses do not need two separate apps written twice. We use **React Native** or **Flutter** to build one codebase that runs on both Android and iOS, which lowers cost, speeds up delivery and keeps both apps in step. When an app needs deep native features, we write native modules where they are needed.
-
-## What every app includes
-
-- **UI/UX design** with wireframes, high-fidelity screens and a clickable prototype you can test before development starts.
-- **Secure authentication** with OTP login, social sign-in and role-based access.
-- **Backend and APIs**, or integration with your existing systems.
-- **Payments** with Razorpay, UPI and in-app purchases.
-- **Push notifications, analytics and crash reporting** to understand and engage users.
-- **Performance and offline support** for patchy mobile networks.
-- **App Store and Play Store submission**, including store listings, screenshots and review guidelines.
-
-## Our app development process
-
-1. **Discovery**: users, goals, features and the smallest version worth launching.
-2. **Design**: user flows, wireframes and a clickable prototype.
-3. **Development**: two-week sprints with test builds you can install on your phone.
-4. **Testing**: functional, device and performance testing across Android and iOS.
-5. **Launch**: store submission, analytics and monitoring.
-6. **Growth**: updates, new features and support after launch.
-
-## Why choose NexusBee for mobile app development
-
-- **One codebase, two platforms**: faster delivery and lower cost.
-- **Design-led**: apps that feel simple, even when the logic behind them is not.
-- **Full-stack team**: we build the app, the backend, the admin panel and the marketing website.
-- **You own the code** and the developer accounts.
-- **Long-term partner**: support plans keep your app updated for new OS versions.
-
-## Frequently asked questions
-
-### How much does mobile app development cost in India?
-
-It depends on the number of screens, features, integrations and whether you need a custom backend. A focused MVP costs much less than a full-featured platform. We share a fixed quote for the first release after discovery.
-
-### How long does it take to build a mobile app?
-
-A focused MVP usually takes 10 to 14 weeks including design, development, testing and store submission. Larger apps are delivered in phases.
-
-### Should I build with React Native or Flutter?
-
-Both build high-quality apps for Android and iOS from one codebase. We recommend one based on your features, existing technology and team. If you already use React for your website, React Native is often the natural choice.
-
-### Do you publish the app on the Play Store and App Store?
-
-Yes. We prepare the store listings and handle submission and review, using developer accounts in your name.
-
-### Do you provide support after the app launches?
-
-Yes. Our support plans cover bug fixes, OS updates, monitoring and new features.', '[{"title":"Cross-platform","text":"React Native or Flutter for iOS and Android."},{"title":"Native feel","text":"Smooth gestures, notifications and offline mode."},{"title":"Backend included","text":"APIs, auth and an admin panel to run the app."},{"title":"Store launch","text":"Listings, screenshots and review handled for you."}]'::jsonb, '[{"text":"App design"},{"text":"iOS and Android app"},{"text":"Backend and admin"},{"text":"Store submission"},{"text":"Analytics and crash reporting"}]'::jsonb, 'Mobile App Development Company in India | Android & iOS Apps · NexusBee', 'Mobile app development in India: Android and iOS apps built with React Native or Flutter, from MVP and UI/UX design to Play Store and App Store launch and support.'),
-  (true, null, 'ai-agents-automation', 8, 'ink', 'AI agents & automation', 'AI assistants, chatbots and agents built on Claude and other models, connected to your data and tools.', 'AI is useful when it takes real, repetitive work off your team''s plate. NexusBee is an AI automation agency in India that builds practical AI agents and chatbots connected to your data and tools: assistants that answer customer questions, qualify leads, read documents, draft replies and keep your systems up to date.
-
-We are based in Noida with more than seven years of experience building software and automation, and we build with leading AI models, including Claude, choosing the right one for each task.
-
-## AI solutions we build
-
-**AI chatbots for websites and WhatsApp.** Assistants trained on your products, services, policies and FAQs that answer questions around the clock in English, Hindi and other languages, collect lead details and hand over to a person when needed.
-
-**Lead qualification agents.** Agents that respond to new enquiries within seconds, ask the right questions, score leads, update your CRM and book meetings in your calendar.
-
-**Customer support automation.** Agents that draft replies, categorise and route tickets, summarise long conversations and look up order or account information.
-
-**Document processing.** Extracting data from invoices, purchase orders, forms, resumes and contracts into your systems, with a person reviewing exceptions.
-
-**Internal knowledge assistants.** A private assistant that answers your team''s questions from your SOPs, policies, product docs and past projects.
-
-**Sales and research agents.** Researching prospects, preparing call briefs and drafting personalised outreach for your team to review.
-
-**AI features inside your product.** Search, summarisation, recommendations and copilots added to your web or mobile app.
-
-## How we build AI that works
-
-1. **Pick one measurable task.** We start with a repetitive job where we can measure hours saved or response time.
-2. **Prepare your knowledge.** We organise your documents and data so the AI gives accurate, up-to-date answers.
-3. **Build with guardrails.** Clear instructions, access controls, source references and limits on what the agent can do.
-4. **Keep a human in the loop.** At first, a person approves outputs. Automation increases as accuracy is proven.
-5. **Evaluate and monitor.** We test agents against real examples, log every conversation and keep improving accuracy.
-
-## Data privacy and security
-
-Your data stays under your control. We use business-grade AI APIs that do not train on your data, restrict access to what each agent needs, and log activity for review. Sensitive workflows can include redaction and approval steps.
-
-## Connected to your tools
-
-Our AI agents work with your website, WhatsApp Business, email, CRM (HubSpot, Zoho, Salesforce), Google Workspace, Microsoft 365, Slack, help desks and databases, often alongside our business process automation.
-
-## Why choose NexusBee as your AI automation agency
-
-- **Practical, not hype**: we start with use cases that save time in the first month.
-- **Engineering depth**: secure integrations, evaluation and monitoring, not just a prompt in a chat window.
-- **Model-agnostic**: we choose the best model for accuracy, speed and cost.
-- **Ownership**: accounts, data and code stay with you.
-
-## Frequently asked questions
-
-### What is an AI agent?
-
-An AI agent is software that uses a language model to understand requests and take actions, such as looking up information, updating a CRM, drafting a reply or booking a meeting, within limits you define.
-
-### Can you build a WhatsApp chatbot for my business?
-
-Yes. We build AI chatbots on the WhatsApp Business API that answer questions from your knowledge base, capture leads, share order updates and hand conversations to your team when needed.
-
-### Will the AI give wrong answers to customers?
-
-We reduce this risk by grounding answers in your own documents, setting clear rules, testing against real questions and keeping a human in the loop until accuracy is proven. Agents are told to hand over to a person when they are unsure.
-
-### Is our business data safe?
-
-Yes. We use business-grade AI APIs that do not use your data for training, restrict each agent''s access and log activity. We can also add redaction for sensitive information.
-
-### How much does AI automation cost in India?
-
-It depends on the use case, integrations and volume. Most clients start with one focused agent at a fixed price, plus a usage-based running cost for the AI model, then expand once the results are clear.', '[{"title":"Support assistants","text":"Answer customers on your site and WhatsApp, around the clock."},{"title":"Internal agents","text":"Draft, summarise, classify and update records for your team."},{"title":"Knowledge search","text":"Ask questions over your documents and data."},{"title":"Safe by design","text":"Guardrails, human review and clear logs."}]'::jsonb, '[{"text":"Use-case workshop"},{"text":"AI agent or assistant"},{"text":"Tool and data integrations"},{"text":"Evaluation and guardrails"},{"text":"Usage dashboard"}]'::jsonb, 'AI Automation Agency in India | AI Agents & Chatbot Development · NexusBee', 'AI automation agency in India: custom AI agents, chatbots for WhatsApp and websites, document processing and workflow automation built on leading AI models.')
+Yes. We maintain WordPress, WooCommerce, Shopify, Next.js and custom websites and applications.', '[{"title":"Security updates","text":"Frameworks, plugins and servers kept patched."},{"title":"Backups","text":"Daily backups with tested restores."},{"title":"Monitoring","text":"Uptime and error alerts go straight to us."},{"title":"Change hours","text":"Monthly hours for content and feature tweaks."}]'::jsonb, '[{"text":"Monthly maintenance plan"},{"text":"Uptime monitoring"},{"text":"Backups"},{"text":"Priority support"},{"text":"Monthly health report"}]'::jsonb, 'Website Maintenance Services in India | Updates, Security & Support · NexusBee', 'Monthly website maintenance in India: updates, backups, security, uptime monitoring, speed checks and content changes with a 24-hour response time.')
 on conflict (slug) do nothing;
 
 insert into public.projects (slug, name, client, category, service_slug, year, url, color, cover_url, gallery, summary, body, quote, quote_author, rating, results, tags, featured, position, published, seo_title, seo_description) values
-  ('zenith', 'ZENITH', 'Zenith Fitness', 'Mobile', 'mobile-apps', 2026, null, 'lime', null, '[]'::jsonb, 'Zenith Fitness came to us for mobile app. We planned, designed and shipped it end to end.', '## The brief
+  ('zenith', 'ZENITH', 'Zenith Fitness', 'Mobile', 'website-app-development', 2026, null, 'lime', null, '[]'::jsonb, 'Zenith Fitness came to us for mobile app. We planned, designed and shipped it end to end.', '## The brief
 
 Zenith Fitness needed a partner who could move fast without cutting corners.
 
@@ -628,7 +406,7 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 ## The result
 
 > They shipped our app in eight weeks and it has not gone down once.', 'They shipped our app in eight weeks and it has not gone down once.', 'Zenith Fitness', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"MOBILE APP"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 0, true, null, null),
-  ('kite', 'KITE', 'Kite Travel', 'Software', 'web-software-apps', 2026, null, 'blue', null, '[]'::jsonb, 'Kite Travel came to us for web platform. We planned, designed and shipped it end to end.', '## The brief
+  ('kite', 'KITE', 'Kite Travel', 'Software', 'website-app-development', 2026, null, 'blue', null, '[]'::jsonb, 'Kite Travel came to us for web platform. We planned, designed and shipped it end to end.', '## The brief
 
 Kite Travel needed a partner who could move fast without cutting corners.
 
@@ -639,7 +417,7 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 ## The result
 
 > Clear process, honest estimates and a product our users love.', 'Clear process, honest estimates and a product our users love.', 'Kite Travel', 5, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"WEB PLATFORM"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 1, true, null, null),
-  ('orbitpay', 'ORBITPAY', 'OrbitPay', 'Software', 'web-software-apps', 2025, null, 'orange', null, '[]'::jsonb, 'OrbitPay came to us for fintech api. We planned, designed and shipped it end to end.', '## The brief
+  ('orbitpay', 'ORBITPAY', 'OrbitPay', 'Software', 'website-app-development', 2025, null, 'orange', null, '[]'::jsonb, 'OrbitPay came to us for fintech api. We planned, designed and shipped it end to end.', '## The brief
 
 OrbitPay needed a partner who could move fast without cutting corners.
 
@@ -650,7 +428,7 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 ## The result
 
 > Security-first engineering. Our audit passed on the first try.', 'Security-first engineering. Our audit passed on the first try.', 'OrbitPay', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"FINTECH API"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 2, true, null, null),
-  ('umbra', 'UMBRA', 'Umbra Studio', 'Corporate', 'corporate-web-design', 2025, null, 'lime', null, '[]'::jsonb, 'Umbra Studio came to us for corporate website. We planned, designed and shipped it end to end.', '## The brief
+  ('umbra', 'UMBRA', 'Umbra Studio', 'Corporate', 'website-app-development', 2025, null, 'lime', null, '[]'::jsonb, 'Umbra Studio came to us for corporate website. We planned, designed and shipped it end to end.', '## The brief
 
 Umbra Studio needed a partner who could move fast without cutting corners.
 
@@ -672,7 +450,7 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 ## The result
 
 > Their support agent answers 70% of our tickets before a human needs to.', 'Their support agent answers 70% of our tickets before a human needs to.', 'Lumen Labs', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"AI AGENT"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 4, true, null, null),
-  ('northwind', 'NORTHWIND', 'Northwind', 'Automation', 'business-automation', 2025, null, 'orange', null, '[]'::jsonb, 'Northwind came to us for business automation. We planned, designed and shipped it end to end.', '## The brief
+  ('northwind', 'NORTHWIND', 'Northwind', 'Automation', 'ai-agents-automation', 2025, null, 'orange', null, '[]'::jsonb, 'Northwind came to us for business automation. We planned, designed and shipped it end to end.', '## The brief
 
 Northwind needed a partner who could move fast without cutting corners.
 
@@ -694,7 +472,7 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 ## The result
 
 > Organic traffic tripled in six months. Accessible, compliant and fast.', 'Organic traffic tripled in six months. Accessible, compliant and fast.', 'Pulse Health', 4.8, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"SEO & PERFORMANCE"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 6, true, null, null),
-  ('ferry', 'FERRY', 'Ferry Logistics', 'Software', 'web-software-apps', 2024, null, 'blue', null, '[]'::jsonb, 'Ferry Logistics came to us for marketplace. We planned, designed and shipped it end to end.', '## The brief
+  ('ferry', 'FERRY', 'Ferry Logistics', 'Software', 'website-app-development', 2024, null, 'blue', null, '[]'::jsonb, 'Ferry Logistics came to us for marketplace. We planned, designed and shipped it end to end.', '## The brief
 
 Ferry Logistics needed a partner who could move fast without cutting corners.
 
@@ -705,7 +483,7 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 ## The result
 
 > Bookings doubled in the first quarter after launch.', 'Bookings doubled in the first quarter after launch.', 'Ferry Logistics', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"MARKETPLACE"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 7, true, null, null),
-  ('bloom', 'BLOOM', 'Bloom Market', 'E-Commerce', 'e-commerce', 2026, null, 'orange', null, '[]'::jsonb, 'Bloom Market came to us for shopify store. We planned, designed and shipped it end to end.', '## The brief
+  ('bloom', 'BLOOM', 'Bloom Market', 'E-Commerce', 'website-app-development', 2026, null, 'orange', null, '[]'::jsonb, 'Bloom Market came to us for shopify store. We planned, designed and shipped it end to end.', '## The brief
 
 Bloom Market needed a partner who could move fast without cutting corners.
 
@@ -865,7 +643,7 @@ Copywriting, stock photography, premium plugins, hosting, email setup, content m
 
 ## How NexusBee prices websites
 
-We start with a short discovery call, then send a fixed, written proposal that lists every template, feature, integration and deliverable, plus what is excluded. You own every account and line of code from day one. Read about our [website development service](/services/corporate-web-design), see the [cities we serve](/locations) or [request a proposal](/quote).
+We start with a short discovery call, then send a fixed, written proposal that lists every template, feature, integration and deliverable, plus what is excluded. You own every account and line of code from day one. Read about our [website development service](/services/website-app-development), see the [cities we serve](/locations) or [request a proposal](/quote).
 
 ## Frequently asked questions
 
@@ -1012,7 +790,7 @@ Proximity helps with workshops and shoots, but expertise, communication and tran
 
 ## How NexusBee works
 
-We are a Noida-based agency with more than seven years of experience across [websites](/services/corporate-web-design), [digital marketing](/services/digital-marketing), [SEO](/services/seo-performance) and AI automation. Accounts stay in your name, tracking is in place before spend, and we report on leads, pipeline and revenue. [Book a consultation](/quote) and put all twelve questions to us.
+We are a Noida-based agency with more than seven years of experience across [websites](/services/website-app-development), [digital marketing](/services/digital-marketing), [SEO](/services/seo-performance) and AI automation. Accounts stay in your name, tracking is in place before spend, and we report on leads, pipeline and revenue. [Book a consultation](/quote) and put all twelve questions to us.
 
 ## Frequently asked questions
 
@@ -1151,7 +929,7 @@ Most businesses end up with a combination: platforms for simple connections and 
 
 ## How NexusBee can help
 
-NexusBee designs and builds [AI agents and chatbots](/services/ai-agents-automation) and [business process automation](/services/business-automation) for companies across India. We start with a short process review, agree on one measurable use case and deliver it with monitoring and human review built in. For agent design in more depth, read [AI agents for small teams](/blog/ai-agents-for-small-teams), or [talk to us](/quote) about the process you would most like to automate.
+NexusBee designs and builds [AI agents and chatbots](/services/ai-agents-automation) and [business process automation](/services/ai-agents-automation) for companies across India. We start with a short process review, agree on one measurable use case and deliver it with monitoring and human review built in. For agent design in more depth, read [AI agents for small teams](/blog/ai-agents-for-small-teams), or [talk to us](/quote) about the process you would most like to automate.
 
 ## Frequently asked questions
 
@@ -1283,7 +1061,7 @@ Google''s AI Overviews, ChatGPT and Perplexity increasingly answer questions dir
 
 ## How NexusBee helps
 
-NexusBee is an [SEO agency in India](/services/seo-performance) with developers and marketers in one team, so technical issues are fixed rather than just reported. We also build [fast, SEO-ready websites](/services/corporate-web-design) and [city landing pages](/locations). Read [why website speed matters](/blog/why-website-speed-wins-clients), or [request a free SEO audit](/quote?service=seo-performance).
+NexusBee is an [SEO agency in India](/services/seo-performance) with developers and marketers in one team, so technical issues are fixed rather than just reported. We also build [fast, SEO-ready websites](/services/website-app-development) and [city landing pages](/locations). Read [why website speed matters](/blog/why-website-speed-wins-clients), or [request a free SEO audit](/quote?service=seo-performance).
 
 ## Frequently asked questions
 
@@ -1388,7 +1166,7 @@ Websites get slower over time as new plugins, scripts, campaigns and images are 
 
 ## How we build for speed
 
-At NexusBee, every [website we build](/services/corporate-web-design) starts with a performance budget, and our [SEO and performance service](/services/seo-performance) diagnoses and fixes slow sites built elsewhere. For the wider picture, read our [SEO checklist for Indian businesses](/blog/seo-checklist-for-indian-businesses), or [request a free speed and SEO audit](/quote?service=seo-performance).
+At NexusBee, every [website we build](/services/website-app-development) starts with a performance budget, and our [SEO and performance service](/services/seo-performance) diagnoses and fixes slow sites built elsewhere. For the wider picture, read our [SEO checklist for Indian businesses](/blog/seo-checklist-for-indian-businesses), or [request a free speed and SEO audit](/quote?service=seo-performance).
 
 ## Frequently asked questions
 
@@ -1514,7 +1292,7 @@ Use business-grade AI services that do not train on your data, keep personal dat
 
 ## How NexusBee can help
 
-NexusBee builds [AI agents and chatbots](/services/ai-agents-automation) and [business process automation](/services/business-automation) for teams across India, starting with one measurable use case and building in evaluation, monitoring and human review. For more ideas, read [10 AI automation use cases for Indian businesses](/blog/ai-automation-for-small-business-india), or [tell us about the task](/quote) you would most like to hand over.
+NexusBee builds [AI agents and chatbots](/services/ai-agents-automation) and [business process automation](/services/ai-agents-automation) for teams across India, starting with one measurable use case and building in evaluation, monitoring and human review. For more ideas, read [10 AI automation use cases for Indian businesses](/blog/ai-automation-for-small-business-india), or [tell us about the task](/quote) you would most like to hand over.
 
 ## Frequently asked questions
 
@@ -1642,7 +1420,7 @@ Moving platforms is common as businesses grow. A safe migration includes a full 
 
 ## How NexusBee helps
 
-NexusBee builds [e-commerce websites](/services/e-commerce) on Shopify, WooCommerce and custom stacks, and we recommend a platform in writing after a short discovery call. Read our guide to [website development costs in India](/blog/website-development-cost-india), or [ask us for a platform recommendation](/quote?service=e-commerce).
+NexusBee builds [e-commerce websites](/services/website-app-development) on Shopify, WooCommerce and custom stacks, and we recommend a platform in writing after a short discovery call. Read our guide to [website development costs in India](/blog/website-development-cost-india), or [ask us for a platform recommendation](/quote?service=e-commerce).
 
 ## Frequently asked questions
 

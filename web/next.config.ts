@@ -11,7 +11,12 @@ const nextConfig: NextConfig = {
   },
   // One canonical host: nexusbee.in → www.nexusbee.in (Vercel already forces https; Next strips trailing slashes).
   async redirects() {
-    return [{ source: '/:path*', has: [{ type: 'host', value: 'nexusbee.in' }], destination: 'https://www.nexusbee.in/:path*', permanent: true }]
+    return [
+      { source: '/:path*', has: [{ type: 'host', value: 'nexusbee.in' }], destination: 'https://www.nexusbee.in/:path*', permanent: true },
+      // Nine services became five in October 2026; old service URLs keep their rankings via permanent redirects.
+      ...['corporate-web-design', 'web-software-apps', 'e-commerce', 'mobile-apps'].map((slug) => ({ source: `/services/${slug}`, destination: '/services/website-app-development', permanent: true })),
+      { source: '/services/business-automation', destination: '/services/ai-agents-automation', permanent: true },
+    ]
   },
 }
 

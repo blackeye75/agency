@@ -2,7 +2,7 @@ import 'server-only'
 import { cacheLife, cacheTag } from 'next/cache'
 import { publicClient } from '@/lib/supabase/public'
 import { seedPages, seedPosts, seedProjects, seedSections, seedServices, seedSettings } from './seed'
-import { withPageSeo, withPostDefaults, withServiceDefaults, withSettingsDefaults } from './defaults'
+import { withCurrentServices, withPageSeo, withPostDefaults, withProjectService, withSettingsDefaults } from './defaults'
 import type { Page, Post, Project, Section, Service, Settings } from './types'
 
 // Every public read is cached under the 'cms' tag. The admin API expires the
@@ -51,7 +51,7 @@ export async function getServices(): Promise<Service[]> {
   const db = publicClient()
   if (!db) return seedServices
   const { data, error } = await db.from('services').select('*').order('position')
-  return error ? seedServices : (data as unknown as Service[]).map(withServiceDefaults)
+  return error ? seedServices : withCurrentServices(data as unknown as Service[])
 }
 
 export async function getService(slug: string) {
@@ -64,7 +64,7 @@ export async function getProjects(): Promise<Project[]> {
   const db = publicClient()
   if (!db) return seedProjects
   const { data, error } = await db.from('projects').select('*').order('position')
-  return error ? seedProjects : (data as unknown as Project[])
+  return error ? seedProjects : (data as unknown as Project[]).map(withProjectService)
 }
 
 export async function getProject(slug: string) {

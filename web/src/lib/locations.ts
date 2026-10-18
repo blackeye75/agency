@@ -34,13 +34,11 @@ We are based in Noida and have spent ${YEARS} years designing, building and grow
 
 ## What we do
 
-- **Website development**: fast, custom-designed corporate websites with a CMS your team can edit, built on modern frameworks like Next.js.
-- **Web software and apps**: portals, dashboards, SaaS products and internal tools.
-- **E-commerce**: Shopify, WooCommerce and custom stores built for speed and conversion.
-- **SEO and performance**: technical SEO, Core Web Vitals, content and local SEO.
-- **Digital marketing**: Google Ads, Meta Ads, LinkedIn and content that is measured on cost per lead, not impressions.
-- **AI automation and AI agents**: chatbots, lead qualification, document processing and workflow automation that save hours every week.
-- **Mobile apps**: Android and iOS apps from a single codebase.
+- **[Website & app development](/services/website-app-development)**: custom corporate websites, web applications, e-commerce stores and mobile apps, built on modern frameworks like Next.js.
+- **[Digital marketing & social media management](/services/digital-marketing)**: social media content and community management, Google, Meta and LinkedIn ads, and campaigns measured on cost per lead, not impressions.
+- **[AI agents & automation](/services/ai-agents-automation)**: chatbots, lead qualification, document processing and business process automation that save hours every week.
+- **[SEO & performance](/services/seo-performance)**: technical SEO, Core Web Vitals, content and local SEO.
+- **[Maintenance & management](/services/management-maintenance)**: updates, security, backups, monitoring and monthly improvements.
 
 ## How to choose the best agency in India
 
