@@ -55,7 +55,7 @@ We are happy to answer every one of these in writing before you decide.
 
 ## Cities we serve
 
-We work with clients all over India and have dedicated pages for our focus cities below. If your city is not listed, we still work with you: everything from discovery to launch runs smoothly over video calls and shared project boards.`,
+We are based in Noida and work with clients all over India, with dedicated pages for our focus cities below. If your city is not listed, we still work with you: everything from discovery to launch runs smoothly over video calls and shared project boards.`,
   faqs: [
     { q: 'Which is the best website development company in India?', a: 'The best company is the one that fits your goals, budget and timeline. Compare live work, team size, what the quote includes, who owns the code and what support looks like after launch. NexusBee offers a free consultation and a written, fixed-scope proposal so you can compare us fairly.' },
     { q: 'How much does website development cost in India?', a: 'It depends on the number of pages, custom features and integrations. A focused company website costs far less than a web application or a large online store. We share a fixed quote after a short discovery call, so the price does not change halfway through the project.' },
@@ -67,12 +67,61 @@ We work with clients all over India and have dedicated pages for our focus citie
 
 export const LOCATIONS: Location[] = [
   {
+    slug: 'noida',
+    name: 'Noida',
+    region: 'Uttar Pradesh',
+    seoTitle: 'SEO Company & Digital Marketing Agency in Noida | Web Development & AI Automation · NexusBee',
+    seoDescription: `NexusBee is a Noida-based agency for SEO, digital marketing, social media, website and app development and AI automation. ${YEARS} years of experience, meetings in person across Noida and Greater Noida.`,
+    eyebrow: 'NOIDA · GREATER NOIDA · NOIDA EXTENSION',
+    title: 'DIGITAL AGENCY\nIN NOIDA',
+    intro: 'SEO, digital marketing, websites and AI automation from a team based in Noida, a short drive from your office.',
+    areas: ['Sector 62', 'Sector 63', 'Sector 18', 'Sector 16', 'Sector 125–144 (Expressway)', 'Greater Noida', 'Noida Extension'],
+    industries: ['IT and software services', 'Electronics and manufacturing', 'Media and production', 'Real estate and builders', 'Education and coaching', 'Healthcare and clinics', 'Exporters and garment units'],
+    body: `## Your digital team, based in Noida
+
+NexusBee is headquartered in Noida. For businesses in Sector 62 and 63, along the Noida–Greater Noida Expressway, in Sector 18 or across Greater Noida and Noida Extension, that means a partner you can meet in person, workshops at your office when they help, and a team that knows how buyers in the city search and decide.
+
+For ${YEARS} years we have built websites and software, run SEO and digital marketing and, more recently, built AI automation for businesses of every size. Noida clients usually come to us with one of three goals: more qualified enquiries from Google, a website that finally reflects the quality of their work, or less time lost to repetitive admin.
+
+## SEO company in Noida
+
+Ranking in Noida means winning both the map results and the regular search results. We optimise your Google Business Profile, keep your business details consistent across directories, build pages for the sectors and services you cover, fix technical issues that hold your site back and publish content that answers what your buyers ask. Reporting focuses on calls, form enquiries and the searches that bring them, not just traffic. Learn more about our [SEO and performance service](/services/seo-performance).
+
+## Digital marketing and social media management in Noida
+
+Noida is a competitive market for real estate, education, healthcare and B2B services. We run Google, Meta and LinkedIn campaigns with conversion tracking from day one, manage Instagram and LinkedIn with a monthly content calendar, and build landing pages that turn clicks into site visits, admissions, appointments or meetings. See our [digital marketing and social media management service](/services/digital-marketing).
+
+## Website and app development in Noida
+
+From corporate websites for IT firms in Sector 62 to product catalogues for manufacturers and exporters, we design and build fast, custom websites with a CMS your team can edit, plus web applications, e-commerce stores and mobile apps when you need more. Every build comes with technical SEO, structured data and analytics. Explore [website and app development](/services/website-app-development).
+
+## AI automation company in Noida
+
+Coaching institutes, clinics, builders and B2B firms in Noida handle hundreds of enquiries a week. We build AI assistants that answer questions on WhatsApp and your website, qualify leads and book appointments or site visits, plus automations for invoices, reports and follow-ups that save hours every week. See [AI agents and automation](/services/ai-agents-automation).
+
+## Why Noida businesses choose NexusBee
+
+- **Local and accessible:** based in Noida, available to meet when it matters.
+- **One team for growth:** websites, SEO, marketing, social media and AI automation together.
+- **Fixed, written scope:** clear deliverables and pricing before work begins.
+- **You own everything:** domain, code, ad accounts and social profiles stay in your name.
+
+Serving the wider region too? See our page for [Delhi NCR](/locations/delhi-ncr).`,
+    faqs: [
+      { q: 'Which is the best SEO company in Noida?', a: 'The best fit is a company that can show live results for businesses like yours, explains its process and reports on enquiries rather than just rankings. NexusBee is based in Noida and offers a free SEO audit so you can judge our approach before you commit.' },
+      { q: 'Do you offer digital marketing and social media management in Noida?', a: 'Yes. We manage Instagram, LinkedIn and Facebook with monthly content calendars and run Google, Meta and LinkedIn ads with conversion tracking, for businesses across Noida, Greater Noida and Noida Extension.' },
+      { q: 'Can we meet your team in Noida?', a: 'Yes. Our team is based in Noida, so we can hold discovery workshops and key reviews at your office, and run the rest of the project over video calls and a shared project board.' },
+      { q: 'Do you build AI chatbots and automation for Noida businesses?', a: 'Yes. We build WhatsApp and website assistants that answer questions and qualify leads, and automations for follow-ups, invoices and reports, starting with one measurable use case.' },
+      { q: 'How much does SEO or a website cost in Noida?', a: 'It depends on your goals, competition and scope. After a short discovery call we send a fixed, written proposal, so you know exactly what is included before work begins.' },
+    ],
+  },
+  {
     slug: 'delhi-ncr',
     name: 'Delhi NCR',
     region: 'Delhi',
     seoTitle: 'Best Website Development & Digital Marketing Company in Delhi NCR | NexusBee',
     seoDescription: `Noida-based NexusBee builds websites, web apps and AI automation and runs SEO and digital marketing for businesses in Delhi, Noida, Gurugram, Ghaziabad and Faridabad. ${YEARS} years of experience.`,
-    eyebrow: 'NOIDA · DELHI · GURUGRAM',
+    eyebrow: 'DELHI · GURUGRAM · GHAZIABAD',
     title: 'DIGITAL AGENCY\nIN DELHI NCR',
     intro: 'Website development, digital marketing and AI automation from a team based right here in Noida.',
     areas: ['Noida', 'Greater Noida', 'Delhi', 'Gurugram', 'Ghaziabad', 'Faridabad'],
@@ -82,6 +131,8 @@ export const LOCATIONS: Location[] = [
 NexusBee is headquartered in Noida, so Delhi NCR is home ground. For clients across Noida, Greater Noida, Delhi, Gurugram, Ghaziabad and Faridabad, that means discovery workshops in person when it helps, quicker decisions and a team that understands how buyers in the region search, compare and decide.
 
 For ${YEARS} years we have designed, built and marketed websites and software for businesses of every size. Our clients come to us for one of three reasons: their website looks dated and does not bring enquiries, their marketing spend is not turning into leads, or their team is drowning in repetitive work that software could do.
+
+Based in Noida yourself? See our dedicated page for [Noida, Greater Noida and Noida Extension](/locations/noida).
 
 ## Website development in Delhi NCR
 

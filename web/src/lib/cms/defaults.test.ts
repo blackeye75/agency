@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { withCurrentServices, withDefaultPosts, withPageSeo, withPostDefaults, withProjectService, withSectionDefaults, withServiceDefaults, withSettingsDefaults } from './defaults.ts'
-import { LEGACY_POST_BODIES, LEGACY_SECTIONS, LEGACY_SERVICE_BODIES, LEGACY_SERVICE_SEO, LEGACY_SERVICES, LEGACY_SITE_SEO } from './legacy.ts'
+import { LEGACY_FOOTER_LEGAL, LEGACY_POST_BODIES, LEGACY_SECTIONS, LEGACY_SERVICE_BODIES, LEGACY_SERVICE_SEO, LEGACY_SERVICES, LEGACY_SITE_SEO } from './legacy.ts'
 import { seedPages, seedPosts, seedProjects, seedSections, seedServices, seedSettings } from './seed.ts'
 import { SERVICE_COPY } from './service-copy.ts'
 
@@ -80,11 +80,23 @@ test('default posts missing from the database are added, newest first, without d
 
 test('home FAQ is added before the enquiry form until the database has it; legacy fields upgrade', () => {
   const legacyHome = seedSections.filter((s) => s.page_slug === 'home' && s.key !== 'faq').map((s, i) => ({ ...s, position: i }))
-  legacyHome.find((s) => s.key === 'hero')!.data = { ...legacyHome.find((s) => s.key === 'hero')!.data, ...LEGACY_SECTIONS['home/hero'] } as never
+  legacyHome.find((s) => s.key === 'hero')!.data = { ...legacyHome.find((s) => s.key === 'hero')!.data, words: LEGACY_SECTIONS['home/hero'].words[0] } as never
   const out = withSectionDefaults('home', legacyHome)
   const keys = out.map((s) => s.key)
   assert.equal(keys.indexOf('faq'), keys.indexOf('enquiry') - 1)
   assert.deepEqual((out[0].data as { words: unknown }).words, (seedSections.find((s) => s.key === 'hero' && s.page_slug === 'home')!.data as { words: unknown }).words)
   const hiddenFaq = [...legacyHome, { ...seedSections.find((s) => s.key === 'faq')!, visible: false }]
   assert.equal(withSectionDefaults('home', hiddenFaq).some((s) => s.key === 'faq'), false)
+})
+
+test('legacy footer links and both earlier flip-card versions upgrade', () => {
+  const legacyFooter = withSettingsDefaults({ ...seedSettings, footer: { ...seedSettings.footer, legal: LEGACY_FOOTER_LEGAL } })
+  assert.deepEqual(legacyFooter.footer.legal, seedSettings.footer.legal)
+  const mine = [{ label: 'Terms', href: '/terms' }]
+  assert.deepEqual(withSettingsDefaults({ ...seedSettings, footer: { ...seedSettings.footer, legal: mine } }).footer.legal, mine)
+  const seedCards = seedSections.find((s) => s.page_slug === 'home' && s.key === 'service-cards')!
+  for (const cards of LEGACY_SECTIONS['home/service-cards'].cards) {
+    const out = withSectionDefaults('home', [{ ...seedCards, data: { cards } } as never])
+    assert.deepEqual(out[0].data, seedCards.data)
+  }
 })
