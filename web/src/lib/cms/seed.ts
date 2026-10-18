@@ -16,6 +16,7 @@ export const seedSettings: Settings = {
     title: 'Website Development, Digital Marketing, SEO & AI Automation Agency in India · NexusBee',
     description:
       'NexusBee is a Noida-based agency for website development, digital marketing, SEO and AI automation, with 7+ years of experience helping businesses across India grow.',
+    gtmId: 'GTM-PBF89LDZ',
   },
   contact: {
     email: 'hello@example.com',

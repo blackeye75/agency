@@ -10,6 +10,8 @@ export function withSettingsDefaults(settings: Settings): Settings {
   const seo = { ...settings.seo }
   if (LEGACY_SITE_SEO.titles.includes(seo.title)) seo.title = seedSettings.seo.title
   if (LEGACY_SITE_SEO.descriptions.includes(seo.description)) seo.description = seedSettings.seo.description
+  // A saved settings row replaces the whole seo group, so an empty GTM field falls back to the site's container.
+  if (!seo.gtmId?.trim()) seo.gtmId = seedSettings.seo.gtmId
   return { ...settings, seo }
 }
 
