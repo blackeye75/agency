@@ -2,6 +2,7 @@ import { Lines } from '@/components/motion/Lines'
 import { TLink } from '@/components/site/TLink'
 import { Arrow } from '@/components/site/Sprites'
 import type { Tone } from '@/lib/cms/types'
+import { JsonLd, breadcrumbLd } from '@/lib/seo'
 
 export function Crumbs({ items }: { items: { label: string; href?: string }[] }) {
   return (
@@ -12,6 +13,7 @@ export function Crumbs({ items }: { items: { label: string; href?: string }[] })
           {c.href ? <TLink href={c.href}>{c.label}</TLink> : <span aria-current="page">{c.label}</span>}
         </span>
       ))}
+      <JsonLd data={breadcrumbLd(items)} />
     </nav>
   )
 }

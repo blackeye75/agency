@@ -7,7 +7,7 @@ export type Logo = { name: string; icon?: string; logo?: string }
 
 export type Settings = {
   brand: { name: string; tagline: string }
-  seo: { title: string; description: string; ogImage?: string }
+  seo: { title: string; description: string; ogImage?: string; googleVerification?: string; bingVerification?: string; gtmId?: string }
   contact: { email: string; phone: string; address: string; mapUrl: string; hours: string }
   nav: Link[]
   cta: Link

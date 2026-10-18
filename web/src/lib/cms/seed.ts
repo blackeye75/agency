@@ -11,9 +11,9 @@ import type { Page, Post, Project, Section, SectionDataMap, SectionType, Service
 export const seedSettings: Settings = {
   brand: { name: 'nexusbee', tagline: 'Digital 360: software, product and growth, all in one studio.' },
   seo: {
-    title: 'NexusBee · Digital 360 agency',
+    title: 'NexusBee · Website Development, Digital Marketing & AI Automation Agency in India',
     description:
-      'NexusBee designs, builds and grows digital products: websites, web software, e-commerce, mobile apps, SEO, marketing and AI automation.',
+      'NexusBee is a Noida-based digital agency with 7+ years of experience in website development, web apps, e-commerce, mobile apps, SEO, digital marketing and AI automation for businesses across India.',
   },
   contact: {
     email: 'hello@example.com',

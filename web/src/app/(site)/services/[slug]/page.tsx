@@ -13,6 +13,8 @@ import { Crumbs, DetailFallback, NextLink } from '@/components/pages/Detail'
 import { Process } from '@/components/sections/Process'
 import { CtaBand } from '@/components/sections/CtaBand'
 import { pad } from '@/lib/cms/text'
+import { JsonLd, serviceLd } from '@/lib/seo'
+import { LocationLinks } from '@/components/pages/LocationLinks'
 import type { ProcessData, Tone } from '@/lib/cms/types'
 
 const FEATURE_TONES: Tone[] = ['lime', 'orange', 'blue', 'violet', 'pink', 'sky']
@@ -28,7 +30,7 @@ export async function generateMetadata({ params }: PageProps<'/services/[slug]'>
   if (!s) return {}
   const title = s.seo_title || `${s.title} · ${settings.brand.name}`
   const description = s.seo_description || s.summary
-  return { title, description, alternates: { canonical: `/services/${slug}` }, openGraph: { title, description, images: s.cover_url ? [s.cover_url] : undefined } }
+  return { title, description, alternates: { canonical: `/services/${slug}` }, openGraph: { title, description, images: [s.cover_url || '/og'] } }
 }
 
 async function ServiceDetail({ params }: Pick<PageProps<'/services/[slug]'>, 'params'>) {
@@ -50,7 +52,7 @@ async function ServiceDetail({ params }: Pick<PageProps<'/services/[slug]'>, 'pa
         <Lines as="h1" text={s.title} className="dhero__title" start="top 95%" />
         <p className="dhero__sum" data-reveal="0.2">{s.summary}</p>
         <ScBadge href={quoteHref} label={'GET A\nQUOTE'} tone={s.color === 'orange' ? 'lime' : 'orange'} large />
-        {s.cover_url && <div className="dhero__cover" data-reveal><img src={s.cover_url} alt="" /></div>}
+        {s.cover_url && <div className="dhero__cover" data-reveal><img src={s.cover_url} alt={s.title} /></div>}
       </section>
 
       <section className="sec sec--cream">
@@ -88,7 +90,9 @@ async function ServiceDetail({ params }: Pick<PageProps<'/services/[slug]'>, 'pa
 
       {process && <Process data={process} />}
       {next && next.slug !== s.slug && <NextLink href={`/services/${next.slug}`} label="Next service" title={next.title} tone={next.color} />}
+      <LocationLinks />
       <CtaBand data={{ title: ctx.settings.detailCta.title, text: '', button: { ...ctx.settings.detailCta.button, href: quoteHref } }} />
+      <JsonLd data={serviceLd(s)} />
       <PageMotion version={s.id} />
     </>
   )

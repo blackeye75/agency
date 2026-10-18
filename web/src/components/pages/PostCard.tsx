@@ -8,7 +8,7 @@ export function PostCard({ post, i }: { post: Post; i: number }) {
   return (
     <TLink href={`/blog/${post.slug}`} className={`bcard tone-${TONES[i % TONES.length]}`} data-reveal={String((i % 3) * 0.1)}>
       <div className="bcard__cover">
-        {post.cover_url ? <img src={post.cover_url} alt="" /> : <svg aria-hidden="true"><use href={i % 2 ? '#flower12' : '#asterisk'} /></svg>}
+        {post.cover_url ? <img src={post.cover_url} alt="" loading="lazy" decoding="async" /> : <svg aria-hidden="true"><use href={i % 2 ? '#flower12' : '#asterisk'} /></svg>}
       </div>
       <div className="bcard__tags">{post.tags.map((t) => <span className="tag" key={t.text}>{t.text}</span>)}</div>
       <h3 className="bcard__title">{post.title}</h3>

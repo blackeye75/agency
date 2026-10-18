@@ -8,10 +8,15 @@ import { ChromeIntro, Curtain, Cursor, Dock, Loader, Nav, RouteWatcher, Transiti
 import { Menu } from '@/components/site/Menu'
 import { Footer } from '@/components/site/Footer'
 import { LiveRefresh } from '@/components/site/LiveRefresh'
+import { ConsentBanner } from '@/components/site/Consent'
+import { gtmBoot } from '@/lib/gtm'
+import { JsonLd, organizationLd, websiteLd } from '@/lib/seo'
 
 export default async function SiteLayout({ children }: LayoutProps<'/'>) {
   const [settings, services] = await Promise.all([getSettings(), getServices()])
   const published = services.filter((s) => s.published)
+  const gtm = settings.seo.gtmId?.trim()
+  const hasGtm = Boolean(gtm && /^GTM-[A-Z0-9]+$/.test(gtm))
   return (
     <SiteProvider>
       <a className="skip" href="#main">Skip to content</a>
@@ -28,6 +33,10 @@ export default async function SiteLayout({ children }: LayoutProps<'/'>) {
       <ChromeIntro />
       <RouteWatcher />
       <LiveRefresh />
+      <JsonLd data={organizationLd(settings, published)} />
+      <JsonLd data={websiteLd(settings)} />
+      {hasGtm && <script dangerouslySetInnerHTML={{ __html: gtmBoot(gtm!) }} />}
+      {hasGtm && <ConsentBanner />}
     </SiteProvider>
   )
 }

@@ -9,6 +9,7 @@ import { Markdown } from '@/components/pages/Markdown'
 import { PostCard, formatDate } from '@/components/pages/PostCard'
 import { Crumbs, DetailFallback } from '@/components/pages/Detail'
 import { CtaBand } from '@/components/sections/CtaBand'
+import { JsonLd, postLd } from '@/lib/seo'
 
 export async function generateStaticParams() {
   return (await getPosts()).filter((p) => p.published).map((p) => ({ slug: p.slug }))
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: PageProps<'/blog/[slug]'>): P
   const description = p.seo_description || p.excerpt
   return {
     title, description, alternates: { canonical: `/blog/${slug}` },
-    openGraph: { type: 'article', title, description, publishedTime: p.published_at, images: p.cover_url ? [p.cover_url] : undefined },
+    openGraph: { type: 'article', title, description, publishedTime: p.published_at, images: [p.cover_url || '/og'] },
   }
 }
 
@@ -46,7 +47,7 @@ async function PostDetail({ params }: Pick<PageProps<'/blog/[slug]'>, 'params'>)
         </div>
       </section>
       <section className="sec sec--cream">
-        {post.cover_url && <div className="dhero__cover" style={{ marginTop: 0, marginBottom: '8vh' }} data-reveal><img src={post.cover_url} alt="" /></div>}
+        {post.cover_url && <div className="dhero__cover" style={{ marginTop: 0, marginBottom: '8vh' }} data-reveal><img src={post.cover_url} alt={post.title} /></div>}
         <div style={{ display: 'flex', justifyContent: 'center' }} data-reveal><Markdown>{post.body}</Markdown></div>
       </section>
       {more.length > 0 && (
@@ -56,6 +57,7 @@ async function PostDetail({ params }: Pick<PageProps<'/blog/[slug]'>, 'params'>)
         </section>
       )}
       <CtaBand data={{ title: ctx.settings.detailCta.title, text: '', button: ctx.settings.detailCta.button }} />
+      <JsonLd data={postLd(post)} />
       <PageMotion version={post.id} />
     </>
   )

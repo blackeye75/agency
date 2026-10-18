@@ -6,7 +6,7 @@ export function ProjectCard({ p }: { p: Project }) {
   return (
     <TLink href={`/projects/${p.slug}`} className={`pcard tone-${p.color}`}>
       <div className="pcard__cover">
-        {p.cover_url ? <img src={p.cover_url} alt="" /> : <div className="pcard__screen">{p.name}</div>}
+        {p.cover_url ? <img src={p.cover_url} alt="" loading="lazy" decoding="async" /> : <div className="pcard__screen">{p.name}</div>}
         {p.tags[0] && <span className="pcard__tag">{p.tags[0].text}</span>}
       </div>
       <div className="pcard__meta">

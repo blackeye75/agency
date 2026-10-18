@@ -11,7 +11,7 @@ export function LogoBand({ data }: { data: LogoBandData }) {
     const icon = item.icon ? BRAND_ICONS[item.icon] : undefined
     return (
       <span className="lchip" key={k} aria-hidden={hidden || undefined}>
-        {item.logo ? <img src={item.logo} alt="" /> : icon ? <svg viewBox="0 0 24 24" aria-hidden="true"><path d={icon.path} /></svg> : <i className="lchip__dot" />}
+        {item.logo ? <img src={item.logo} alt="" loading="lazy" decoding="async" /> : icon ? <svg viewBox="0 0 24 24" aria-hidden="true"><path d={icon.path} /></svg> : <i className="lchip__dot" />}
         {item.name}
       </span>
     )
