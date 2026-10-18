@@ -83,6 +83,10 @@ export function serviceLd(s: Service, areaServed: string[] = ['India']) {
   }
 }
 
+// A post edited before its scheduled date was still last changed when it went live.
+export const postModified = (p: Post) =>
+  p.updated_at && new Date(p.updated_at) > new Date(p.published_at) ? p.updated_at : p.published_at
+
 export function postLd(p: Post) {
   return {
     '@context': 'https://schema.org',
@@ -91,7 +95,7 @@ export function postLd(p: Post) {
     description: p.seo_description || p.excerpt,
     image: p.cover_url || abs('/og'),
     datePublished: p.published_at,
-    dateModified: p.published_at,
+    dateModified: postModified(p),
     author: p.author && p.author !== BUSINESS.legalName ? { '@type': 'Person', name: p.author } : { '@id': ORG_ID },
     publisher: { '@id': ORG_ID },
     mainEntityOfPage: abs(`/blog/${p.slug}`),

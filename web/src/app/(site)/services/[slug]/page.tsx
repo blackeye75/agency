@@ -14,6 +14,8 @@ import { Process } from '@/components/sections/Process'
 import { CtaBand } from '@/components/sections/CtaBand'
 import { pad } from '@/lib/cms/text'
 import { JsonLd, serviceLd } from '@/lib/seo'
+import { splitFaqs } from '@/lib/cms/faq'
+import { Faq } from '@/components/sections/Faq'
 import { LocationLinks } from '@/components/pages/LocationLinks'
 import type { ProcessData, Tone } from '@/lib/cms/types'
 
@@ -43,6 +45,7 @@ async function ServiceDetail({ params }: Pick<PageProps<'/services/[slug]'>, 'pa
   const related = ctx.projects.filter((p) => p.service_slug === s.slug)
   const process = servicesPage?.sections.find((x) => x.type === 'process')?.data as ProcessData | undefined
   const quoteHref = `/quote?service=${s.slug}`
+  const { body, faqs } = splitFaqs(s.body)
 
   return (
     <>
@@ -57,7 +60,7 @@ async function ServiceDetail({ params }: Pick<PageProps<'/services/[slug]'>, 'pa
 
       <section className="sec sec--cream">
         <div className="dbody">
-          <div data-reveal><Markdown>{s.body}</Markdown></div>
+          <div data-reveal><Markdown>{body}</Markdown></div>
           <aside className="dside" data-reveal="0.1">
             {s.deliverables.length > 0 && (
               <div>
@@ -89,6 +92,7 @@ async function ServiceDetail({ params }: Pick<PageProps<'/services/[slug]'>, 'pa
       )}
 
       {process && <Process data={process} />}
+      <Faq faqs={faqs} title={`${s.title}\nFAQS`} />
       {next && next.slug !== s.slug && <NextLink href={`/services/${next.slug}`} label="Next service" title={next.title} tone={next.color} />}
       <LocationLinks />
       <CtaBand data={{ title: ctx.settings.detailCta.title, text: '', button: { ...ctx.settings.detailCta.button, href: quoteHref } }} />

@@ -10,6 +10,9 @@ import { PostCard, formatDate } from '@/components/pages/PostCard'
 import { Crumbs, DetailFallback } from '@/components/pages/Detail'
 import { CtaBand } from '@/components/sections/CtaBand'
 import { JsonLd, postLd } from '@/lib/seo'
+import { splitFaqs } from '@/lib/cms/faq'
+import { Faq } from '@/components/sections/Faq'
+import { TLink } from '@/components/site/TLink'
 
 export async function generateStaticParams() {
   return (await getPosts()).filter((p) => p.published).map((p) => ({ slug: p.slug }))
@@ -34,6 +37,7 @@ async function PostDetail({ params }: Pick<PageProps<'/blog/[slug]'>, 'params'>)
   const post = ctx.posts.find((p) => p.slug === slug)
   if (!post) notFound()
   const more = ctx.posts.filter((p) => p.slug !== slug).slice(0, 3)
+  const { body, faqs } = splitFaqs(post.body)
   return (
     <>
       <section className="phero" style={{ minHeight: '70vh' }}>
@@ -48,8 +52,13 @@ async function PostDetail({ params }: Pick<PageProps<'/blog/[slug]'>, 'params'>)
       </section>
       <section className="sec sec--cream">
         {post.cover_url && <div className="dhero__cover" style={{ marginTop: 0, marginBottom: '8vh' }} data-reveal><img src={post.cover_url} alt={post.title} /></div>}
-        <div style={{ display: 'flex', justifyContent: 'center' }} data-reveal><Markdown>{post.body}</Markdown></div>
+        <div style={{ display: 'flex', justifyContent: 'center' }} data-reveal><Markdown>{body}</Markdown></div>
+        <nav className="post-services" aria-label="Our services" data-reveal>
+          <h2>How we can help</h2>
+          <ul className="chips">{ctx.services.map((s) => <li key={s.slug}><TLink href={`/services/${s.slug}`}>{s.title}</TLink></li>)}</ul>
+        </nav>
       </section>
+      <Faq faqs={faqs} />
       {more.length > 0 && (
         <section className="sec sec--surface">
           <div className="sec-head"><Lines text={'KEEP\nREADING'} className="mega" /></div>

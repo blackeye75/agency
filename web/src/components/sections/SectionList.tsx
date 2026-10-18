@@ -25,6 +25,7 @@ import { Contact } from './Contact'
 import { Quote } from './Quote'
 import { Enquiry } from './Enquiry'
 import { Stats } from './Stats'
+import { Faq } from './Faq'
 
 // The footer follows the last section.
 const FOOTER_BG = 'var(--surface)'
@@ -37,7 +38,7 @@ const BG: Record<SectionType, string> = {
   heading: 'var(--cream)', serviceCards: 'var(--surface)', cases: 'var(--surface)', signposts: 'var(--surface)', bond: 'var(--cream)',
   about: 'var(--orange)', audit: 'var(--surface)', mood: 'var(--lilac)', marquee: 'var(--orange)', pageHero: 'var(--surface)',
   servicesList: 'var(--cream)', process: 'var(--lilac)', ctaBand: 'var(--orange)', projectsGrid: 'var(--surface)', postsGrid: 'var(--cream)',
-  contact: 'var(--cream)', quote: 'var(--cream)', enquiry: 'var(--cream)', stats: 'var(--surface)',
+  contact: 'var(--cream)', quote: 'var(--cream)', enquiry: 'var(--cream)', stats: 'var(--surface)', faq: 'var(--cream)',
 }
 
 function render(s: Section, ctx: Ctx, next: string | undefined, index: number): ReactNode {
@@ -70,6 +71,7 @@ function render(s: Section, ctx: Ctx, next: string | undefined, index: number): 
     case 'postsGrid': return <PostsGrid data={s.data as Section<'postsGrid'>['data']} posts={ctx.posts} />
     case 'contact': return <Contact data={s.data as Section<'contact'>['data']} settings={ctx.settings} services={ctx.services} />
     case 'enquiry': return <Enquiry data={s.data as Section<'enquiry'>['data']} services={ctx.services} settings={ctx.settings} />
+    case 'faq': return <Faq faqs={(s.data as Section<'faq'>['data']).items} title={(s.data as Section<'faq'>['data']).title} />
     case 'quote': return <Quote data={s.data as Section<'quote'>['data']} services={ctx.services} settings={ctx.settings} />
     default: return null
   }

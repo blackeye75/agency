@@ -129,6 +129,10 @@ export const SECTION_TYPES: Record<SectionType, { label: string; description: st
     label: 'Process', description: 'Numbered timeline of how you work.',
     fields: [text('label', 'Label'), area('title', 'Title', ALT_HINT), list('steps', 'Steps', [text('title', 'Title'), text('duration', 'Duration'), area('text', 'Text')], 'title')],
   },
+  faq: {
+    label: 'FAQ', description: 'Questions and answers. Google can show them in search (FAQ structured data).',
+    fields: [area('title', 'Title', ALT_HINT), list('items', 'Questions', [text('q', 'Question'), area('a', 'Answer')], 'q')],
+  },
   ctaBand: { label: 'Call to action', description: 'Big closing call to action.', fields: [area('title', 'Title', ALT_HINT), area('text', 'Text'), link('button', 'Button')] },
   projectsGrid: { label: 'Projects grid', description: 'All projects with category filters.', fields: [text('label', 'Label'), text('allLabel', '"All" filter label')] },
   postsGrid: { label: 'Posts grid', description: 'All published blog posts.', fields: [text('label', 'Label'), text('empty', 'Text when there are no posts')] },
