@@ -1,8 +1,8 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { withPageSeo, withPostDefaults, withServiceDefaults, withSettingsDefaults } from './defaults.ts'
-import { LEGACY_POST_BODIES, LEGACY_SERVICE_BODIES, LEGACY_SITE_SEO } from './legacy.ts'
-import { seedPages, seedPosts, seedServices, seedSettings } from './seed.ts'
+import { withCurrentServices, withPageSeo, withPostDefaults, withProjectService, withServiceDefaults, withSettingsDefaults } from './defaults.ts'
+import { LEGACY_POST_BODIES, LEGACY_SERVICE_BODIES, LEGACY_SERVICE_SEO, LEGACY_SERVICES, LEGACY_SITE_SEO } from './legacy.ts'
+import { seedPages, seedPosts, seedProjects, seedServices, seedSettings } from './seed.ts'
 import { SERVICE_COPY } from './service-copy.ts'
 
 test('legacy site title and description are upgraded, edited ones kept', () => {
@@ -24,7 +24,7 @@ test('legacy page SEO is upgraded, edited and unknown pages kept', () => {
 
 test('services: sample body becomes long copy, missing SEO filled, edits kept', () => {
   const base = seedServices.find((s) => s.slug === 'digital-marketing')!
-  const sample = withServiceDefaults({ ...base, body: LEGACY_SERVICE_BODIES['digital-marketing'], seo_title: null, seo_description: null })
+  const sample = withServiceDefaults({ ...base, body: LEGACY_SERVICE_BODIES['digital-marketing'][0], seo_title: null, seo_description: null })
   assert.equal(sample.body, SERVICE_COPY['digital-marketing'].body)
   assert.equal(sample.seo_title, SERVICE_COPY['digital-marketing'].seo_title)
   const edited = withServiceDefaults({ ...base, body: 'Our own words', seo_title: 'Own title' })
@@ -41,4 +41,29 @@ test('posts: sample body becomes the full guide, edited post kept', () => {
   assert.equal(sample.seo_title, base.seo_title)
   const edited = { ...base, body: 'Edited' }
   assert.deepEqual(withPostDefaults(edited), edited)
+})
+
+test('nine legacy services become the five current ones, in order', () => {
+  const legacy = (slug: string) => ({ ...seedServices.find((s) => s.slug === slug)!, ...LEGACY_SERVICES[slug] })
+  const merged = ['corporate-web-design', 'web-software-apps', 'e-commerce', 'mobile-apps', 'business-automation']
+    .map((slug, i) => ({ ...seedServices[0], id: slug, slug, position: 10 + i }))
+  const rows = [...merged, legacy('seo-performance'), legacy('management-maintenance'), legacy('digital-marketing'), legacy('ai-agents-automation')]
+  const out = withCurrentServices(rows)
+  assert.deepEqual(out.map((s) => s.slug), ['website-app-development', 'digital-marketing', 'ai-agents-automation', 'seo-performance', 'management-maintenance'])
+  assert.equal(out[1].title, 'Digital marketing & social media management')
+})
+
+test('edited services keep their fields; old October SEO titles upgrade', () => {
+  const dm = { ...seedServices.find((s) => s.slug === 'digital-marketing')!, ...LEGACY_SERVICES['digital-marketing'], title: 'Growth marketing', position: 7 }
+  const [first, ...rest] = withCurrentServices([dm])
+  assert.equal(first.slug, 'website-app-development')
+  assert.equal(rest[0].title, 'Growth marketing')
+  assert.equal(rest[0].position, 7)
+  const old = withServiceDefaults({ ...dm, seo_title: LEGACY_SERVICE_SEO['digital-marketing'].seo_title })
+  assert.match(old.seo_title!, /Social Media Management/)
+})
+
+test('projects on a merged service point at its replacement', () => {
+  const p = withProjectService({ ...seedProjects[0], service_slug: 'e-commerce' })
+  assert.equal(p.service_slug, 'website-app-development')
 })
