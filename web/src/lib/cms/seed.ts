@@ -8,6 +8,7 @@
 
 import { SERVICE_COPY } from './service-copy.ts'
 import { SEO_POSTS } from './seo-posts.ts'
+import { PORTFOLIO } from './portfolio.ts'
 import type { Page, Post, Project, Section, SectionDataMap, SectionType, Service, Settings } from './types'
 
 export const seedSettings: Settings = {
@@ -388,7 +389,7 @@ const PROJECTS: ProjectSeed[] = [
   { slug: 'harbor', name: 'HARBOR', client: 'Harbor CRM', category: 'E-Commerce', service_slug: 'management-maintenance', year: 2024, color: 'blue', rating: 4.9, tag: 'MAINTENANCE', quote: 'Zero downtime in two years. We forget the site even needs care.' },
 ]
 
-export const seedProjects: Project[] = PROJECTS.map((p, i) => ({
+const SAMPLE_PROJECTS: Project[] = PROJECTS.map((p, i) => ({
   id: `seed-project-${p.slug}`,
   slug: p.slug,
   name: p.name,
@@ -417,5 +418,7 @@ export const seedProjects: Project[] = PROJECTS.map((p, i) => ({
   seo_title: null,
   seo_description: null,
 }))
+
+export const seedProjects: Project[] = [...PORTFOLIO, ...SAMPLE_PROJECTS]
 
 export const seedPosts: Post[] = SEO_POSTS

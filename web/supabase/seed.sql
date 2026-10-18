@@ -394,8 +394,32 @@ Our monitoring alerts us immediately. We investigate, restore service from backu
 Yes. We maintain WordPress, WooCommerce, Shopify, Next.js and custom websites and applications.', '[{"title":"Security updates","text":"Frameworks, plugins and servers kept patched."},{"title":"Backups","text":"Daily backups with tested restores."},{"title":"Monitoring","text":"Uptime and error alerts go straight to us."},{"title":"Change hours","text":"Monthly hours for content and feature tweaks."}]'::jsonb, '[{"text":"Monthly maintenance plan"},{"text":"Uptime monitoring"},{"text":"Backups"},{"text":"Priority support"},{"text":"Monthly health report"}]'::jsonb, 'Website Maintenance Services in India | Updates, Security & Support · NexusBee', 'Monthly website maintenance in India: updates, backups, security, uptime monitoring, speed checks and content changes with a 24-hour response time.')
 on conflict (slug) do nothing;
 
-insert into public.projects (slug, name, client, category, service_slug, year, url, color, cover_url, gallery, summary, body, quote, quote_author, rating, results, tags, featured, position, published, seo_title, seo_description) values
-  ('zenith', 'ZENITH', 'Zenith Fitness', 'Mobile', 'website-app-development', 2026, null, 'lime', null, '[]'::jsonb, 'Zenith Fitness came to us for mobile app. We planned, designed and shipped it end to end.', '## The brief
+insert into public.projects (year, cover_url, gallery, quote, quote_author, rating, results, featured, published, seo_title, seo_description, slug, name, client, category, service_slug, url, color, position, tags, summary, body) values
+  (null, null, '[]'::jsonb, '', '', null, '[]'::jsonb, true, true, null, null, 'hockerty', 'HOCKERTY', 'Hockerty', 'Web Development', 'website-app-development', 'https://www.hockerty.com/en-us/', 'blue', -30, '[{"text":"E-COMMERCE WEBSITE"},{"text":"MADE-TO-MEASURE"}]'::jsonb, 'Website development for Hockerty, a made-to-measure menswear brand where customers design suits, shirts and more online.', 'Hockerty sells made-to-measure menswear to customers around the world. Its online store lets shoppers customise each garment, choose fabrics and details, and order to their own measurements.
+
+Our work focused on a fast, reliable storefront for a catalogue built around personalisation, across product, customisation and checkout journeys.'),
+  (null, null, '[]'::jsonb, '', '', null, '[]'::jsonb, true, true, null, null, 'beyoung', 'BEYOUNG', 'Beyoung', 'Web Development', 'website-app-development', 'https://www.beyoung.in/', 'orange', -20, '[{"text":"D2C E-COMMERCE"},{"text":"FASHION"}]'::jsonb, 'Website development for Beyoung, an Indian D2C fashion brand selling casual wear for men and women online.', 'Beyoung is a direct-to-consumer fashion brand from India with a large, fast-moving catalogue of casual wear for men and women.
+
+Our work focused on a fast, mobile-first shopping experience for Indian customers: browsing large collections, product pages and a smooth path to checkout.'),
+  (null, null, '[]'::jsonb, '', '', null, '[]'::jsonb, true, true, null, null, 'casio-india', 'CASIO INDIA', 'Casio India', 'Web Development', 'website-app-development', 'https://www.casio.com/in/', 'lime', -10, '[{"text":"BRAND WEBSITE"},{"text":"E-COMMERCE"}]'::jsonb, 'Website development for Casio India, the Indian site for Casio watches, calculators and musical instruments.', 'Casio''s Indian website showcases and sells the brand''s watches, including G-SHOCK and EDIFICE, along with calculators and musical instruments.
+
+Our work focused on a large product catalogue for Indian shoppers, with clear navigation across product families and a fast, consistent experience on mobile.'),
+  (null, null, '[]'::jsonb, '', '', null, '[]'::jsonb, true, true, null, null, 'railfeast', 'RAILFEAST', 'RailFeast', 'Mobile Apps', 'website-app-development', 'https://play.google.com/store/apps/details?id=com.railfeast', 'pink', -9, '[{"text":"ANDROID APP"},{"text":"FOOD DELIVERY"}]'::jsonb, 'Android app for RailFeast, a food delivery service that lets passengers order meals to their train seat.', 'RailFeast lets railway passengers order food from local restaurants and have it delivered to their seat during the journey.
+
+Our work covered the customer app experience: browsing menus, placing orders for a specific train and station, and following the order through to delivery.'),
+  (null, null, '[]'::jsonb, '', '', null, '[]'::jsonb, true, true, null, null, 'apna-mechanic', 'APNA MECHANIC', 'Apna Mechanic', 'Mobile Apps', 'website-app-development', 'https://play.google.com/store/apps/details?id=com.apna.mechanic', 'sky', -8, '[{"text":"ANDROID APP"},{"text":"AUTOMOBILE SERVICES"}]'::jsonb, 'Android app for Apna Mechanic, an on-demand platform for booking vehicle repair and servicing.', 'Apna Mechanic connects vehicle owners with mechanics for repairs and servicing.
+
+Our work covered the booking experience: choosing a service, sharing location and vehicle details, and tracking the request until the job is done.'),
+  (null, null, '[]'::jsonb, '', '', null, '[]'::jsonb, true, true, null, null, 'vc-doctor', 'VC DOCTOR', 'Innocirc', 'Mobile Apps', 'website-app-development', 'https://play.google.com/store/apps/details?id=com.innocirc.vcdoctor', 'violet', -7, '[{"text":"ANDROID APPS"},{"text":"HEALTHCARE"}]'::jsonb, 'Connected doctor and patient apps for video consultations, built as a pair for a healthcare platform.', 'VC Doctor and VC Patient are two connected Android apps: one for doctors and one for patients.
+
+Our work covered both sides of the consultation: appointments, video calls and the information each side needs before, during and after a consultation.
+
+- [VC Doctor on Google Play](https://play.google.com/store/apps/details?id=com.innocirc.vcdoctor)
+- [VC Patient on Google Play](https://play.google.com/store/apps/details?id=com.innocirc.vcpatient)'),
+  (null, null, '[]'::jsonb, '', '', null, '[]'::jsonb, true, true, null, null, 'cybermart', 'CYBERMART', 'CyberMart', 'Mobile Apps', 'website-app-development', 'https://play.google.com/store/apps/details?id=com.cybermart.ind', 'yellow', -6, '[{"text":"ANDROID APP"},{"text":"E-COMMERCE"}]'::jsonb, 'Android shopping app for CyberMart, with product browsing, cart and checkout on mobile.', 'CyberMart is an online shopping app for customers in India.
+
+Our work covered the core shopping journey on mobile: browsing categories, product pages, cart and checkout, and order updates.'),
+  (2026, null, '[]'::jsonb, 'They shipped our app in eight weeks and it has not gone down once.', 'Zenith Fitness', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, true, true, null, null, 'zenith', 'ZENITH', 'Zenith Fitness', 'Mobile', 'website-app-development', null, 'lime', 0, '[{"text":"MOBILE APP"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, 'Zenith Fitness came to us for mobile app. We planned, designed and shipped it end to end.', '## The brief
 
 Zenith Fitness needed a partner who could move fast without cutting corners.
 
@@ -405,8 +429,8 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 
 ## The result
 
-> They shipped our app in eight weeks and it has not gone down once.', 'They shipped our app in eight weeks and it has not gone down once.', 'Zenith Fitness', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"MOBILE APP"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 0, true, null, null),
-  ('kite', 'KITE', 'Kite Travel', 'Software', 'website-app-development', 2026, null, 'blue', null, '[]'::jsonb, 'Kite Travel came to us for web platform. We planned, designed and shipped it end to end.', '## The brief
+> They shipped our app in eight weeks and it has not gone down once.'),
+  (2026, null, '[]'::jsonb, 'Clear process, honest estimates and a product our users love.', 'Kite Travel', 5, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, true, true, null, null, 'kite', 'KITE', 'Kite Travel', 'Software', 'website-app-development', null, 'blue', 1, '[{"text":"WEB PLATFORM"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, 'Kite Travel came to us for web platform. We planned, designed and shipped it end to end.', '## The brief
 
 Kite Travel needed a partner who could move fast without cutting corners.
 
@@ -416,8 +440,8 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 
 ## The result
 
-> Clear process, honest estimates and a product our users love.', 'Clear process, honest estimates and a product our users love.', 'Kite Travel', 5, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"WEB PLATFORM"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 1, true, null, null),
-  ('orbitpay', 'ORBITPAY', 'OrbitPay', 'Software', 'website-app-development', 2025, null, 'orange', null, '[]'::jsonb, 'OrbitPay came to us for fintech api. We planned, designed and shipped it end to end.', '## The brief
+> Clear process, honest estimates and a product our users love.'),
+  (2025, null, '[]'::jsonb, 'Security-first engineering. Our audit passed on the first try.', 'OrbitPay', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, true, true, null, null, 'orbitpay', 'ORBITPAY', 'OrbitPay', 'Software', 'website-app-development', null, 'orange', 2, '[{"text":"FINTECH API"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, 'OrbitPay came to us for fintech api. We planned, designed and shipped it end to end.', '## The brief
 
 OrbitPay needed a partner who could move fast without cutting corners.
 
@@ -427,8 +451,8 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 
 ## The result
 
-> Security-first engineering. Our audit passed on the first try.', 'Security-first engineering. Our audit passed on the first try.', 'OrbitPay', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"FINTECH API"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 2, true, null, null),
-  ('umbra', 'UMBRA', 'Umbra Studio', 'Corporate', 'website-app-development', 2025, null, 'lime', null, '[]'::jsonb, 'Umbra Studio came to us for corporate website. We planned, designed and shipped it end to end.', '## The brief
+> Security-first engineering. Our audit passed on the first try.'),
+  (2025, null, '[]'::jsonb, 'Our new site finally feels as good as the work we do.', 'Umbra Studio', 5, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, true, true, null, null, 'umbra', 'UMBRA', 'Umbra Studio', 'Corporate', 'website-app-development', null, 'lime', 3, '[{"text":"CORPORATE WEBSITE"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, 'Umbra Studio came to us for corporate website. We planned, designed and shipped it end to end.', '## The brief
 
 Umbra Studio needed a partner who could move fast without cutting corners.
 
@@ -438,8 +462,8 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 
 ## The result
 
-> Our new site finally feels as good as the work we do.', 'Our new site finally feels as good as the work we do.', 'Umbra Studio', 5, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"CORPORATE WEBSITE"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 3, true, null, null),
-  ('lumen-labs', 'LUMEN LABS', 'Lumen Labs', 'Software', 'ai-agents-automation', 2026, null, 'blue', null, '[]'::jsonb, 'Lumen Labs came to us for ai agent. We planned, designed and shipped it end to end.', '## The brief
+> Our new site finally feels as good as the work we do.'),
+  (2026, null, '[]'::jsonb, 'Their support agent answers 70% of our tickets before a human needs to.', 'Lumen Labs', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, true, true, null, null, 'lumen-labs', 'LUMEN LABS', 'Lumen Labs', 'Software', 'ai-agents-automation', null, 'blue', 4, '[{"text":"AI AGENT"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, 'Lumen Labs came to us for ai agent. We planned, designed and shipped it end to end.', '## The brief
 
 Lumen Labs needed a partner who could move fast without cutting corners.
 
@@ -449,8 +473,8 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 
 ## The result
 
-> Their support agent answers 70% of our tickets before a human needs to.', 'Their support agent answers 70% of our tickets before a human needs to.', 'Lumen Labs', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"AI AGENT"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 4, true, null, null),
-  ('northwind', 'NORTHWIND', 'Northwind', 'Automation', 'ai-agents-automation', 2025, null, 'orange', null, '[]'::jsonb, 'Northwind came to us for business automation. We planned, designed and shipped it end to end.', '## The brief
+> Their support agent answers 70% of our tickets before a human needs to.'),
+  (2025, null, '[]'::jsonb, 'They helped us structure the process before writing any code. We save 30 hours a week.', 'Northwind', 5, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, true, true, null, null, 'northwind', 'NORTHWIND', 'Northwind', 'Automation', 'ai-agents-automation', null, 'orange', 5, '[{"text":"BUSINESS AUTOMATION"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, 'Northwind came to us for business automation. We planned, designed and shipped it end to end.', '## The brief
 
 Northwind needed a partner who could move fast without cutting corners.
 
@@ -460,8 +484,8 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 
 ## The result
 
-> They helped us structure the process before writing any code. We save 30 hours a week.', 'They helped us structure the process before writing any code. We save 30 hours a week.', 'Northwind', 5, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"BUSINESS AUTOMATION"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 5, true, null, null),
-  ('pulse-health', 'PULSE HEALTH', 'Pulse Health', 'Corporate', 'seo-performance', 2025, null, 'lime', null, '[]'::jsonb, 'Pulse Health came to us for seo & performance. We planned, designed and shipped it end to end.', '## The brief
+> They helped us structure the process before writing any code. We save 30 hours a week.'),
+  (2025, null, '[]'::jsonb, 'Organic traffic tripled in six months. Accessible, compliant and fast.', 'Pulse Health', 4.8, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, true, true, null, null, 'pulse-health', 'PULSE HEALTH', 'Pulse Health', 'Corporate', 'seo-performance', null, 'lime', 6, '[{"text":"SEO & PERFORMANCE"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, 'Pulse Health came to us for seo & performance. We planned, designed and shipped it end to end.', '## The brief
 
 Pulse Health needed a partner who could move fast without cutting corners.
 
@@ -471,8 +495,8 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 
 ## The result
 
-> Organic traffic tripled in six months. Accessible, compliant and fast.', 'Organic traffic tripled in six months. Accessible, compliant and fast.', 'Pulse Health', 4.8, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"SEO & PERFORMANCE"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 6, true, null, null),
-  ('ferry', 'FERRY', 'Ferry Logistics', 'Software', 'website-app-development', 2024, null, 'blue', null, '[]'::jsonb, 'Ferry Logistics came to us for marketplace. We planned, designed and shipped it end to end.', '## The brief
+> Organic traffic tripled in six months. Accessible, compliant and fast.'),
+  (2024, null, '[]'::jsonb, 'Bookings doubled in the first quarter after launch.', 'Ferry Logistics', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, true, true, null, null, 'ferry', 'FERRY', 'Ferry Logistics', 'Software', 'website-app-development', null, 'blue', 7, '[{"text":"MARKETPLACE"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, 'Ferry Logistics came to us for marketplace. We planned, designed and shipped it end to end.', '## The brief
 
 Ferry Logistics needed a partner who could move fast without cutting corners.
 
@@ -482,8 +506,8 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 
 ## The result
 
-> Bookings doubled in the first quarter after launch.', 'Bookings doubled in the first quarter after launch.', 'Ferry Logistics', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"MARKETPLACE"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 7, true, null, null),
-  ('bloom', 'BLOOM', 'Bloom Market', 'E-Commerce', 'website-app-development', 2026, null, 'orange', null, '[]'::jsonb, 'Bloom Market came to us for shopify store. We planned, designed and shipped it end to end.', '## The brief
+> Bookings doubled in the first quarter after launch.'),
+  (2026, null, '[]'::jsonb, 'Page speed went from painful to instant, and so did our checkout.', 'Bloom Market', 5, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, true, true, null, null, 'bloom', 'BLOOM', 'Bloom Market', 'E-Commerce', 'website-app-development', null, 'orange', 8, '[{"text":"SHOPIFY STORE"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, 'Bloom Market came to us for shopify store. We planned, designed and shipped it end to end.', '## The brief
 
 Bloom Market needed a partner who could move fast without cutting corners.
 
@@ -493,8 +517,8 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 
 ## The result
 
-> Page speed went from painful to instant, and so did our checkout.', 'Page speed went from painful to instant, and so did our checkout.', 'Bloom Market', 5, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"SHOPIFY STORE"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 8, true, null, null),
-  ('volt', 'VOLT', 'Volt Energy', 'Marketing', 'digital-marketing', 2024, null, 'lime', null, '[]'::jsonb, 'Volt Energy came to us for digital marketing. We planned, designed and shipped it end to end.', '## The brief
+> Page speed went from painful to instant, and so did our checkout.'),
+  (2024, null, '[]'::jsonb, 'Cost per lead down 42% while volume went up.', 'Volt Energy', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, true, true, null, null, 'volt', 'VOLT', 'Volt Energy', 'Marketing', 'digital-marketing', null, 'lime', 9, '[{"text":"DIGITAL MARKETING"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, 'Volt Energy came to us for digital marketing. We planned, designed and shipped it end to end.', '## The brief
 
 Volt Energy needed a partner who could move fast without cutting corners.
 
@@ -504,8 +528,8 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 
 ## The result
 
-> Cost per lead down 42% while volume went up.', 'Cost per lead down 42% while volume went up.', 'Volt Energy', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"DIGITAL MARKETING"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 9, true, null, null),
-  ('harbor', 'HARBOR', 'Harbor CRM', 'E-Commerce', 'management-maintenance', 2024, null, 'blue', null, '[]'::jsonb, 'Harbor CRM came to us for maintenance. We planned, designed and shipped it end to end.', '## The brief
+> Cost per lead down 42% while volume went up.'),
+  (2024, null, '[]'::jsonb, 'Zero downtime in two years. We forget the site even needs care.', 'Harbor CRM', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, true, true, null, null, 'harbor', 'HARBOR', 'Harbor CRM', 'E-Commerce', 'management-maintenance', null, 'blue', 10, '[{"text":"MAINTENANCE"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, 'Harbor CRM came to us for maintenance. We planned, designed and shipped it end to end.', '## The brief
 
 Harbor CRM needed a partner who could move fast without cutting corners.
 
@@ -515,7 +539,7 @@ Discovery workshops, a clickable prototype, then weekly releases to a staging li
 
 ## The result
 
-> Zero downtime in two years. We forget the site even needs care.', 'Zero downtime in two years. We forget the site even needs care.', 'Harbor CRM', 4.9, '[{"value":"63%","label":"faster load times"},{"value":"4×","label":"quicker releases"},{"value":"99.98%","label":"uptime after launch"}]'::jsonb, '[{"text":"MAINTENANCE"},{"text":"DESIGN"},{"text":"ENGINEERING"}]'::jsonb, true, 10, true, null, null)
+> Zero downtime in two years. We forget the site even needs care.')
 on conflict (slug) do nothing;
 
 insert into public.posts (cover_url, author, published, seo_title, seo_description, slug, title, excerpt, tags, read_minutes, published_at, body) values

@@ -3,6 +3,7 @@
 import { ADDED_SECTIONS, ADDED_SERVICES, LEGACY_FOOTER_LEGAL, LEGACY_PAGE_SEO, LEGACY_POST_BODIES, LEGACY_SERVICE_BODIES, LEGACY_SECTIONS, LEGACY_SERVICE_SEO, LEGACY_SERVICES, LEGACY_SITE_SEO, MERGED_SERVICES } from './legacy.ts'
 import { seedPages, seedSections, seedServices, seedSettings } from './seed.ts'
 import { SEO_POSTS } from './seo-posts.ts'
+import { PORTFOLIO } from './portfolio.ts'
 import { SERVICE_COPY } from './service-copy.ts'
 import type { Page, Post, Project, Section, Service, Settings } from './types'
 
@@ -90,4 +91,11 @@ export function withSectionDefaults(slug: string, rows: Section[]): Section[] {
     return [{ ...seed, position: anchor ? anchor.position - 0.5 : Number.MAX_SAFE_INTEGER }]
   })
   return [...upgraded, ...added].filter((s) => s.visible).sort((a, b) => a.position - b.position)
+}
+
+// Portfolio projects missing from the database are served from ./portfolio and listed first.
+// shortcut: like default posts, a portfolio project unpublished in the CMS still shows; add a hide switch if needed.
+export function withDefaultProjects(rows: Project[]): Project[] {
+  const have = new Set(rows.map((p) => p.slug))
+  return [...rows.map(withProjectService), ...PORTFOLIO.filter((p) => !have.has(p.slug))].sort((a, b) => a.position - b.position)
 }

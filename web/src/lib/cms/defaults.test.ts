@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { withCurrentServices, withDefaultPosts, withPageSeo, withPostDefaults, withProjectService, withSectionDefaults, withServiceDefaults, withSettingsDefaults } from './defaults.ts'
+import { withCurrentServices, withDefaultPosts, withDefaultProjects, withPageSeo, withPostDefaults, withProjectService, withSectionDefaults, withServiceDefaults, withSettingsDefaults } from './defaults.ts'
 import { LEGACY_FOOTER_LEGAL, LEGACY_POST_BODIES, LEGACY_SECTIONS, LEGACY_SERVICE_BODIES, LEGACY_SERVICE_SEO, LEGACY_SERVICES, LEGACY_SITE_SEO } from './legacy.ts'
 import { seedPages, seedPosts, seedProjects, seedSections, seedServices, seedSettings } from './seed.ts'
 import { SERVICE_COPY } from './service-copy.ts'
@@ -99,4 +99,14 @@ test('legacy footer links and both earlier flip-card versions upgrade', () => {
     const out = withSectionDefaults('home', [{ ...seedCards, data: { cards } } as never])
     assert.deepEqual(out[0].data, seedCards.data)
   }
+})
+
+test('portfolio projects are added first when missing, without duplicates', () => {
+  const samples = seedProjects.filter((p) => !p.id.startsWith('portfolio-'))
+  const out = withDefaultProjects(samples)
+  assert.deepEqual(out.slice(0, 7).map((p) => p.slug), ['hockerty', 'beyoung', 'casio-india', 'railfeast', 'apna-mechanic', 'vc-doctor', 'cybermart'])
+  const inDb = { ...seedProjects.find((p) => p.slug === 'beyoung')!, summary: 'Edited' }
+  const again = withDefaultProjects([...samples, inDb])
+  assert.equal(again.filter((p) => p.slug === 'beyoung').length, 1)
+  assert.equal(again.find((p) => p.slug === 'beyoung')!.summary, 'Edited')
 })
