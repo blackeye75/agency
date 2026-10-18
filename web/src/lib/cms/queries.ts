@@ -2,7 +2,7 @@ import 'server-only'
 import { cacheLife, cacheTag } from 'next/cache'
 import { publicClient } from '@/lib/supabase/public'
 import { seedPages, seedPosts, seedProjects, seedSections, seedServices, seedSettings } from './seed'
-import { withCurrentServices, withPageSeo, withPostDefaults, withProjectService, withSettingsDefaults } from './defaults'
+import { withCurrentServices, withDefaultPosts, withPageSeo, withProjectService, withSectionDefaults, withSettingsDefaults } from './defaults'
 import type { Page, Post, Project, Section, Service, Settings } from './types'
 
 // Every public read is cached under the 'cms' tag. The admin API expires the
@@ -38,11 +38,11 @@ export async function getPage(slug: string): Promise<PageContent | null> {
   if (!db) return fallback()
   const [page, sections] = await Promise.all([
     db.from('pages').select('slug, title, seo_title, seo_description, og_image').eq('slug', slug).maybeSingle(),
-    db.from('sections').select('*').eq('page_slug', slug).eq('visible', true).order('position'),
+    db.from('sections').select('*').eq('page_slug', slug).order('position'),
   ])
   if (page.error || sections.error) return fallback()
   if (!page.data) return fallback()
-  return { page: withPageSeo(page.data), sections: sections.data as unknown as Section[] }
+  return { page: withPageSeo(page.data), sections: withSectionDefaults(slug, sections.data as unknown as Section[]) }
 }
 
 export async function getServices(): Promise<Service[]> {
@@ -79,7 +79,7 @@ export async function getPosts(): Promise<Post[]> {
   const live = (posts: Post[]) => posts.filter((p) => new Date(p.published_at).getTime() <= Date.now())
   if (!db) return live(seedPosts)
   const { data, error } = await db.from('posts').select('*').order('published_at', { ascending: false })
-  return live(error ? seedPosts : (data as unknown as Post[]).map(withPostDefaults))
+  return live(error ? seedPosts : withDefaultPosts(data as unknown as Post[]))
 }
 
 export async function getPost(slug: string) {

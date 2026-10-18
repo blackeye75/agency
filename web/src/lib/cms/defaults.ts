@@ -1,10 +1,10 @@
 // Sample content the site shipped with is upgraded when it is shown, so a live database that was never
 // edited gets today's keyword-targeted copy without anyone running SQL. Edited content is always left alone.
-import { ADDED_SERVICES, LEGACY_PAGE_SEO, LEGACY_POST_BODIES, LEGACY_SERVICE_BODIES, LEGACY_SERVICE_SEO, LEGACY_SERVICES, LEGACY_SITE_SEO, MERGED_SERVICES } from './legacy.ts'
-import { seedPages, seedServices, seedSettings } from './seed.ts'
+import { ADDED_SECTIONS, ADDED_SERVICES, LEGACY_PAGE_SEO, LEGACY_POST_BODIES, LEGACY_SERVICE_BODIES, LEGACY_SECTIONS, LEGACY_SERVICE_SEO, LEGACY_SERVICES, LEGACY_SITE_SEO, MERGED_SERVICES } from './legacy.ts'
+import { seedPages, seedSections, seedServices, seedSettings } from './seed.ts'
 import { SEO_POSTS } from './seo-posts.ts'
 import { SERVICE_COPY } from './service-copy.ts'
-import type { Page, Post, Project, Service, Settings } from './types'
+import type { Page, Post, Project, Section, Service, Settings } from './types'
 
 export function withSettingsDefaults(settings: Settings): Settings {
   const seo = { ...settings.seo }
@@ -59,3 +59,34 @@ export function withCurrentServices(rows: Service[]): Service[] {
 
 export const withProjectService = (p: Project): Project =>
   p.service_slug && MERGED_SERVICES[p.service_slug] ? { ...p, service_slug: MERGED_SERVICES[p.service_slug] } : p
+
+// Default posts missing from the database are served from the seed, so new guides go live on their date
+// without anyone running SQL. Visitors can't see drafts or scheduled rows, so "missing" includes those.
+// shortcut: a default post unpublished or deleted in the CMS still shows; add a hide switch if that is ever needed.
+export function withDefaultPosts(rows: Post[]): Post[] {
+  const have = new Set(rows.map((p) => p.slug))
+  return [...rows.map(withPostDefaults), ...SEO_POSTS.filter((p) => !have.has(p.slug))]
+    .sort((a, b) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime())
+}
+
+// All of a page's sections (hidden ones included) -> the visible ones to render. Unedited legacy fields show the
+// current seed, and sections added after launch appear from the seed until the database has a row for them.
+export function withSectionDefaults(slug: string, rows: Section[]): Section[] {
+  const seedFor = (key: string) => seedSections.find((s) => s.page_slug === slug && s.key === key)
+  const upgraded = rows.map((s) => {
+    const old = LEGACY_SECTIONS[`${slug}/${s.key}`], seed = seedFor(s.key)
+    if (!old || !seed) return s
+    const data = { ...s.data } as Record<string, unknown>
+    for (const [f, v] of Object.entries(old)) if (same(data[f], v)) data[f] = (seed.data as Record<string, unknown>)[f]
+    return { ...s, data } as Section
+  })
+  const added = ADDED_SECTIONS.filter((k) => k.startsWith(`${slug}/`) && !rows.some((s) => `${slug}/${s.key}` === k)).flatMap((k) => {
+    const seed = seedFor(k.slice(slug.length + 1))
+    if (!seed) return []
+    // Place it just before the section that follows it in the seed, if the page still has that section.
+    const next = seedSections.find((s) => s.page_slug === slug && s.position === seed.position + 1)
+    const anchor = next && rows.find((s) => s.key === next.key)
+    return [{ ...seed, position: anchor ? anchor.position - 0.5 : Number.MAX_SAFE_INTEGER }]
+  })
+  return [...upgraded, ...added].filter((s) => s.visible).sort((a, b) => a.position - b.position)
+}
