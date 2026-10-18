@@ -19,6 +19,8 @@ export default async function SiteLayout({ children }: LayoutProps<'/'>) {
   const hasGtm = Boolean(gtm && /^GTM-[A-Z0-9]+$/.test(gtm))
   return (
     <SiteProvider>
+      {hasGtm && <script dangerouslySetInnerHTML={{ __html: gtmBoot(gtm!) }} />}
+      {hasGtm && <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${gtm}`} height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} /></noscript>}
       <a className="skip" href="#main">Skip to content</a>
       <Sprites />
       <Loader settings={settings} />
@@ -35,7 +37,6 @@ export default async function SiteLayout({ children }: LayoutProps<'/'>) {
       <LiveRefresh />
       <JsonLd data={organizationLd(settings, published)} />
       <JsonLd data={websiteLd(settings)} />
-      {hasGtm && <script dangerouslySetInnerHTML={{ __html: gtmBoot(gtm!) }} />}
       {hasGtm && <ConsentBanner />}
     </SiteProvider>
   )
