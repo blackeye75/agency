@@ -10,7 +10,7 @@ test('legacy site title and description are upgraded, edited ones kept', () => {
   assert.equal(old.seo.title, seedSettings.seo.title)
   assert.equal(old.seo.description, seedSettings.seo.description)
   const mine = withSettingsDefaults({ ...seedSettings, seo: { title: 'My title', description: 'Mine' } })
-  assert.deepEqual(mine.seo, { title: 'My title', description: 'Mine', gtmId: 'GTM-PBF89LDZ' })
+  assert.deepEqual(mine.seo, { title: 'My title', description: 'Mine', gtmId: 'GTM-PBF89LDZ', googleVerification: seedSettings.seo.googleVerification })
   assert.equal(withSettingsDefaults({ ...seedSettings, seo: { ...mine.seo, gtmId: 'GTM-OTHER1' } }).seo.gtmId, 'GTM-OTHER1')
 })
 

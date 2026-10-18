@@ -10,8 +10,9 @@ export function withSettingsDefaults(settings: Settings): Settings {
   const seo = { ...settings.seo }
   if (LEGACY_SITE_SEO.titles.includes(seo.title)) seo.title = seedSettings.seo.title
   if (LEGACY_SITE_SEO.descriptions.includes(seo.description)) seo.description = seedSettings.seo.description
-  // A saved settings row replaces the whole seo group, so an empty GTM field falls back to the site's container.
+  // A saved settings row replaces the whole seo group, so empty GTM and Search Console fields fall back to the site's own.
   if (!seo.gtmId?.trim()) seo.gtmId = seedSettings.seo.gtmId
+  if (!seo.googleVerification?.trim()) seo.googleVerification = seedSettings.seo.googleVerification
   return { ...settings, seo }
 }
 
