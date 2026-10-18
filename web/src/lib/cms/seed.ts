@@ -148,9 +148,9 @@ const SECTIONS: Record<string, SeedSection[]> = {
       key: 'service-cards', type: 'serviceCards', label: 'Service cards (3D flip)',
       data: {
         cards: [
-          { title: 'PRODUCT\nDESIGN', tone: 'lime', text: 'Interfaces that convert. Clear flows that make the next step obvious. Less hesitation. More forward movement.', button: { label: 'design my product', href: '/services/website-app-development' } },
-          { title: 'WEB & APP\nENGINEERING', tone: 'orange', text: 'Speed you can feel: fast loading, rock-solid APIs, tests built in. Your product just works, and quietly earns trust.', button: { label: 'build my product', href: '/services/website-app-development' } },
-          { title: 'CUSTOM\nSOFTWARE?', tone: 'blue', text: "When things don't fit templates (SaaS, platform, marketplace or internal tools) we turn complexity into clarity.", button: { label: 'discuss my project', href: '/quote' } },
+          { title: 'WEBSITES\n& APPS', tone: 'lime', text: 'Business websites, web apps, e-commerce stores and mobile apps. Fast, SEO-ready and built to scale.', button: { label: 'build my website', href: '/services/website-app-development' } },
+          { title: 'MARKETING\n& SEO', tone: 'orange', text: 'Social media, Google and Meta ads, and SEO that bring qualified leads, measured on revenue, not likes.', button: { label: 'grow my business', href: '/services/digital-marketing' } },
+          { title: 'AI &\nAUTOMATION', tone: 'blue', text: 'AI agents, WhatsApp chatbots and workflows that answer leads instantly and take repetitive work off your team.', button: { label: 'automate my work', href: '/services/ai-agents-automation' } },
         ],
       },
     },

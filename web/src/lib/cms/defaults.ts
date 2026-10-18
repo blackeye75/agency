@@ -1,6 +1,6 @@
 // Sample content the site shipped with is upgraded when it is shown, so a live database that was never
 // edited gets today's keyword-targeted copy without anyone running SQL. Edited content is always left alone.
-import { ADDED_SECTIONS, ADDED_SERVICES, LEGACY_PAGE_SEO, LEGACY_POST_BODIES, LEGACY_SERVICE_BODIES, LEGACY_SECTIONS, LEGACY_SERVICE_SEO, LEGACY_SERVICES, LEGACY_SITE_SEO, MERGED_SERVICES } from './legacy.ts'
+import { ADDED_SECTIONS, ADDED_SERVICES, LEGACY_FOOTER_LEGAL, LEGACY_PAGE_SEO, LEGACY_POST_BODIES, LEGACY_SERVICE_BODIES, LEGACY_SECTIONS, LEGACY_SERVICE_SEO, LEGACY_SERVICES, LEGACY_SITE_SEO, MERGED_SERVICES } from './legacy.ts'
 import { seedPages, seedSections, seedServices, seedSettings } from './seed.ts'
 import { SEO_POSTS } from './seo-posts.ts'
 import { SERVICE_COPY } from './service-copy.ts'
@@ -13,7 +13,8 @@ export function withSettingsDefaults(settings: Settings): Settings {
   // A saved settings row replaces the whole seo group, so empty GTM and Search Console fields fall back to the site's own.
   if (!seo.gtmId?.trim()) seo.gtmId = seedSettings.seo.gtmId
   if (!seo.googleVerification?.trim()) seo.googleVerification = seedSettings.seo.googleVerification
-  return { ...settings, seo }
+  const footer = same(settings.footer.legal, LEGACY_FOOTER_LEGAL) ? { ...settings.footer, legal: seedSettings.footer.legal } : settings.footer
+  return { ...settings, seo, footer }
 }
 
 export function withPageSeo(page: Page): Page {
@@ -77,7 +78,7 @@ export function withSectionDefaults(slug: string, rows: Section[]): Section[] {
     const old = LEGACY_SECTIONS[`${slug}/${s.key}`], seed = seedFor(s.key)
     if (!old || !seed) return s
     const data = { ...s.data } as Record<string, unknown>
-    for (const [f, v] of Object.entries(old)) if (same(data[f], v)) data[f] = (seed.data as Record<string, unknown>)[f]
+    for (const [f, earlier] of Object.entries(old)) if (earlier.some((v) => same(data[f], v))) data[f] = (seed.data as Record<string, unknown>)[f]
     return { ...s, data } as Section
   })
   const added = ADDED_SECTIONS.filter((k) => k.startsWith(`${slug}/`) && !rows.some((s) => `${slug}/${s.key}` === k)).flatMap((k) => {

@@ -234,62 +234,103 @@ export const LEGACY_SERVICE_SEO: Record<string, { seo_title: string | null; seo_
   }
 }
 
-// Original section fields that named nine services or no service keywords; unedited ones show the current seed.
-export const LEGACY_SECTIONS: Record<string, Record<string, unknown>> = {
+// Earlier section fields that named nine services or no service keywords (each field lists its known
+// earlier values); an unedited one shows the current seed.
+export const LEGACY_SECTIONS: Record<string, Record<string, unknown[]>> = {
   "home/hero": {
     "words": [
-      {
-        "text": "DIGITAL 360"
-      },
-      {
-        "text": "SOFTWARE"
-      },
-      {
-        "text": "PRODUCT"
-      },
-      {
-        "text": "ALL-IN-ONE"
-      }
+      [
+        {
+          "text": "DIGITAL 360"
+        },
+        {
+          "text": "SOFTWARE"
+        },
+        {
+          "text": "PRODUCT"
+        },
+        {
+          "text": "ALL-IN-ONE"
+        }
+      ]
     ]
   },
   "home/service-cards": {
     "cards": [
-      {
-        "title": "PRODUCT\nDESIGN",
-        "tone": "lime",
-        "text": "Interfaces that convert. Clear flows that make the next step obvious. Less hesitation. More forward movement.",
-        "button": {
-          "label": "design my product",
-          "href": "/services/corporate-web-design"
+      [
+        {
+          "title": "PRODUCT\nDESIGN",
+          "tone": "lime",
+          "text": "Interfaces that convert. Clear flows that make the next step obvious. Less hesitation. More forward movement.",
+          "button": {
+            "label": "design my product",
+            "href": "/services/corporate-web-design"
+          }
+        },
+        {
+          "title": "WEB & APP\nENGINEERING",
+          "tone": "orange",
+          "text": "Speed you can feel: fast loading, rock-solid APIs, tests built in. Your product just works, and quietly earns trust.",
+          "button": {
+            "label": "build my product",
+            "href": "/services/web-software-apps"
+          }
+        },
+        {
+          "title": "CUSTOM\nSOFTWARE?",
+          "tone": "blue",
+          "text": "When things don't fit templates (SaaS, platform, marketplace or internal tools) we turn complexity into clarity.",
+          "button": {
+            "label": "discuss my project",
+            "href": "/quote"
+          }
         }
-      },
-      {
-        "title": "WEB & APP\nENGINEERING",
-        "tone": "orange",
-        "text": "Speed you can feel: fast loading, rock-solid APIs, tests built in. Your product just works, and quietly earns trust.",
-        "button": {
-          "label": "build my product",
-          "href": "/services/web-software-apps"
+      ],
+      [
+        {
+          "title": "PRODUCT\nDESIGN",
+          "tone": "lime",
+          "text": "Interfaces that convert. Clear flows that make the next step obvious. Less hesitation. More forward movement.",
+          "button": {
+            "label": "design my product",
+            "href": "/services/website-app-development"
+          }
+        },
+        {
+          "title": "WEB & APP\nENGINEERING",
+          "tone": "orange",
+          "text": "Speed you can feel: fast loading, rock-solid APIs, tests built in. Your product just works, and quietly earns trust.",
+          "button": {
+            "label": "build my product",
+            "href": "/services/website-app-development"
+          }
+        },
+        {
+          "title": "CUSTOM\nSOFTWARE?",
+          "tone": "blue",
+          "text": "When things don't fit templates (SaaS, platform, marketplace or internal tools) we turn complexity into clarity.",
+          "button": {
+            "label": "discuss my project",
+            "href": "/quote"
+          }
         }
-      },
-      {
-        "title": "CUSTOM\nSOFTWARE?",
-        "tone": "blue",
-        "text": "When things don't fit templates (SaaS, platform, marketplace or internal tools) we turn complexity into clarity.",
-        "button": {
-          "label": "discuss my project",
-          "href": "/quote"
-        }
-      }
+      ]
     ]
   },
   "services/hero": {
-    "text": "Nine services, one team. Pick one, or let us run your whole digital 360: from the first pixel to the thousandth customer."
+    "text": [
+      "Nine services, one team. Pick one, or let us run your whole digital 360: from the first pixel to the thousandth customer."
+    ]
   },
   "services/list": {
-    "title": "NINE WAYS\nWE HELP"
+    "title": [
+      "NINE WAYS\nWE HELP"
+    ]
   }
 }
 
 // Sections added after launch, as page/key; shown from the seed until the database has a row for them.
 export const ADDED_SECTIONS = ['home/faq']
+
+// The original footer legal links all pointed at /blog.
+export const LEGACY_FOOTER_LEGAL = [{"label":"Terms","href":"/blog"},{"label":"Privacy Policy","href":"/blog"},{"label":"Cookie policy","href":"/blog"}]
